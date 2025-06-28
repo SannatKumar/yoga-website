@@ -2,6 +2,31 @@
 
 A beautiful Laravel-based platform for sharing yoga-related information, pictures, and videos. This application allows users to create, share, and discover yoga content including poses, routines, meditation guides, and wellness tips.
 
+## Progress
+
+### ✅ Completed Features
+- **Project Setup**: Laravel 11 application with Tailwind CSS v4
+- **Layout System**: Reusable header, footer, and main layout components
+- **Navigation**: Responsive navbar with active page highlighting
+- **Home Page**: Beautiful yoga-themed landing page with hero section, features, and call-to-action
+- **Gallery Page**: Interactive image gallery with search, filters, and responsive grid layout
+- **Sample Data**: 8 yoga poses with categories, difficulty levels, and descriptions
+- **Styling**: Modern UI with calming yoga-themed colors and smooth animations
+
+### 🚧 In Progress
+- **Info Page**: Yoga articles and educational content
+- **Videos Page**: Video content and tutorials
+- **Contact Page**: Contact form and information
+
+### 📋 Planned Features
+- **Database Integration**: Connect to real database with migrations
+- **User Authentication**: Registration and login system
+- **File Upload**: Image and video upload functionality
+- **CRUD Operations**: Create, read, update, delete yoga posts
+- **Admin Panel**: Content management interface
+- **Search & Filter**: Advanced search functionality
+- **Responsive Design**: Mobile-first approach
+
 ## Features
 
 - **Content Sharing**: Share yoga information, images, and videos
@@ -15,10 +40,11 @@ A beautiful Laravel-based platform for sharing yoga-related information, picture
 ## Technology Stack
 
 - **Backend**: Laravel 11 (PHP)
-- **Frontend**: Blade templates with Tailwind CSS
+- **Frontend**: Blade templates with Tailwind CSS v4
 - **Database**: SQLite (development) / MySQL/PostgreSQL (production)
 - **File Storage**: Laravel Storage with local/cloud options
 - **Authentication**: Laravel Breeze (optional)
+- **Asset Building**: Vite with hot reload
 
 ## Installation
 
@@ -63,14 +89,9 @@ A beautiful Laravel-based platform for sharing yoga-related information, picture
    php artisan storage:link
    ```
 
-7. **Build assets**
+7. **Start the development server**
    ```bash
-   npm run build
-   ```
-
-8. **Start the development server**
-   ```bash
-   php artisan serve
+   composer dev
    ```
 
 The application will be available at `http://127.0.0.1:8000`
@@ -84,7 +105,8 @@ yoga-app/
 │   │   ├── User.php
 │   │   └── YogaPost.php          # Yoga content model
 │   ├── Http/Controllers/
-│   │   └── YogaPostController.php # Yoga content management
+│   │   ├── Controller.php
+│   │   └── GalleryController.php # Gallery functionality
 │   └── Providers/
 ├── database/
 │   ├── migrations/
@@ -92,8 +114,12 @@ yoga-app/
 │   └── seeders/
 ├── resources/
 │   ├── views/
-│   │   ├── yoga/                 # Yoga-specific views
-│   │   └── layouts/
+│   │   ├── layouts/              # Reusable layout components
+│   │   │   ├── app.blade.php     # Main layout
+│   │   │   ├── header.blade.php  # Navigation header
+│   │   │   └── footer.blade.php  # Footer component
+│   │   ├── welcome.blade.php     # Home page
+│   │   └── gallery.blade.php     # Gallery page
 │   ├── css/
 │   └── js/
 ├── routes/
