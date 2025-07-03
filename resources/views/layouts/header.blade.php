@@ -3,10 +3,10 @@
         <div class="flex gap-6">
             <a href="{{ route('home', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('/') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.home') }}</a>
             <a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('gallery*') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.gallery') }}</a>
-            <a href="{{ route('info', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('info*') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.info') }}</a>
             <a href="{{ route('philosophy', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('philosophy*') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.philosophy') }}</a>
             <a href="{{ route('videos', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('videos*') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.videos') }}</a>
             <a href="{{ route('contact', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('contact*') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.contact-us') }}</a>
+            <a href="{{ route('info', ['lang' => app()->getLocale()]) }}" class="font-semibold {{ request()->is('info*') ? 'text-white border-b-2 border-white' : 'text-white/80 hover:text-white' }} hover:underline transition-colors">{{ __('messages.info') }}</a>
         </div>
         <div class="flex gap-2 items-center">
             @php $currentLocale = app()->getLocale(); @endphp
