@@ -5,10 +5,9 @@
     <!-- Header Section -->
     <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
         <div class="max-w-6xl mx-auto text-center text-white">
-            <h1 class="text-5xl font-bold mb-4">Yoga Gallery</h1>
+            <h1 class="text-5xl font-bold mb-4">{{ __('messages.gallery') }}</h1>
             <p class="text-xl text-green-100 max-w-3xl mx-auto">
-                Explore beautiful yoga poses, meditation scenes, and inspiring imagery from around the world. 
-                Find inspiration for your practice and discover new poses to try.
+                {{ __('messages.gallery-desc') }}
             </p>
         </div>
     </section>
@@ -16,19 +15,19 @@
     <!-- Search and Filters Section -->
     <section class="py-8 px-6 bg-white shadow-sm">
         <div class="max-w-6xl mx-auto">
-            <form method="GET" action="{{ route('gallery') }}" class="space-y-4">
+            <form method="GET" action="{{ route('gallery', ['lang' => app()->getLocale()]) }}" class="space-y-4">
                 <!-- Search Bar -->
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="flex-1">
                         <input type="text" 
                                name="search" 
                                value="{{ $search ?? '' }}"
-                               placeholder="Search poses, descriptions..." 
+                               placeholder="{{ __('messages.search-placeholder') }}" 
                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
                     </div>
                     <button type="submit" 
                             class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
-                        Search
+                        {{ __('messages.search') }}
                     </button>
                 </div>
 
@@ -38,7 +37,7 @@
                     <div class="flex-1 min-w-48">
                         <select name="category" 
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                            <option value="">All Categories</option>
+                            <option value="">{{ __('messages.all-categories') }}</option>
                             @foreach($categories as $cat)
                                 <option value="{{ $cat }}" {{ ($category ?? '') === $cat ? 'selected' : '' }}>
                                     {{ $cat }}
@@ -51,7 +50,7 @@
                     <div class="flex-1 min-w-48">
                         <select name="difficulty" 
                                 class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent">
-                            <option value="">All Difficulties</option>
+                            <option value="">{{ __('messages.all-difficulties') }}</option>
                             @foreach($difficulties as $diff)
                                 <option value="{{ $diff }}" {{ ($difficulty ?? '') === $diff ? 'selected' : '' }}>
                                     {{ $diff }}
@@ -61,9 +60,9 @@
                     </div>
 
                     <!-- Clear Filters -->
-                    <a href="{{ route('gallery') }}" 
+                    <a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" 
                        class="bg-gray-500 hover:bg-gray-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
-                        Clear Filters
+                        {{ __('messages.clear-filters') }}
                     </a>
                 </div>
             </form>
@@ -77,9 +76,9 @@
                 <!-- Results Count -->
                 <div class="mb-8 text-center">
                     <p class="text-gray-600 text-lg">
-                        Showing {{ count($images) }} yoga pose{{ count($images) !== 1 ? 's' : '' }}
+                        {{ __('messages.showing') }} {{ count($images) }} {{ __('messages.yoga-pose') }}{{ count($images) !== 1 ? __('messages.s') : '' }}
                         @if($search || $category || $difficulty)
-                            matching your filters
+                            {{ __('messages.matching-your-filters') }}
                         @endif
                     </p>
                 </div>
@@ -114,7 +113,7 @@
                                         $color = $difficultyColors[$image['difficulty']] ?? 'bg-gray-500';
                                     @endphp
                                     <span class="{{ $color }} text-white text-xs font-semibold px-2 py-1 rounded-full">
-                                        {{ $image['difficulty'] }}
+                                        {{ __('messages.' . strtolower(str_replace(' ', '-', $image['difficulty']))) }}
                                     </span>
                                 </div>
                             </div>
@@ -149,11 +148,11 @@
                             <path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"></path>
                         </svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-gray-800 mb-2">No images found</h3>
-                    <p class="text-gray-600 mb-6">Try adjusting your search terms or filters to find what you're looking for.</p>
-                    <a href="{{ route('gallery') }}" 
+                    <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ __('messages.no-images-found') }}</h3>
+                    <p class="text-gray-600 mb-6">{{ __('messages.try-adjusting-search') }}</p>
+                    <a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" 
                        class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
-                        View All Images
+                        {{ __('messages.view-all-images') }}
                     </a>
                 </div>
             @endif
@@ -163,10 +162,10 @@
     <!-- Call to Action -->
     <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
         <div class="max-w-4xl mx-auto text-center text-white">
-            <h2 class="text-3xl font-bold mb-4">Share Your Yoga Journey</h2>
-            <p class="text-xl mb-8 text-green-100">Have beautiful yoga photos to share? Join our community and inspire others.</p>
+            <h2 class="text-3xl font-bold mb-4">{{ __('messages.share-your-yoga-journey') }}</h2>
+            <p class="text-xl mb-8 text-green-100">{{ __('messages.have-beautiful-photos') }}</p>
             <a href="/contact" class="inline-block bg-white text-green-600 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Share Your Photos
+                {{ __('messages.share-your-photos') }}
             </a>
         </div>
     </section>

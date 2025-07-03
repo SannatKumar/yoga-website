@@ -12,17 +12,10 @@ Route::middleware([SetLocale::class])->prefix('{lang}')->group(function () {
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
 
     // Placeholder routes for other pages (to be implemented)
-    Route::get('/info', function () {
-        return view('info');
-    })->name('info');
-
-    Route::get('/videos', function () {
-        return view('videos');
-    })->name('videos');
-
-    Route::get('/contact', function () {
-        return view('contact');
-    })->name('contact');
+    Route::view('/info', 'info')->name('info');
+    Route::view('/philosophy', 'philosophy')->name('philosophy');
+    Route::view('/videos', 'videos')->name('videos');
+    Route::view('/contact', 'contact')->name('contact');
 });
 
 // Optionally, redirect root to default language
