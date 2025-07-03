@@ -110,6 +110,56 @@
             color: #fff;
         }
     </style>
+    <style>
+    @media (max-width: 700px) {
+      .video-controls,
+      .videos-grid,
+      .pagination {
+        max-width: 100% !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+      }
+      .video-controls input[type="text"] {
+        width: 100% !important;
+        min-width: 0 !important;
+        box-sizing: border-box !important;
+      }
+      .filter-btns {
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        overflow-x: auto !important;
+        gap: 0.4rem !important;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 0.6rem;
+        margin-bottom: 0.5rem;
+      }
+      .filter-btns button {
+        font-size: 0.92rem !important;
+        padding: 0.3rem 0.7rem !important;
+        white-space: nowrap !important;
+        min-width: unset !important;
+        width: auto !important;
+        flex: 0 0 auto !important;
+      }
+      .videos-grid {
+        grid-template-columns: 1fr !important;
+        overflow-x: hidden !important;
+      }
+      html, body {
+        width: 100vw !important;
+        max-width: 100vw !important;
+        overflow-x: hidden !important;
+      }
+      *, *:before, *:after {
+        word-break: break-word !important;
+        overflow-wrap: break-word !important;
+      }
+    }
+    </style>
     <div class="video-controls">
         <input type="text" id="video-search" placeholder="Search videos..." oninput="filterVideos()">
         <div class="filter-btns">
