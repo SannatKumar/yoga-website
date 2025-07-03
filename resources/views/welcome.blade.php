@@ -13,16 +13,15 @@
         
         <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
-                Welcome to Your 
-                <span class="text-green-300">Yoga Journey</span>
+                {{ __('messages.welcome-to-your-yoga-journey') }}
+                <span class="text-green-300">{{ __('messages.yoga-bliss') }}</span>
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
-                Discover the art of yoga through information, beautiful images, and inspiring videos. 
-                Share your practice and connect with the yoga community.
+                {{ __('messages.find-your-inner-peace-and-balance') }}
             </p>
             <a href="/gallery" 
                class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Explore Yoga Gallery
+                {{ __('messages.gallery') }}
             </a>
         </div>
     </section>
@@ -30,11 +29,9 @@
     <!-- About Section -->
     <section class="py-20 px-6 bg-white">
         <div class="max-w-4xl mx-auto text-center">
-            <h2 class="text-4xl font-bold text-gray-800 mb-6">Why Yoga?</h2>
+            <h2 class="text-4xl font-bold text-gray-800 mb-6">{{ __('messages.why-yoga') }}</h2>
             <p class="text-xl text-gray-600 leading-relaxed max-w-3xl mx-auto">
-                Yoga is more than just physical exercise. It's a journey of self-discovery, mindfulness, and inner peace. 
-                Our platform helps you explore different yoga styles, learn proper techniques, and find inspiration 
-                for your daily practice.
+                {{ __('messages.why-yoga-text') }}
             </p>
         </div>
     </section>
@@ -53,10 +50,10 @@
                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Yoga Gallery</h3>
-                        <p class="text-gray-600 mb-4">Browse through beautiful yoga poses, meditation scenes, and inspiring imagery from around the world.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('messages.gallery') }}</h3>
+                        <p class="text-gray-600 mb-4">{{ __('messages.gallery-desc') ?? 'Browse through beautiful yoga poses, meditation scenes, and inspiring imagery from around the world.' }}</p>
                         <a href="/gallery" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
-                            View Gallery
+                            {{ __('messages.gallery') }}
                         </a>
                     </div>
                 </div>
@@ -69,10 +66,10 @@
                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Yoga Information</h3>
-                        <p class="text-gray-600 mb-4">Learn about different yoga styles, techniques, benefits, and the philosophy behind this ancient practice.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('messages.info') ?? 'Yoga Information' }}</h3>
+                        <p class="text-gray-600 mb-4">{{ __('messages.info-desc') ?? 'Learn about different yoga styles, techniques, benefits, and the philosophy behind this ancient practice.' }}</p>
                         <a href="/info" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
-                            Read More
+                            {{ __('messages.info') ?? 'Read More' }}
                         </a>
                     </div>
                 </div>
@@ -85,10 +82,10 @@
                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">Yoga Videos</h3>
-                        <p class="text-gray-600 mb-4">Watch guided yoga sessions, tutorials, and inspirational content to enhance your practice.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('messages.videos') ?? 'Yoga Videos' }}</h3>
+                        <p class="text-gray-600 mb-4">{{ __('messages.videos-desc') ?? 'Watch guided yoga sessions, tutorials, and inspirational content to enhance your practice.' }}</p>
                         <a href="/videos" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
-                            Watch Videos
+                            {{ __('messages.videos') ?? 'Watch Videos' }}
                         </a>
                     </div>
                 </div>
@@ -99,10 +96,10 @@
     <!-- Call to Action -->
     <section class="py-20 px-6 bg-gradient-to-r from-green-500 to-blue-500">
         <div class="max-w-4xl mx-auto text-center text-white">
-            <h2 class="text-4xl font-bold mb-6">Ready to Start Your Yoga Journey?</h2>
-            <p class="text-xl mb-8 text-green-100">Join our community and discover the transformative power of yoga.</p>
+            <h2 class="text-4xl font-bold mb-6">{{ __('messages.ready-to-start') ?? 'Ready to Start Your Yoga Journey?' }}</h2>
+            <p class="text-xl mb-8 text-green-100">{{ __('messages.join-community') ?? 'Join our community and discover the transformative power of yoga.' }}</p>
             <a href="/contact" class="inline-block bg-white text-green-600 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-                Get Started Today
+                {{ __('messages.get-started') ?? 'Get Started Today' }}
             </a>
         </div>
     </section>
