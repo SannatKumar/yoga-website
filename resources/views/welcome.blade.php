@@ -5,7 +5,7 @@
     <!-- Hero Section -->
     <section class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
-            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2020&q=80" 
+            <img src="/images/main_page_first_image_haukkaniemi.jpg" 
                  alt="Yoga meditation" 
                  class="w-full h-full object-cover">
             <div class="absolute inset-0 bg-black bg-opacity-40"></div>
@@ -14,12 +14,12 @@
         <div class="relative z-10 text-center text-white px-6 max-w-4xl mx-auto">
             <h1 class="text-5xl md:text-7xl font-bold mb-6 leading-tight">
                 {{ __('messages.welcome-to-your-yoga-journey') }}
-                <span class="text-green-300">{{ __('messages.yoga-bliss') }}</span>
+                <!--<span class="text-green-300">{{ __('messages.yoga-bliss') }}</span>-->
             </h1>
             <p class="text-xl md:text-2xl mb-8 text-gray-200 max-w-2xl mx-auto">
                 {{ __('messages.find-your-inner-peace-and-balance') }}
             </p>
-            <a href="/gallery" 
+            <a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" 
                class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                 {{ __('messages.gallery') }}
             </a>
@@ -45,14 +45,14 @@
                 <!-- Gallery Card -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                        <img src="/images/Sarvangasana.jpeg" 
                              alt="Yoga poses gallery" 
                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('messages.gallery') }}</h3>
                         <p class="text-gray-600 mb-4">{{ __('messages.gallery-desc') ?? 'Browse through beautiful yoga poses, meditation scenes, and inspiring imagery from around the world.' }}</p>
-                        <a href="/gallery" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
+                        <a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" class="inline-block bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
                             {{ __('messages.gallery') }}
                         </a>
                     </div>
@@ -61,14 +61,14 @@
                 <!-- Info Card -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2020&q=80" 
+                        <img src="/images/Matsyasana.jpeg" 
                              alt="Yoga information" 
                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('messages.info') ?? 'Yoga Information' }}</h3>
                         <p class="text-gray-600 mb-4">{{ __('messages.info-desc') ?? 'Learn about different yoga styles, techniques, benefits, and the philosophy behind this ancient practice.' }}</p>
-                        <a href="/info" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
+                        <a href="{{ route('info', ['lang' => app()->getLocale()]) }}" class="inline-block bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
                             {{ __('messages.info') ?? 'Read More' }}
                         </a>
                     </div>
@@ -77,14 +77,14 @@
                 <!-- Videos Card -->
                 <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300">
                     <div class="h-64 overflow-hidden">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+                        <img src="/images/Vajroli.jpeg" 
                              alt="Yoga videos" 
                              class="w-full h-full object-cover">
                     </div>
                     <div class="p-6">
                         <h3 class="text-2xl font-bold text-gray-800 mb-3">{{ __('messages.videos') ?? 'Yoga Videos' }}</h3>
                         <p class="text-gray-600 mb-4">{{ __('messages.videos-desc') ?? 'Watch guided yoga sessions, tutorials, and inspirational content to enhance your practice.' }}</p>
-                        <a href="/videos" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
+                        <a href="{{ route('videos', ['lang' => app()->getLocale()]) }}" class="inline-block bg-purple-500 hover:bg-purple-600 text-white font-semibold px-6 py-2 rounded-lg transition-colors duration-300">
                             {{ __('messages.videos') ?? 'Watch Videos' }}
                         </a>
                     </div>

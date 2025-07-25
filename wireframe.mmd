@@ -1,0 +1,21 @@
+flowchart TD
+  A["Header (Navigation)"]
+  B["Home Page (welcome.blade.php)\n- Hero Section\n- Features\n- Call to Action"]
+  C["Gallery Page (gallery.blade.php)\n- Image Grid\n- Search & Filter"]
+  D["Footer"]
+
+  A --> B
+  A --> C
+  B --> D
+  C --> D
+
+  subgraph Layout
+    A
+    D
+  end
+
+  %% Navigation
+  click B "resources/views/welcome.blade.php" "Home Page Blade Template"
+  click C "resources/views/gallery.blade.php" "Gallery Page Blade Template"
+  click A "resources/views/layouts/header.blade.php" "Header Layout Blade Template"
+  click D "resources/views/layouts/footer.blade.php" "Footer Layout Blade Template" 

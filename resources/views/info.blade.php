@@ -136,14 +136,14 @@
             </div>
         </div>
         <div class="teacher-profile">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/7/73/Lion_waiting_in_Namibia.jpg" alt="Lion Photo" />
-            <h2>Simha Simha Simha</h2>
+            <img src="/images/raj_profile_photo.jpg" alt="Lion Photo" />
+            <h2>Raj Kumar</h2>
             <p>
-                Simha Simha Simha is a passionate yoga teacher with over 10 years of experience in guiding students towards physical and mental well-being. Specializing in Hatha and Vinyasa yoga, Simha brings energy, wisdom, and a calming presence to every class.
+                Raj Kumar is a passionate yoga teacher with over 1.5 years of experience in guiding students towards physical and mental well-being. Specializing in Hatha and Vinyasa yoga, Raj brings energy, wisdom, and a calming presence to every class.
             </p>
             <div class="contact-info">
-                <div>Email: simha@yogaexample.com</div>
-                <div>Instagram: @simha.yoga</div>
+                <div>Email: rajkumarmailuser@gmail.com</div>
+                <!--<div>Instagram: @simha.yoga</div>-->
             </div>
         </div>
     </div>

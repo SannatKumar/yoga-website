@@ -1,4 +1,4 @@
-<header style="width:100%;background:#6c63ff;color:#fff;padding:0.7rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.04);z-index:10;position:relative;">
+<header style="width:100%;background:#1B4D3F;color:#fff;padding:0.7rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.04);z-index:10;position:relative;">
     <nav style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:0 1rem;">
         <div style="font-weight:700;font-size:1.3rem;letter-spacing:1px;">Yoga Platform</div>
         <ul style="display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;">
