@@ -98,8 +98,6 @@
                                 <!-- Overlay with info -->
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                                     <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <p>{{ $image['id'] }}</p>
-                                        <p>{{app()->getLocale()}}</p>
                                         <a href="{{ route('showgallerycard',['lang' => app()->getLocale(), 'id' => 1])}}" class="text-xl font-bold mb-2 block hover:underline">{{ $image['title'] }}</a>
                                         <p class="text-sm">{{ $image['description'] }}</p>
                                     </div>
