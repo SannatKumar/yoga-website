@@ -39,7 +39,7 @@
     <!-- Features Section -->
     <section class="py-20 px-6 bg-gray-50">
         <div class="max-w-6xl mx-auto">
-            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">Explore Our Content</h2>
+            <h2 class="text-4xl font-bold text-center text-gray-800 mb-16">{{ __('messages.explore-our-content') }}</h2>
             
             <div class="grid md:grid-cols-3 gap-8">
                 <!-- Gallery Card -->

@@ -57,4 +57,5 @@ return [
     'NP' => 'NP',
     'English' => 'EN',
     'Finnish' => 'Suomi',
+    'explore-our-content' => 'Selaa meidän sisältöä',
 ]; 
