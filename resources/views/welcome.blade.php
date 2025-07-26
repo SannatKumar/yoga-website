@@ -98,7 +98,7 @@
         <div class="max-w-4xl mx-auto text-center text-white">
             <h2 class="text-4xl font-bold mb-6">{{ __('messages.ready-to-start') ?? 'Ready to Start Your Yoga Journey?' }}</h2>
             <p class="text-xl mb-8 text-green-100">{{ __('messages.join-community') ?? 'Join our community and discover the transformative power of yoga.' }}</p>
-            <a href="/contact" class="inline-block bg-white text-green-600 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
+            <a href="{{route('contact', ['lang' => app()->getLocale()])}}" class="inline-block bg-white text-green-600 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                 {{ __('messages.get-started') ?? 'Get Started Today' }}
             </a>
         </div>

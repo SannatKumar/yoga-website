@@ -33,6 +33,7 @@
                             </a>
                         @endif
                     </div>
+                    <p><button>Contact</button></p>
                 </div>
             </div>
         @endforeach

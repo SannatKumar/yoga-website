@@ -58,4 +58,10 @@ return [
     'English' => 'अङ्ग्रेजी',
     'Finnish' => 'फिनिस',
     'explore-our-content' => 'हाम्रो सामग्री देख्नुहोस्',
+    'mahavakya-1' => 'प्रज्ञानम् ब्रह्म',
+    'mahavakya-2' => 'अहम् ब्रह्म अस्मि',
+    'mahavakya-3' => 'तत् त्वम् असि',
+    'mahavakya-4' => 'अयम् आत्मा ब्रह्म',
+    'yoga-philosophy' => 'योग दर्शन',
+    'learning-and-understanding' => 'सिकाई र बुजाई'
 ]; 

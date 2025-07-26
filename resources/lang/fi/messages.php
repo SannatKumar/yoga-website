@@ -58,4 +58,11 @@ return [
     'English' => 'EN',
     'Finnish' => 'Suomi',
     'explore-our-content' => 'Selaa meidän sisältöä',
+    'mahavakya-1' => 'Tietoisuus on Brahman',
+    'mahavakya-2' => 'Olen Brahman',
+    'mahavakya-3' => 'That thou art',
+    'mahavakya-4' => 'Itse on Brahman',
+    'yoga-philosophy' => 'Jooga Filosofia',
+    'learning-and-understanding' => 'Oppiminen ja ymmärtäminen'
+    
 ]; 

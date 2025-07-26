@@ -3,10 +3,10 @@
         <div style="font-weight:700;font-size:1.3rem;letter-spacing:1px;">Yoga Platform</div>
         <ul style="display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;">
             <li><a href="{{ route('home', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('/') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.home') }}</a></li>
-            <li><a href="{{ route('info', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('info*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.info') }}</a></li>
-            <li><a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('gallery*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.gallery') }}</a></li>
             <li><a href="{{ route('philosophy', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('philosophy*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.philosophy') }}</a></li>
+            <li><a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('gallery*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.gallery') }}</a></li>
             <li><a href="{{ route('videos', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('videos*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.videos') }}</a></li>
+            <li><a href="{{ route('info', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('info*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.info') }}</a></li>
             <li><a href="{{ route('contact', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('contact*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.contact-us') }}</a></li>
         </ul>
         <div style="display:flex;gap:0.5rem;align-items:center;margin-left:1rem;">

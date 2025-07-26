@@ -58,4 +58,10 @@ return [
     'English' => 'EN',
     'Finnish' => 'FI',
     'explore-our-content' => 'Explore Our Content',
+    'mahavakya-1' => 'Consciousness is Brahman',
+    'mahavakya-2' => 'I am Brahman',
+    'mahavakya-3' => 'That thou art',
+    'mahavakya-4' => 'The self is Brahman',
+    'yoga-philosophy' => 'Yoga Philosophy',
+    'learning-and-understanding' => 'Learning and Understanding'
 ]; 

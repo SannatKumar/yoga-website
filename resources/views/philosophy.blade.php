@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-    <h1 class="text-4xl font-bold text-center mb-8 text-green-800" style="letter-spacing:0.01em;">Yoga Philosophy</h1>
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-800" style="letter-spacing:0.01em;">{{ __('messages.yoga-philosophy') ?? 'Yoga Philosophy' }}</h1>
     <div class="container mb-5">
         <div class="row justify-content-center g-4 flex-wrap">
-            <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+            <div class="col-12 col-md-6 col-lg-2 mb-4 d-flex align-items-stretch">
                 <div class="quote-card p-4 h-100 w-100">
                     <div class="quote-title mb-2">The Light Within</div>
                     <div class="quote-text mb-3">Yoga is the journey of the self, through the self, to the self.</div>
@@ -36,10 +36,10 @@
                 <div class="quote-card p-4 h-100 w-100">
                     <div class="quote-title mb-2">Mahavakyas (Great Sayings)</div>
                     <ul class="mahavakya-list mb-0">
-                        <li><span class="mahavakya">Prajnanam Brahma</span> <span class="mahavakya-ref">(Consciousness is Brahman)</span></li>
-                        <li><span class="mahavakya">Aham Brahmasmi</span> <span class="mahavakya-ref">(I am Brahman)</span></li>
-                        <li><span class="mahavakya">Tat Tvam Asi</span> <span class="mahavakya-ref">(That Thou Art)</span></li>
-                        <li><span class="mahavakya">Ayam Atma Brahma</span> <span class="mahavakya-ref">(This Self is Brahman)</span></li>
+                        <li><span class="mahavakya">{{ __('messages.mahavakya-1') }}</span> <span class="mahavakya-ref">(Consciousness is Brahman)</span></li>
+                        <li><span class="mahavakya">{{ __('messages.mahavakya-2') }}</span> <span class="mahavakya-ref">(I am Brahman)</span></li>
+                        <li><span class="mahavakya">{{ __('messages.mahavakya-3') }}</span> <span class="mahavakya-ref">(That Thou Art)</span></li>
+                        <li><span class="mahavakya">{{ __('messages.mahavakya-4') }}</span> <span class="mahavakya-ref">(This Self is Brahman)</span></li>
                     </ul>
                 </div>
             </div>
@@ -177,6 +177,7 @@
         }
     }
     </style>
+    <h1 class="text-4xl font-bold text-center mb-8 text-green-800" style="letter-spacing:0.01em;">{{__('messages.learning-and-understanding')}}</h1>
     <div class="philosophy-section">
         <h2>1. Yoga as a Journey, Not a Destination</h2>
         <p>
