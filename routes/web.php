@@ -23,33 +23,33 @@ Route::middleware([SetLocale::class])->prefix('{lang}')->group(function () {
                 ],
             ],
             [
-                'name' => 'Anita Devi',
+                'name' => 'PA',
                 'photo' => '/images/duipadahastasana.jpeg',
-                'bio' => 'Anita specializes in restorative and prenatal yoga. Her classes focus on mindfulness, breath, and gentle movement.',
+                'bio' => 'PA specializes in restorative and prenatal yoga. Her classes focus on mindfulness, breath, and gentle movement.',
                 'social' => [
                     'instagram' => 'https://instagram.com/anita.yoga',
                 ],
             ],
             [
-                'name' => 'Mikko Laine',
+                'name' => 'GS',
                 'photo' => '/images/main_page_first_image_haukkaniemi.jpg',
-                'bio' => 'Mikko brings a playful spirit to his Vinyasa and AcroYoga classes. He believes yoga is for everyone, regardless of age or ability.',
+                'bio' => 'GS brings a playful spirit to his Vinyasa and AcroYoga classes. He believes yoga is for everyone, regardless of age or ability.',
                 'social' => [
                     'facebook' => 'https://facebook.com/mikkoyoga',
                 ],
             ],
             [
-                'name' => 'Sita Karki',
+                'name' => 'KOKC',
                 'photo' => '/images/Vipareetakarani.jpeg',
-                'bio' => 'Sita is passionate about yoga for mental health and teaches meditation and pranayama workshops.',
+                'bio' => 'KOKC is passionate about yoga for mental health and teaches meditation and pranayama workshops.',
                 'social' => [
                     'website' => 'https://sitayoga.com',
                 ],
             ],
             [
-                'name' => 'John Lee',
+                'name' => 'SV',
                 'photo' => '/images/yogamudra.png',
-                'bio' => 'John is a yoga therapist and anatomy expert, helping students safely deepen their practice.',
+                'bio' => 'SV is a yoga therapist and anatomy expert, helping students safely deepen their practice.',
                 'social' => [
                     'instagram' => 'https://instagram.com/johnleeyoga',
                     'facebook' => 'https://facebook.com/johnleeyoga',

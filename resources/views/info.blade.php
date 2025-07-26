@@ -11,7 +11,7 @@
     </div>
     <div class="row justify-content-center g-4">
         @foreach($teachers as $teacher)
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-5 d-flex align-items-stretch">
+            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-5 d-flex align-items-stretch">
                 <div class="card shadow-sm border-0 w-100 h-100 text-center p-4 teacher-card" style="min-height: 370px;">
                     <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" class="rounded-circle mx-auto mb-4" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #22c55e; margin-top: 8px;">
                     <h3 class="text-xl font-semibold text-green-900 mb-2">{{ $teacher['name'] }}</h3>
