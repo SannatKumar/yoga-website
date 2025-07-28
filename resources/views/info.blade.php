@@ -1,7 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container py-5">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="container py-5 min-h-screen">
     <h1 class="text-4xl font-bold text-center mb-8 text-green-800">About Us</h1>
     <div class="mx-auto mb-10 max-w-2xl">
         <div class="bg-green-50 border-l-4 border-green-400 rounded-lg p-5 flex items-center justify-center gap-3 shadow-sm">
@@ -9,9 +10,27 @@
             <span class="text-center text-lg text-gray-700">Meet our dedicated yoga teachers and contributors. Each brings their unique experience and passion to help you on your yoga journey.</span>
         </div>
     </div>
-    <div class="row justify-content-center g-4">
-        @foreach($teachers as $teacher)
-            <div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-5 d-flex align-items-stretch">
+    <!-- <div class="row justify-content-center g-4"> -->
+    <div class="card-container">
+    @foreach($teachers as $teacher)
+        <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
+            <div class="card w-100 text-center">
+                <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" style="width:100%" class="fixed-size">
+                <h1>{{ $teacher['name'] }}</h1>
+                <p class="title">{{ $teacher['title'] }}</p>
+                <p>{{ $teacher['bio'] }}</p>
+                <div style="margin: 24px 0;">
+                    <a href="#"><i class="fa fa-dribbble"></i></a> 
+                    <a href="#"><i class="fa fa-twitter"></i></a>  
+                    <a href="#"><i class="fa fa-linkedin"></i></a>  
+                    <a href="#"><i class="fa fa-facebook"></i></a> 
+                </div>
+                <p><button>Contact</button></p>
+            </div>
+        </div>
+
+
+        <!--<div class="col-12 col-sm-6 col-md-6 col-lg-6 mb-5 d-flex align-items-stretch">
                 <div class="card shadow-sm border-0 w-100 h-100 text-center p-4 teacher-card" style="min-height: 370px;">
                     <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" class="rounded-circle mx-auto mb-4" style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #22c55e; margin-top: 8px;">
                     <h3 class="text-xl font-semibold text-green-900 mb-2">{{ $teacher['name'] }}</h3>
@@ -36,10 +55,12 @@
                     <p><button>Contact</button></p>
                 </div>
             </div>
+        -->
         @endforeach
     </div>
 </div>
 <style>
+    /*
 .social-icon {
     display: inline-flex;
     align-items: center;
@@ -73,7 +94,81 @@
     text-decoration: none;
 }
 .teacher-card { margin-bottom: 2.5rem !important; padding: 2rem !important; min-height: 370px; }
-@media (min-width: 576px) { .teacher-card { margin-bottom: 2.5rem !important; padding: 2rem !important; min-height: 370px; } }
-@media (min-width: 768px) { .teacher-card { margin-bottom: 2.5rem !important; padding: 2rem !important; min-height: 370px; } }
+*/
+.container{
+    min-height: 1260px;
+}
+    .card-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: center;
+      padding: 20px;
+      height: 450px;
+    }
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  max-width: 350px;
+  min-height: 420px;
+  margin: auto;
+  text-align: center;
+  font-family: arial;
+}
+
+img.fixed-size {
+  width: 200px;       /* or any desired width */
+  height: 250px;      /* or any desired height */
+  object-fit: cover;  /* makes sure image fills the box */
+  object-position: center; /* keeps it centered */
+  border-radius: 8px; /* optional: for rounded corners */
+}
+
+.title {
+  color: grey;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  outline: 0;
+  display: inline-block;
+  padding: 8px;
+  color: white;
+  background-color: #000;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  font-size: 18px;
+}
+
+a {
+  text-decoration: none;
+  /* font-size: 22px; */
+  color: black;
+}
+
+button:hover, a:hover {
+  opacity: 0.7;
+}
+
+@media (min-width: 576px) { 
+    .teacher-card { 
+        margin-bottom: 2.5rem !important; 
+        padding: 2rem !important; 
+        min-height: 370px; 
+    }
+    /* .container{
+        min-height: 2000px;
+    }  */
+}
+@media (min-width: 768px) {
+     .teacher-card {
+         margin-bottom: 2.5rem !important; 
+         padding: 2rem !important; 
+         min-height: 370px; } 
+    }
+    .container{
+        min-height: 2500px;
+    }
 </style>
 @endsection 

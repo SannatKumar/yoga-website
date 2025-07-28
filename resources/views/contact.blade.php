@@ -11,6 +11,11 @@
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.07);
         }
+        form {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            }
         .contact-form label {
             display: block;
             margin-bottom: 0.5rem;
@@ -43,6 +48,7 @@
             font-weight: 600;
             cursor: pointer;
             transition: background 0.2s;
+
         }
         .contact-form button:hover {
             background: #554ee2;

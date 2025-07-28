@@ -63,5 +63,11 @@ return [
     'mahavakya-3' => 'तत् त्वम् असि',
     'mahavakya-4' => 'अयम् आत्मा ब्रह्म',
     'yoga-philosophy' => 'योग दर्शन',
-    'learning-and-understanding' => 'सिकाई र बुजाई'
+    'learning-and-understanding' => 'सिकाई र बुजाई',
+    'sthulavyayama' => 'Sthula Vyayama',
+    'sukhsmavyayama' => 'Sukhsma Vyayama',
+        'sukhsma-vyayama' => 'Sukhsma Vyayama',
+    'sukhsma-vyayama-desc' => 'Sukhsma Vyayama Desc',
+    'sthula-vyayama' => 'Sthula Vyayama',
+    'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
 ]; 

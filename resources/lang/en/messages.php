@@ -63,5 +63,12 @@ return [
     'mahavakya-3' => 'That thou art',
     'mahavakya-4' => 'The self is Brahman',
     'yoga-philosophy' => 'Yoga Philosophy',
-    'learning-and-understanding' => 'Learning and Understanding'
+    'learning-and-understanding' => 'Learning and Understanding',
+    'sthulavyayama' => 'Sthula Vyayama',
+    'sukhsmavyayama' => 'Sukhsma Vyayama',
+    'sukhsma-vyayama' => 'Sukhsma Vyayama',
+    'sukhsma-vyayama-desc' => 'Sukhsma Vyayama Desc',
+    'sthula-vyayama' => 'Sthula Vyayama',
+    'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
+      
 ]; 
