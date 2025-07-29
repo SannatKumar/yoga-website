@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SthulaVyayamaController;
 use App\Http\Controllers\SukhsmaVyayamaController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\SetLocale;
 
 Route::middleware([SetLocale::class])->prefix('{lang}')->group(function () {
@@ -76,6 +77,14 @@ Route::middleware([SetLocale::class])->prefix('{lang}')->group(function () {
     //Sthula Vyayama and Sukhsma Vyayama
     Route::get('/sthulavyayama', [SthulaVyayamaController::class, 'sthulaVyayama'])->name('sthulavyayama');
     Route::get('/sukhsmavyayama', [SukhsmaVyayamaController::class, 'sukhsmaVyayama'])->name('sukhsmavyayama');
+
+
+    //Database Routes
+    Route::get('/test-insert-user', [UserController::class, 'testInsertUser']);
+
+    Route::get('/check-db', function () {
+        return DB::connection()->getDatabaseName();
+    });
 });
 
 // Optionally, redirect root to default language
