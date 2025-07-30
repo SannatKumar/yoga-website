@@ -103,7 +103,25 @@
             </a>
         </div>
     </section>
-    <p>Total Visits: {{ $totalVisits }}</p>
-    <p>Unique Visitors: {{ $uniqueVisitors }}</p>
+    <!-- Site Stats Section -->
+<section class="py-16 bg-gray-100">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ __('messages.site-stats') ?? '📊 Site Statistics' }}</h2>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-8 justify-center">
+            <!-- Total Visits Circle -->
+            <div class="flex flex-col items-center bg-white shadow-lg rounded-full w-48 h-48 mx-auto justify-center transform hover:scale-105 transition duration-300">
+                <div class="text-4xl font-extrabold text-blue-600">{{ $totalVisits }}</div>
+                <div class="text-gray-700 mt-2 text-lg font-medium">{{ __('messages.total-visits') ?? 'Total Visits' }}</div>
+            </div>
+
+            <!-- Unique Visitors Circle -->
+            <div class="flex flex-col items-center bg-white shadow-lg rounded-full w-48 h-48 mx-auto justify-center transform hover:scale-105 transition duration-300">
+                <div class="text-4xl font-extrabold text-green-600">{{ $uniqueVisitors }}</div>
+                <div class="text-gray-700 mt-2 text-lg font-medium">{{ __('messages.unique-visitors') ?? 'Unique Visitors' }}</div>
+            </div>
+        </div>
+    </div>
+</section>
 </div>
 @endsection

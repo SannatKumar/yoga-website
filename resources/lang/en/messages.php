@@ -70,5 +70,8 @@ return [
     'sukhsma-vyayama-desc' => 'Sukhsma Vyayama Desc',
     'sthula-vyayama' => 'Sthula Vyayama',
     'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
+    'total-visits' => 'Total Visits',
+    'unique-visitors' => 'Unique Visitors',
+        'site-stats' => 'Site Stats'
       
 ]; 

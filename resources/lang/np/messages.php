@@ -66,8 +66,12 @@ return [
     'learning-and-understanding' => 'सिकाई र बुजाई',
     'sthulavyayama' => 'Sthula Vyayama',
     'sukhsmavyayama' => 'Sukhsma Vyayama',
-        'sukhsma-vyayama' => 'Sukhsma Vyayama',
+    'sukhsma-vyayama' => 'Sukhsma Vyayama',
     'sukhsma-vyayama-desc' => 'Sukhsma Vyayama Desc',
     'sthula-vyayama' => 'Sthula Vyayama',
     'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
+    'total-visits' => 'कुल भ्रमणहरू',
+    'unique-visitors' => 'अद्वितीय आगन्तुकहरू',
+    'site-stats' => 'साइट तथ्याङ्क'
+    
 ]; 
