@@ -5,12 +5,15 @@ use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\SthulaVyayamaController;
 use App\Http\Controllers\SukhsmaVyayamaController;
 use App\Http\Controllers\UserController;
+use App\Http\Middleware\TrackVisits;
+use App\Http\Controllers\HomeController;
 use App\Http\Middleware\SetLocale;
 
-Route::middleware([SetLocale::class])->prefix('{lang}')->group(function () {
-    Route::get('/', function () {
-        return view('welcome');
-    })->name('home');
+Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->group(function () {
+    // Route::get('/', function () {
+    //     return view('welcome');
+    // })->name('home');
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // Placeholder routes for other pages (to be implemented)
     Route::get('/info', function () {

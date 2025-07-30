@@ -103,5 +103,7 @@
             </a>
         </div>
     </section>
+    <p>Total Visits: {{ $totalVisits }}</p>
+    <p>Unique Visitors: {{ $uniqueVisitors }}</p>
 </div>
 @endsection
