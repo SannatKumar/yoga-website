@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<img src="/lotus-images/red_lotus.svg" alt="Welcome Icon" class="mx-auto mb-0 w-48 h-20">
     <h1 class="text-4xl font-bold text-center mb-8 text-green-800" style="letter-spacing:0.01em;">{{ __('messages.yoga-philosophy') ?? 'Yoga Philosophy' }}</h1>
     <div class="container mb-5">
         <div class="row justify-content-center g-4 flex-wrap">

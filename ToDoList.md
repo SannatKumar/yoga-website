@@ -1,7 +1,7 @@
 # 🚀 Yoga Practice Website Launch Plan (Target: August)
 
 ## 📅 WEEK 1 (Aug 1–7) – Content Completion & Translations
-- [ ] Finalize homepage content (remove image, add intro block)
+- [✅] Finalize homepage content (remove image, add intro block)
 - [ ] Write Guidebook/Steps page with `<x-step-card>` component
 - [ ] Finalize "Why Yoga", "Vision", and "About" content
 - [ ] Write English translation file (`lang/en/messages.php`)
@@ -10,6 +10,7 @@
 - [ ] Add SEO metadata (title, meta description, OG)
 
 ---
+
 
 ## 🎨 WEEK 2 (Aug 8–14) – Components + UI Cleanup
 - [ ] Create `<x-step-card>` Blade component

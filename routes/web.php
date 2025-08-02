@@ -74,6 +74,7 @@ Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->gro
     Route::view('/philosophy', 'philosophy')->name('philosophy');
     Route::view('/videos', 'videos')->name('videos');
     Route::view('/contact', 'contact')->name('contact');
+    Route::view('/terms', 'terms')->name('terms');
 
     //Guide Controller
     Route::get('/guide', [GuideController::class, 'getGuide'])->name('guide');

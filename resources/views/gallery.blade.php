@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
+    <img src="/lotus-images/sky_blue_lotus.svg" alt="Welcome Icon" class="mx-auto mb-0 w-48 h-20">
     <!-- Header Section -->
     <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
         <div class="max-w-6xl mx-auto text-center text-white">

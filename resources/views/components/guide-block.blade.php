@@ -9,25 +9,7 @@
 </div>
 
 
-@once
-    @push('styles')
-        <link href="{{ asset('css/guide-text-block.css') }}" rel="stylesheet">
-    @endpush
-@endonce
-
 <style>
-/* .guide-block {
-    background-color: #fff;
-    border-left: 6px solid #22c55e;
-    border-right: 6px solid #3B82F5;
-    
-    border-radius: 12px;
-    padding: 1.5rem;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.5);
-    margin-bottom: 2rem;
-    transition: box-shadow 0.2s ease;
-}  */
-
 .guide-block {
   position: relative;
   background-color: #fff;
@@ -71,3 +53,5 @@
 
     
 </style>
+
+

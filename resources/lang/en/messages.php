@@ -75,6 +75,11 @@ return [
         'site-stats' => 'Site Stats',
         'yoga-practice-guide' => '🧘 Yoga Practice Guide',
     'follow-these-steps' => 'Follow these steps to deepen your practice and connect within.',
+    'discover-yoga-through-questions' => 'Discover Yoga through questions',
+    'namaste-welcome' => '🙏 Welcome to Your Yoga Journey. 🙏',
+    'begin-your-inquiry' => 'Begin Your Inquiry',
+    'thank-you-for-visiting'=> '🙏 Thank you for visiting. 🙏',
+    'guide' => 'Guide',
 
     'step-1-title' => 'Step 1: Choose a Space',
     'step-1-desc' => 'Find a clean and peaceful meditation space of your choice. Lay down your mat and prepare yourself mentally.',

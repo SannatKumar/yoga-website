@@ -2,6 +2,7 @@
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-blue-50 to-green-50 py-16 px-6">
+        <img src="/lotus-images/moon_lotus.svg" alt="Welcome Icon" class="mx-auto mb-0 w-48 h-20">
 
     <!-- Page Heading -->
     <div class="max-w-4xl mx-auto text-center mb-12">
@@ -12,6 +13,7 @@
             {{ __('messages.follow-these-steps') ?? 'Follow these steps to deepen your practice and connect within.' }}
         </p>
     </div>
+
 
    
     <!-- Steps Section -->

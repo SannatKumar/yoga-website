@@ -1,0 +1,17 @@
+<svg viewBox="0 0 200 200" class="lotus lotus-12" xmlns="http://www.w3.org/2000/svg">
+  <g transform="translate(100,100)">
+    <!-- 12 petals at 30° intervals -->
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(0)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(30)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(60)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(90)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(120)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(150)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(180)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(210)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(240)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(270)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(300)" />
+    <ellipse rx="15" ry="45" fill="skyblue" transform="rotate(330)" />
+  </g>
+</svg>
