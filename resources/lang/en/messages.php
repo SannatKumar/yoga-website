@@ -72,6 +72,38 @@ return [
     'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
     'total-visits' => 'Total Visits',
     'unique-visitors' => 'Unique Visitors',
-        'site-stats' => 'Site Stats'
+        'site-stats' => 'Site Stats',
+        'yoga-practice-guide' => '🧘 Yoga Practice Guide',
+    'follow-these-steps' => 'Follow these steps to deepen your practice and connect within.',
+
+    'step-1-title' => 'Step 1: Choose a Space',
+    'step-1-desc' => 'Find a clean and peaceful meditation space of your choice. Lay down your mat and prepare yourself mentally.',
+
+    'step-2-title' => 'Step 2: Sit & Chant Guru Stuti',
+    'step-2-desc' => 'Sit in any comfortable meditative posture and chant the Guru Stuti to invoke inner wisdom and guidance.',
+
+    'step-3-title' => 'Step 3: Start with Sukshma Vyayama',
+    'step-3-desc' => 'Begin with subtle yogic warm-up movements to energize joints and prepare the body for deeper practice.',
+
+    'step-4-title' => 'Step 4: Practice Sthula Vyayama',
+    'step-4-desc' => 'Follow with larger body movements to activate muscles, improve circulation, and increase flexibility.',
+
+    'step-5-title' => 'Step 5: Pawanmuktasana Series',
+    'step-5-desc' => 'Perform gas-relieving series to detoxify, improve digestion, and release energy blocks.',
+
+    'step-6-title' => 'Step 6: Asanas (Standing, Sitting, Supine)',
+    'step-6-desc' => 'Move through standing, sitting, and lying postures in sequence. Maintain awareness of breath and alignment.',
+
+    'step-7-title' => 'Step 7: Savasana',
+    'step-7-desc' => 'Lie down in corpse pose and relax every part of your body for at least 3 minutes. Let go completely.',
+
+    'step-8-title' => 'Step 8: Pranayama (Kapalbhati, Bhastrika, Anuloma-Viloma)',
+    'step-8-desc' => 'Perform energizing and balancing breathwork techniques with mindfulness and correct posture.',
+
+    'step-9-title' => 'Step 9: Mudras & Bhramari',
+    'step-9-desc' => 'Practice selected mudras (hand gestures) and the humming Bhramari Pranayama to induce calmness and mental focus.',
+
+    'step-10-title' => 'Step 10: Silent Meditation & Closing',
+    'step-10-desc' => 'Sit in silence, focus on a mantra or image of the divine. Conclude with gratitude and closing chants.',
       
 ]; 

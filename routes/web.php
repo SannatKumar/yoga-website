@@ -59,7 +59,7 @@ Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->gro
                 'name' => 'Raj Kumar',
                 'photo' => '/images/natural_scene/grass_and_sun.jpeg',
                 'title' => 'IYA Certified Yoga Teacher',
-                'bio' => 'Raj is a certified yoga instructor with 1.5 years of experience in Hatha and Vinyasa yoga. He loves sharing the philosophy and practice of yoga with all ages.',
+                'bio' => 'Raj is a certified yoga instructor with 1.5 years of experience in Hatha and Vinyasa yoga.',
                 'social' => [
                     'instagram' => 'https://instagram.com/rajyoga',
                     'facebook' => 'https://facebook.com/rajyoga',
@@ -69,6 +69,7 @@ Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->gro
         ];
         return view('info', compact('teachers'));
     })->name('info');
+    Route::view('/guide', 'guide')->name('guide');
     Route::view('/philosophy', 'philosophy')->name('philosophy');
     Route::view('/videos', 'videos')->name('videos');
     Route::view('/contact', 'contact')->name('contact');

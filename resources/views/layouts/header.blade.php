@@ -3,6 +3,7 @@
         <div style="font-weight:700;font-size:1.3rem;letter-spacing:1px;">Yoga Platform</div>
         <ul style="display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;">
             <li><a href="{{ route('home', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('/') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.home') }}</a></li>
+            <li><a href="{{ route('guide', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('guide*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.guide') }}</a></li>
             <li><a href="{{ route('philosophy', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('philosophy*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.philosophy') }}</a></li>
             <li><a href="{{ route('sukhsmavyayama', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('sukhsmavyayama*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.sukhsmavyayama') }}</a></li>
             <li><a href="{{ route('sthulavyayama', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('sthulavyayama*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.sthulavyayama') }}</a></li>
