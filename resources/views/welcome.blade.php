@@ -103,8 +103,9 @@
             </a>
         </div>
     </section>
+    <div class="h-8 bg-gradient-to-b from-blue-500 to-gray-100"></div>
     <!-- Site Stats Section -->
-<section class="py-16 bg-gray-100">
+<section class="mt-24 px-6 py-16 bg-gray-100">
     <div class="max-w-4xl mx-auto px-4 text-center">
         <h2 class="text-3xl font-bold text-gray-800 mb-8">{{ __('messages.site-stats') ?? '📊 Site Statistics' }}</h2>
 
