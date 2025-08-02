@@ -38,6 +38,15 @@
                 {{ __('messages.discover-yoga-through-questions') ?? 'Explore Yoga Through Curiosity' }}
             </h2>
 
+                        <!-- Steps Section -->
+            <div class="guide-text-block-div">
+                @foreach ($yogaIntroCards as $card)
+                <x-guide-block 
+                    :title="$card['title']" 
+                    :text="$card['text']"  />
+                @endforeach
+            </div>
+<!-- 
             <div class="grid md:grid-cols-5 gap-6 text-left">
                 <div class="p-6 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
                     <h3 class="text-xl font-bold mb-2 text-green-600">What is Yoga?</h3>
@@ -59,7 +68,7 @@
                     <h3 class="text-xl font-bold mb-2 text-red-600">Where Yoga?</h3>
                     <p class="text-gray-700">Here. Now. In your body, in your breath, wherever you are.</p>
                 </div>
-            </div>
+            </div> -->
         </div>
     </section>
 

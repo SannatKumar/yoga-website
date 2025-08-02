@@ -7,6 +7,7 @@ use App\Http\Controllers\SukhsmaVyayamaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TrackVisits;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GuideController;
 use App\Http\Middleware\SetLocale;
 
 Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->group(function () {
@@ -69,10 +70,13 @@ Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->gro
         ];
         return view('info', compact('teachers'));
     })->name('info');
-    Route::view('/guide', 'guide')->name('guide');
+    // Route::view('/guide', 'guide')->name('guide');
     Route::view('/philosophy', 'philosophy')->name('philosophy');
     Route::view('/videos', 'videos')->name('videos');
     Route::view('/contact', 'contact')->name('contact');
+
+    //Guide Controller
+    Route::get('/guide', [GuideController::class, 'getGuide'])->name('guide');
 
     //Gallery Routes
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
