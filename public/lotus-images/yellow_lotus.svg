@@ -1,8 +1,27 @@
-<svg viewBox="0 0 200 200" class="lotus lotus-4" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(100,100)">
-    <ellipse rx="20" ry="50" fill="yellow" transform="rotate(0)" />
-    <ellipse rx="20" ry="50" fill="yellow" transform="rotate(90)" />
-    <ellipse rx="20" ry="50" fill="yellow" transform="rotate(180)" />
-    <ellipse rx="20" ry="50" fill="yellow" transform="rotate(270)" />
+<svg viewBox="0 0 200 200" class="lotus lotus-10 lotus-spin" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .spin {
+      animation: spin 10s linear infinite;
+      transform-origin: 100px 100px;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
+
+  <!-- Spinning Lotus (group of petals centered on 100,100) -->
+  <g class="spin">
+    <g transform="translate(100,100)">
+      <ellipse rx="20" ry="50" fill="yellow" transform="rotate(0)" />
+      <ellipse rx="20" ry="50" fill="yellow" transform="rotate(90)" />
+      <ellipse rx="20" ry="50" fill="yellow" transform="rotate(180)" />
+      <ellipse rx="20" ry="50" fill="yellow" transform="rotate(270)" />
+    </g>
   </g>
+
+  <!-- Static Center Dot -->
+  <circle cx="100" cy="100" r="5" fill="black" />
 </svg>
+

@@ -1,5 +1,19 @@
-<svg viewBox="0 0 200 200" class="lotus lotus-16" xmlns="http://www.w3.org/2000/svg">
-  <g transform="translate(100,100)">
+<svg viewBox="0 0 200 200" class="lotus lotus-10 lotus-spin" xmlns="http://www.w3.org/2000/svg">
+  <style>
+    .spin {
+      animation: spin 10s linear infinite;
+      transform-origin: 100px 100px;
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+  </style>
+
+  <!-- Spinning Lotus (group of petals centered on 100,100) -->
+  <g class="spin">
+    <g transform="translate(100,100)">
     <!-- 16 petals at 22.5° intervals -->
     <ellipse rx="12" ry="40" fill="indigo" transform="rotate(0)" />
     <ellipse rx="12" ry="40" fill="indigo" transform="rotate(22.5)" />
@@ -18,4 +32,7 @@
     <ellipse rx="12" ry="40" fill="indigo" transform="rotate(315)" />
     <ellipse rx="12" ry="40" fill="indigo" transform="rotate(337.5)" />
   </g>
+  </g>
+    <circle cx="100" cy="100" r="12" fill="black" />
 </svg>
+

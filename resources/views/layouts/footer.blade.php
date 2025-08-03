@@ -5,7 +5,11 @@
         <a href="{{ route('terms', ['lang' => app()->getLocale()]) }}" style="color:#9ddcff;text-decoration:underline;">Terms & Disclaimer</a>
     </div>
     <style>
+        
         @media (max-width: 700px) {
+                footer {
+        margin-top: 120rem !important; /* Or 800px if necessary, but better to avoid such large static values */
+    }
             footer div {
                 font-size: 0.98rem;
                 padding: 0 0.5rem;

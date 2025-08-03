@@ -80,6 +80,7 @@ return [
     'begin-your-inquiry' => 'Begin Your Inquiry',
     'thank-you-for-visiting'=> '🙏 Thank you for visiting. 🙏',
     'guide' => 'Guide',
+    'guru-stuti' => 'Guru Stuti',
 
     'step-1-title' => 'Step 1: Choose a Space',
     'step-1-desc' => 'Find a clean and peaceful meditation space of your choice. Lay down your mat and prepare yourself mentally.',
