@@ -1,13 +1,16 @@
 <header style="width:100%;background:#1B4D3F;color:#fff;padding:0.7rem 0;box-shadow:0 2px 8px rgba(0,0,0,0.04);z-index:10;position:relative;">
     <nav style="max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;padding:0 1rem;">
         <div style="font-weight:700;font-size:1.3rem;letter-spacing:1px;">Yoga Platform</div>
+            <div class="hamburger" onclick="document.querySelector('.navbar').classList.toggle('open')">
+        &#9776;
+    </div>
         <ul style="display:flex;gap:1.2rem;list-style:none;margin:0;padding:0;flex-wrap:wrap;">
             <li><a href="{{ route('home', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('/') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.home') }}</a></li>
             <li><a href="{{ route('guide', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('guide*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.guide') }}</a></li>
             <li><a href="{{ route('guru-stuti', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('guru-stuti*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.guru-stuti') }}</a></li>
             <li><a href="{{ route('philosophy', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('philosophy*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.philosophy') }}</a></li>
-            <!-- <li><a href="{{ route('sukhsmavyayama', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('sukhsmavyayama*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.sukhsmavyayama') }}</a></li>
-            <li><a href="{{ route('sthulavyayama', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('sthulavyayama*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.sthulavyayama') }}</a></li> -->
+            <!-- <li><a href="{{ route('sukhsma-vyayama', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('sukhsma-vyayama*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.sukhsmavyayama') }}</a></li>
+            <li><a href="{{ route('sthula-vyayama', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('sthula-vyayama*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.sthulavyayama') }}</a></li> -->
             <li><a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('gallery*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.gallery') }}</a></li>
             <li><a href="{{ route('videos', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('videos*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.videos') }}</a></li>
             <li><a href="{{ route('info', ['lang' => app()->getLocale()]) }}" style="color:#fff;text-decoration:none;font-weight:500;{{ request()->is('info*') ? 'border-bottom:2px solid #fff;' : '' }}">{{ __('messages.info') }}</a></li>
@@ -46,6 +49,39 @@
                 font-size: 0.98rem;
             }
         }
+
+        /* Latest Development */
+        @media (max-width: 768px) {
+    .navbar-links, .language-switch {
+      display: none;
+      flex-direction: column;
+      background: #222;
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+      z-index: 999;
+    }
+
+    .navbar.open .navbar-links,
+    .navbar.open .language-switch {
+      display: flex;
+    }
+
+    .hamburger {
+      display: block;
+      cursor: pointer;
+      font-size: 1.5rem;
+      color: white;
+    }
+  }
+
+  @media (min-width: 769px) {
+    .hamburger {
+      display: none;
+    }
+  }
     </style>
 </header>
 <style>

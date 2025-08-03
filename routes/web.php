@@ -13,30 +13,60 @@ use App\Http\Controllers\GuruStutiController;
 use App\Http\Middleware\SetLocale;
 
 Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->group(function () {
-    // Route::get('/', function () {
-    //     return view('welcome');
-    // })->name('home');
-    Route::get('/', [HomeController::class, 'index'])->name('home');    
-    Route::get('/info', [TeacherController::class, 'index'])->name('info');
-    Route::get('/teacher/{id}', [TeacherController::class,'getTeacher'])->name('teacher-profile');
-    Route::view('/philosophy', 'philosophy')->name('philosophy');
-    Route::view('/videos', 'videos')->name('videos');
-    Route::view('/contact', 'contact')->name('contact');
-    Route::view('/terms', 'terms')->name('terms');
+
+
+    /*
+    // Description to Read
+    // The language prefix  and Track Visits has been added to Middleware.
+    // The language will be added globally.
+    // While getting the parameters from request, First is lang and Second is your Paramater coming into the request.
+    //  
+    Example Routes:
+        Using Views Only:
+        Route::view('/philosophy', 'philosophy')->name('philosophy');
+        Using Controllers And Views:
+        Route::get('/guru-stuti', [GuruStutiController::class, 'getGuruStuti'])->name('guru-stuti');  
+    */
+    //Home Controller First Page
+    Route::get('/', [HomeController::class, 'index'])->name('home');
 
     //Guide Controller
     Route::get('/guide', [GuideController::class, 'getGuide'])->name('guide');
 
-        //Guru Stuti Controller
+    //Guru Stuti Controller
     Route::get('/guru-stuti', [GuruStutiController::class, 'getGuruStuti'])->name('guru-stuti');
+
+    Route::view('/philosophy', 'philosophy')->name('philosophy');
 
     //Gallery Routes
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
     Route::get('/showgallerycard/id', [GalleryController::class, 'show'])->name('showgallerycard');
 
+
+    //Videos Routes And Controller Class
+    Route::view('/videos', 'videos')->name('videos');
+
+    //About us And Controller Class
+    Route::get('/info', [TeacherController::class, 'index'])->name('info');
+    Route::get('/teacher/{id}', [TeacherController::class,'getTeacher'])->name('teacher-profile');
+
+
+
+    //Contact Form. This might get deleted later
+    Route::view('/contact', 'contact')->name('contact');
+    
+    //Terms of Use And Controller Class
+    Route::view('/terms', 'terms')->name('terms');
+
+
+
+
+
+
+
     //Sthula Vyayama and Sukhsma Vyayama
-    Route::get('/sthulavyayama', [SthulaVyayamaController::class, 'sthulaVyayama'])->name('sthulavyayama');
-    Route::get('/sukhsmavyayama', [SukhsmaVyayamaController::class, 'sukhsmaVyayama'])->name('sukhsmavyayama');
+    Route::get('/sthula-vyayama', [SthulaVyayamaController::class, 'sthulaVyayama'])->name('sthula-vyayama');
+    Route::get('/sukhsma-vyayama', [SukhsmaVyayamaController::class, 'sukhsmaVyayama'])->name('sukhsma-vyayama');
 
 
     //Database Routes

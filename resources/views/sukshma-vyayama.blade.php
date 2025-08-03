@@ -15,7 +15,7 @@
     <!-- Search and Filters Section -->
     <section class="py-8 px-6 bg-white shadow-sm">
         <div class="max-w-6xl mx-auto">
-            <form method="GET" action="{{ route('sukhsmavyayama', ['lang' => app()->getLocale()]) }}" class="space-y-4">
+            <form method="GET" action="{{ route('sukhsma-vyayama', ['lang' => app()->getLocale()]) }}" class="space-y-4">
                 <!-- Search Bar -->
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="flex-1">

@@ -170,6 +170,6 @@ class SukhsmaVyayamaController extends Controller
         if (!$pose) {
             abort(404);
         }
-        return view('gallery_detail', compact('pose'));
+        return view('gallery-detail', compact('pose'));
     }
 }
