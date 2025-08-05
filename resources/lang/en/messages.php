@@ -1,5 +1,6 @@
 <?php
 return [
+    'web-app-name' => 'Yoga Place',
     'welcome' => 'Welcome!',
     'yoga-bliss' => 'Yoga Bliss',
     'find-your-inner-peace-and-balance'=> 'Find your Inner Peace and Balance',
@@ -81,6 +82,7 @@ return [
     'thank-you-for-visiting'=> '🙏 Thank you for visiting. 🙏',
     'guide' => 'Guide',
     'guru-stuti' => 'Guru Stuti',
+    'show-asana' => 'Show Asana',
 
     'step-1-title' => 'Step 1: Choose a Space',
     'step-1-desc' => 'Find a clean and peaceful meditation space of your choice. Lay down your mat and prepare yourself mentally.',

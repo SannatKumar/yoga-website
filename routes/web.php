@@ -1,16 +1,19 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\GuideController;
+use App\Http\Controllers\GuruStutiController;
+use App\Http\Controllers\ShowAsanaController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\SthulaVyayamaController;
 use App\Http\Controllers\SukhsmaVyayamaController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TrackVisits;
-use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\GuideController;
-use App\Http\Controllers\GuruStutiController;
 use App\Http\Middleware\SetLocale;
+//DB Things
+use Illuminate\Support\Facades\DB;
 
 Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->group(function () {
 
@@ -60,6 +63,9 @@ Route::middleware([SetLocale::class, TrackVisits::class])->prefix('{lang}')->gro
 
 
 
+    //Testing the new component
+        //Show Asanas Controller
+    Route::get('/show-asana', [ShowAsanaController::class, 'getAsana'])->name('show-asana');
 
 
 

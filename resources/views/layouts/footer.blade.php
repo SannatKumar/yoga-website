@@ -8,8 +8,8 @@
         
         @media (max-width: 700px) {
                 footer {
-        margin-top: 120rem !important; /* Or 800px if necessary, but better to avoid such large static values */
-    }
+            margin-top: 10rem !important; /* Or 800px if necessary, but better to avoid such large static values */
+        }
             footer div {
                 font-size: 0.98rem;
                 padding: 0 0.5rem;
