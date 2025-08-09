@@ -46,6 +46,21 @@
             <li><a href="{{ route('contact', ['lang' => app()->getLocale()]) }}"
                     class="nav-link {{ request()->is('contact*') ? 'active' : '' }}">{{ __('messages.contact-us') }}</a>
             </li>
+            <!-- New Utility links-->
+            <li><a href="{{ route('cover-letter', ['lang' => app()->getLocale()]) }}"
+                    class="nav-link {{ request()->is('cover-letter*') ? 'active' : '' }}">{{ __('messages.cover-letter') }}</a>
+            </li>
+            <li><a href="{{ route('cv-generator', ['lang' => app()->getLocale()]) }}"
+                    class="nav-link {{ request()->is('info*') ? 'active' : '' }}">{{ __('messages.cv-generator') }}</a>
+            </li>
+            <li><a href="{{ route('currency-converter', ['lang' => app()->getLocale()]) }}"
+                    class="nav-link {{ request()->is('currency-converter*') ? 'active' : '' }}">{{ __('messages.currency-converter') }}</a></li>
+            <li><a href="{{ route('nepali-calendar', ['lang' => app()->getLocale()]) }}"
+                    class="nav-link {{ request()->is('nepali-calendar*') ? 'active' : '' }}">{{ __('messages.nepali-calendar') }}</a>
+            </li>
+            <li><a href="{{ route('mantra-shloka-bhajan', ['lang' => app()->getLocale()]) }}"
+                    class="nav-link {{ request()->is('mantra*') ? 'active' : '' }}">{{ __('messages.mantra') }}</a>
+            </li>
         </ul>
 
         <div class="language-switch" id="languageSwitch">
@@ -106,13 +121,6 @@
             border-bottom: 2px solid #fff;
         }
 
-        /* .language-switch {
-            display: none;
-            gap: 0.5rem;
-            align-items: center;
-            /* margin-left: 1rem; 
-        } */
-
         .language-switch {
                 display: none;
                 flex-direction: column;
@@ -152,38 +160,6 @@
         .language-switch.show {
                 display: flex;
             }
-
-            /*
-        .lang-menu {
-            position: absolute;
-            top: 100%;
-            right: 0;
-            background: #1B4D3F;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            list-style: none;
-            padding: 0.5rem 0;
-            margin: 0;
-            display: none;
-            z-index: ;
-            min-width: 100px;
-        }
-
-        .lang-menu li {
-            padding: 0.3rem 1rem;
-        }
-
-        .lang-menu li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            display: block;
-        }
-
-        .lang-menu li:hover {
-            background: #155e4b;
-        }
-            */
 
         .lang-dropdown.open .lang-menu {
             display: block;
@@ -246,9 +222,50 @@
         /* Small devices (phones, ≥576px and <768px) */
         @media (min-width: 576px) and (max-width: 767.98px) {
             nav {
+                padding: 0 0.2rem;
+            }
+
+            .navbar {
+                gap: 0.4rem;
+                font-size: 0.98rem;
+            }
+
+            .navbar,
+            .language-switch {
+                display: none;
                 flex-direction: column;
+                background: #155e4b;
+                position: absolute;
+                border-radius: 8px;
+                margin-top: 14.5px;
+                top: 60px;
+                left: 0;
+                width: 60%;
+                padding: 1rem;
+                z-index: 999;
+            }
+
+            .navbar.show,
+            .language-switch.show {
+                display: flex;
+            }
+
+            main {
+                margin-top: 0.7rem;
+            }
+
+            .hamburger {
+                display: block;
+                cursor: pointer;
+                font-size: 1.5rem;
+                color: white;
+                margin-right: 5px;
+            }
+            /*
+            nav {
+                flex-direction: row;
                 align-items: flex-start;
-                gap: 0.5rem;
+                gap: 0.5rem; 
             }
 
             .navbar {
@@ -296,7 +313,16 @@
                 cursor: pointer;
                 font-size: 1.5rem;
                 color: white;
+                margin-right: 5px;
             }
+             .translation-globe-logo{
+                order: 1;
+                display: none; 
+            } 
+            .logo{
+                order: 2;
+            }
+                */
         }
 
         /*For my Tablet  */

@@ -83,6 +83,12 @@ return [
     'guide' => 'Guide',
     'guru-stuti' => 'Guru Stuti',
     'show-asana' => 'Show Asana',
+    'cover-letter' => 'Cover Letter',
+    'cv-generator' => 'CV Generator',
+            'free-cv-generator' => 'Vapaa CV Generatio',
+        'currency-converter' => 'Currency Converter',
+    'nepali-calendar' => 'Nepali Calendar',
+    'mantra' => 'Mantra',
 
     'step-1-title' => 'Step 1: Choose a Space',
     'step-1-desc' => 'Find a clean and peaceful meditation space of your choice. Lay down your mat and prepare yourself mentally.',

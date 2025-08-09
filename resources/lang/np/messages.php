@@ -72,6 +72,8 @@ return [
     'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
     'total-visits' => 'कुल भ्रमणहरू',
     'unique-visitors' => 'अद्वितीय आगन्तुकहरू',
-    'site-stats' => 'साइट तथ्याङ्क'
+    'site-stats' => 'साइट तथ्याङ्क',
+    'cv-generator' => 'सिवि जनेरतोर',
+    'free-cv-generator' => 'फ्री सिवि जनेरतोर'
     
 ]; 

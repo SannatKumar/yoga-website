@@ -72,6 +72,7 @@ return [
     'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
         'total-visits' => 'Käyntejä yhteensä',
     'unique-visitors' => 'Ainutlaatuiset Vierailijat',
-        'site-stats' => 'sivustotilastot'
+        'site-stats' => 'sivustotilastot',
+        'free-cv-generator' => 'Vapaa CV Generatio',
     
 ]; 
