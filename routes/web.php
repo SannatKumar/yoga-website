@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\GuruStutiController;
@@ -18,89 +20,76 @@ use App\Http\Controllers\UserController;
 use App\Http\Middleware\TrackVisits;
 use App\Http\Middleware\SetLocale;
 use App\Http\Middleware\SetDefaultLocaleForUrls;
-//DB Things
 use Illuminate\Support\Facades\DB;
 
-Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits::class])->prefix('{lang}')->group(function () {
+// Locale switcher route - works from any page
+Route::get('/set-locale/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'fi', 'np'])) {
+        abort(400, 'Invalid locale');
+    }
 
+    // Store locale in session
+    Session::put('locale', $locale);
+    
+    // Set application locale
+    App::setLocale($locale);
 
-    /*
-    // Description to Read
-    // The language prefix  and Track Visits has been added to Middleware.
-    // The language will be added globally.
-    // While getting the parameters from request, First is lang and Second is your Paramater coming into the request.
-    //  
-    Example Routes:
-        Using Views Only:
-        Route::view('/philosophy', 'philosophy')->name('philosophy');
-        Using Controllers And Views:
-        Route::get('/guru-stuti', [GuruStutiController::class, 'getGuruStuti'])->name('guru-stuti');  
-    */
-    //Home Controller First Page
+    // Redirect back to previous page or home
+    return redirect()->back()->with('locale_changed', true);
+})->name('set-locale');
+
+// Apply middleware to all routes
+Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits::class])->group(function () {
+    
+    // Home Controller - First Page
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    //Guide Controller
+    // Guide Controller
     Route::get('/guide', [GuideController::class, 'getGuide'])->name('guide');
 
-    //Guru Stuti Controller
+    // Guru Stuti Controller
     Route::get('/guru-stuti', [GuruStutiController::class, 'getGuruStuti'])->name('guru-stuti');
 
+    // Philosophy page
     Route::view('/philosophy', 'philosophy')->name('philosophy');
 
-    //Gallery Routes
+    // Gallery Routes
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-    Route::get('/showgallerycard/id', [GalleryController::class, 'show'])->name('showgallerycard');
+    Route::get('/showgallerycard/{id}', [GalleryController::class, 'show'])->name('showgallerycard');
 
-
-    //Videos Routes And Controller Class
+    // Videos Routes
     Route::view('/videos', 'videos')->name('videos');
 
-    //About us And Controller Class
+    // About us and Teacher Controller
     Route::get('/info', [TeacherController::class, 'index'])->name('info');
-    Route::get('/teacher/{id}', [TeacherController::class,'getTeacher'])->name('teacher-profile');
+    Route::get('/teacher/{id}', [TeacherController::class, 'getTeacher'])->name('teacher-profile');
 
-
-
-    //Contact Form. This might get deleted later
+    // Contact Form
     Route::view('/contact', 'contact')->name('contact');
     
-    //Terms of Use And Controller Class
+    // Terms of Use
     Route::view('/terms', 'terms')->name('terms');
 
-
-
-    //Testing the new component
-    //Show Asanas Controller
+    // Show Asanas Controller
     Route::get('/show-asana', [ShowAsanaController::class, 'getAsana'])->name('show-asana');
 
-
-
-    /* Utility Section */
+    // Utility Section
     Route::get('/cover-letter', [CoverLetterController::class, 'getCoverLetter'])->name('cover-letter');
     Route::get('/cv-generator', [CVGeneratorController::class, 'getCVGenerator'])->name('cv-generator');
-    Route::get('/currency-converter',[CurrencyConverterController::class, 'getCurrencyConverter'])->name('currency-converter');
+    Route::get('/currency-converter', [CurrencyConverterController::class, 'getCurrencyConverter'])->name('currency-converter');
     Route::get('/nepali-calendar', [NepaliCalendarController::class, 'getNepaliCalendar'])->name('nepali-calendar');
 
-
-
-    //Mantras and Shlokas and Bhajans
+    // Mantras, Shlokas and Bhajans
     Route::get('/mantra', [MantraShlokaBhajanController::class, 'getMantraShlokaBhajan'])->name('mantra-shloka-bhajan');
     Route::get('/mantra/{id}', [MantraShlokaBhajanController::class, 'getMantraShlokaBhajanContent'])->name('mantra-shloka-bhajan-content');
 
-    //Sthula Vyayama and Sukhsma Vyayama
+    // Sthula Vyayama and Sukhsma Vyayama
     Route::get('/sthula-vyayama', [SthulaVyayamaController::class, 'sthulaVyayama'])->name('sthula-vyayama');
     Route::get('/sukhsma-vyayama', [SukhsmaVyayamaController::class, 'sukhsmaVyayama'])->name('sukhsma-vyayama');
 
-
-    //Database Routes
+    // Database Routes (for testing)
     Route::get('/test-insert-user', [UserController::class, 'testInsertUser']);
-
     Route::get('/check-db', function () {
         return DB::connection()->getDatabaseName();
     });
-});
-
-// Optionally, redirect root to default language
-Route::get('/', function () {
-    return redirect('/en');
 });

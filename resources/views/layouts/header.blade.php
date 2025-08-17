@@ -18,59 +18,57 @@
         <!-- Main Navigation Links -->
 
         <ul class="navbar" id="navbar">
-            <li><a href="{{ route('home', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('home') }}"
                     class="nav-link {{ request()->is('/') ? 'active' : '' }}">{{ __('messages.home') }}</a></li>
-            <li><a href="{{ route('guide', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('guide') }}"
                     class="nav-link {{ request()->is('guide*') ? 'active' : '' }}">{{ __('messages.guide') }}</a></li>
-            <li><a href="{{ route('guru-stuti', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('guru-stuti') }}"
                     class="nav-link {{ request()->is('guru-stuti*') ? 'active' : '' }}">{{ __('messages.guru-stuti') }}</a>
             </li>
-            <li><a href="{{ route('philosophy', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('philosophy') }}"
                     class="nav-link {{ request()->is('philosophy*') ? 'active' : '' }}">{{ __('messages.philosophy') }}</a>
             </li>
             <!--
-            <li><a href="{{ route('sukhsma-vyayama', ['lang' => app()->getLocale()]) }}" class="nav-link {{ request()->is('sukhsma-vyayama*') ? 'active' : '' }}">{{ __('messages.sukhsmavyayama') }}</a></li>
-            <li><a href="{{ route('sthula-vyayama', ['lang' => app()->getLocale()]) }}" class="nav-link {{ request()->is('sthula-vyayama*') ? 'active' : '' }}">{{ __('messages.sthulavyayama') }}</a></li>
+            <li><a href="{{ route('sukhsma-vyayama') }}" class="nav-link {{ request()->is('sukhsmavyayama*') ? 'active' : '' }}">{{ __('messages.sukhsmavyayama') }}</a></li>
+            <li><a href="{{ route('sthula-vyayama') }}" class="nav-link {{ request()->is('sthulavyayama*') ? 'active' : '' }}">{{ __('messages.sthulavyayama') }}</a></li>
             -->
-            <li><a href="{{ route('show-asana', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('show-asana') }}"
                     class="nav-link {{ request()->is('show-asana*') ? 'active' : '' }}">{{ __('messages.show-asana') }}</a>
             </li>
-            <li><a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('gallery') }}"
                     class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}">{{ __('messages.gallery') }}</a>
             </li>
-            <li><a href="{{ route('videos', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('videos') }}"
                     class="nav-link {{ request()->is('videos*') ? 'active' : '' }}">{{ __('messages.videos') }}</a>
             </li>
-            <li><a href="{{ route('info', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('info') }}"
                     class="nav-link {{ request()->is('info*') ? 'active' : '' }}">{{ __('messages.info') }}</a></li>
-            <li><a href="{{ route('contact', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('contact') }}"
                     class="nav-link {{ request()->is('contact*') ? 'active' : '' }}">{{ __('messages.contact-us') }}</a>
             </li>
             <!-- New Utility links-->
-            <li><a href="{{ route('cover-letter', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('cover-letter') }}"
                     class="nav-link {{ request()->is('cover-letter*') ? 'active' : '' }}">{{ __('messages.cover-letter') }}</a>
             </li>
-            <li><a href="{{ route('cv-generator', ['lang' => app()->getLocale()]) }}"
-                    class="nav-link {{ request()->is('info*') ? 'active' : '' }}">{{ __('messages.cv-generator') }}</a>
-            </li>
-            <li><a href="{{ route('currency-converter', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('cv-generator') }}"
+                    class="nav-link {{ request()->is('cv-generator*') ? 'active' : '' }}">{{ __('messages.cv-generator') }}</a></li>
+            <li><a href="{{ route('currency-converter') }}"
                     class="nav-link {{ request()->is('currency-converter*') ? 'active' : '' }}">{{ __('messages.currency-converter') }}</a></li>
-            <li><a href="{{ route('nepali-calendar', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('nepali-calendar') }}"
                     class="nav-link {{ request()->is('nepali-calendar*') ? 'active' : '' }}">{{ __('messages.nepali-calendar') }}</a>
             </li>
-            <li><a href="{{ route('mantra-shloka-bhajan', ['lang' => app()->getLocale()]) }}"
+            <li><a href="{{ route('mantra-shloka-bhajan') }}"
                     class="nav-link {{ request()->is('mantra*') ? 'active' : '' }}">{{ __('messages.mantra') }}</a>
             </li>
         </ul>
 
         <div class="language-switch" id="languageSwitch">
             @php $currentLocale = app()->getLocale(); @endphp
-            @php $currentRoute = request()->route() ? request()->route()->getName() : ''; @endphp
-            <a href="{{ $currentRoute === 'home' ? '/en' : route($currentRoute, ['lang' => 'en']) }}"
+            <a href="{{ route('set-locale', 'en') }}"
                 class="lang {{ $currentLocale === 'en' ? 'highlight' : '' }}">{{ __('messages.English') }}</a> 
-            <a href="{{ $currentRoute === 'home' ? '/fi' : route($currentRoute, ['lang' => 'fi']) }}"
+            <a href="{{ route('set-locale', 'fi') }}"
                 class="lang {{ $currentLocale === 'fi' ? 'highlight' : '' }}">{{ __('messages.Finnish') }}</a> 
-            <a href="{{ $currentRoute === 'home' ? '/np' : route($currentRoute, ['lang' => 'np']) }}"
+            <a href="{{ route('set-locale', 'np') }}"
                 class="lang {{ $currentLocale === 'np' ? 'highlight' : '' }}">{{ __('messages.NP') }}</a>
         </div>
     </nav>

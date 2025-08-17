@@ -42,6 +42,13 @@
 <body class="bg-[#FDFDFC] dark:bg-[#0a0a0a] text-[#1b1b18]">
     <div class="main-content">
         @include('layouts.header')
+        
+        @if(session('locale_changed'))
+            <div class="alert alert-success" style="background: #d1fae5; border: 1px solid #22c55e; color: #15803d; padding: 0.75rem 1rem; margin: 1rem auto; border-radius: 8px; max-width: 600px; text-align: center; font-weight: 500;">
+                {{ __('messages.language-changed') ?? 'Language changed successfully!' }}
+            </div>
+        @endif
+        
         <main class="w-full flex-1 flex flex-col items-center">
             @yield('content')
         </main>

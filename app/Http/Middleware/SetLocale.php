@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\App;
 
 class SetLocale
 {
@@ -16,12 +17,26 @@ class SetLocale
      */
     public function handle(Request $request, Closure $next): Response
     {
-        $locale = $request->route('lang') ?? Session::get('locale', config('app.locale'));
+        // Get locale from session first, then browser preference, then fallback to default
+        $locale = Session::get('locale');
+        
+        if (!$locale) {
+            // Check browser language preference
+            $browserLocale = $request->getPreferredLanguage(['en', 'fi', 'np']);
+            $locale = $browserLocale ?: config('app.locale');
+        }
+        
+        // Validate locale
         if (!in_array($locale, ['en', 'fi', 'np'])) {
             $locale = config('app.locale');
         }
-        app()->setLocale($locale);
+        
+        // Set the application locale
+        App::setLocale($locale);
+        
+        // Store in session for future requests
         Session::put('locale', $locale);
+        
         return $next($request);
     }
 }
