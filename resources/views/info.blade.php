@@ -17,7 +17,7 @@
             <div class="card w-100 text-center">
                 <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" style="width:100%" class="fixed-size">
                         <h2>
-            <a href="{{ url('en/teacher/'.$teacher['id']) }}">
+            <a href="{{ url('teacher/'.$teacher['id']) }}">
                 {{ $teacher['name'] }}
             </a>
             <p>{{ 'en/teacher/'.$teacher['id'] }}</p>

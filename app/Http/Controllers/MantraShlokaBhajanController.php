@@ -48,11 +48,11 @@ class MantraShlokaBhajanController extends Controller
 
     //Mantra Shloka Bhajan Content
 
-    public function getMantraShlokaBhajanContent($lang, $id)
+    public function getMantraShlokaBhajanContent($id)
     {
         Log::info('It came here');
 
-        Log::info('RequestID:'.$lang);
+        // Log::info('RequestID:'.$lang);
         Log::info('RequestID:'.$id);
 
 

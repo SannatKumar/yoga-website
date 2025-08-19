@@ -47,7 +47,7 @@
                     class="nav-link {{ request()->is('contact*') ? 'active' : '' }}">{{ __('messages.contact-us') }}</a>
             </li>
             <!-- New Utility links-->
-            <li><a href="{{ route('cover-letter') }}"
+            {{-- <li><a href="{{ route('cover-letter') }}"
                     class="nav-link {{ request()->is('cover-letter*') ? 'active' : '' }}">{{ __('messages.cover-letter') }}</a>
             </li>
             <li><a href="{{ route('cv-generator') }}"
@@ -56,7 +56,7 @@
                     class="nav-link {{ request()->is('currency-converter*') ? 'active' : '' }}">{{ __('messages.currency-converter') }}</a></li>
             <li><a href="{{ route('nepali-calendar') }}"
                     class="nav-link {{ request()->is('nepali-calendar*') ? 'active' : '' }}">{{ __('messages.nepali-calendar') }}</a>
-            </li>
+            </li> --}}
             <li><a href="{{ route('mantra-shloka-bhajan') }}"
                     class="nav-link {{ request()->is('mantra*') ? 'active' : '' }}">{{ __('messages.mantra') }}</a>
             </li>
