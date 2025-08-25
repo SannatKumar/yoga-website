@@ -24,13 +24,16 @@
         </h2>
                 <p class="title">{{ $teacher['title'] }}</p>
                 <p>{{ $teacher['bio'] }}</p>
-                <div style="margin: 24px 0;">
-                    <a href="#"><i class="fa fa-dribbble"></i></a> 
-                    <a href="#"><i class="fa fa-twitter"></i></a>  
-                    <a href="#"><i class="fa fa-linkedin"></i></a>  
-                    <a href="#"><i class="fa fa-facebook"></i></a> 
+                <div class="card-footer">
+                    <div class="social-links" style="margin: 0; background-color: #fff; padding: 10px; border-radius: 5px;">
+                        <a href="#" style="margin: 1px 16px;"><i class="fa fa-whatsapp"></i></a> 
+                        <a href="#" style="margin: 1px 16px;"><i class="fa fa-twitter"></i></a>  
+                        <a href="#" style="margin: 1px 16px;"><i class="fa fa-linkedin"></i></a>  
+                        <a href="#" style="margin: 1px 16px;"><i class="fa fa-facebook"></i></a>
+                        <a href="#" style="margin: 1px 16px;"><i class="fa fa-instagram"></i></a> 
+                    </div>
+                    <p style="margin:0;"><button>Contact</button></p>
                 </div>
-                <p><button>Contact</button></p>
             </div>
         </div>
         @endforeach
@@ -46,12 +49,16 @@
       gap: 40px;
       justify-content: center;
       padding: 20px;
-      height: 450px;
+      height: auto;
+      align-items: stretch;
     }
 .card {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   max-width: 350px;
   min-height: 420px;
+  display: flex;
+  flex-direction: column;
+  height: 520px;
   margin: auto;
   text-align: center;
   font-family: arial;
@@ -63,6 +70,18 @@ img.fixed-size {
   object-fit: cover;  /* makes sure image fills the box */
   object-position: center; /* keeps it centered */
   border-radius: 8px; /* optional: for rounded corners */
+}
+
+/* Keep footer (icons + Contact) pinned to the bottom */
+.card .card-footer { margin-top: auto; }
+.card .card-footer p { margin: 0; }
+
+/* Clamp bio text to avoid cards growing unevenly */
+.card p:not(.title):not(:last-of-type) {
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .title {
