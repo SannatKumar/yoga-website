@@ -2,6 +2,8 @@
     <div style="max-width:1200px;margin:0 auto;font-size:1rem;padding:0 1rem;">
         &copy; {{ date('Y') }} Yoga Platform. All rights reserved.
         &nbsp;|&nbsp;
+        <a href="{{ route('info', ['lang' => app()->getLocale()]) }}" style="color:#9ddcff;text-decoration:underline;">About</a>
+        &nbsp;|&nbsp;
         <a href="{{ route('terms', ['lang' => app()->getLocale()]) }}" style="color:#9ddcff;text-decoration:underline;">Terms & Disclaimer</a>
     </div>
     <style>

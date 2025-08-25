@@ -43,6 +43,11 @@ class HomeController extends Controller
             'text' => 'Here. Now. In your body, in your breath, wherever you are.',
             'color' => 'red-600',
         ],
+        [
+            'title' => 'For Whom Yoga?',
+            'text' => 'Everybody.',
+            'color' => 'red-600',
+        ],
     ];
 
         $philosophyHighlights = [

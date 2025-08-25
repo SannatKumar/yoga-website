@@ -1,5 +1,6 @@
 <?php
 return [
+    'web-app-name' => 'Everest Yoga',
     'welcome' => 'स्वागत छ!',
     'yoga-bliss' => 'योग ब्लिस',
     'find-your-inner-peace-and-balance' => 'आफ्नो भित्री शान्ति र सन्तुलन खोज्नुहोस्',

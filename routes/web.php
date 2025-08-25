@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\GuruStutiController;
+use App\Http\Controllers\LotusPageController;
 use App\Http\Controllers\ShowAsanaController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TeacherController;
@@ -86,6 +87,9 @@ Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits
     // Sthula Vyayama and Sukhsma Vyayama
     Route::get('/sthula-vyayama', [SthulaVyayamaController::class, 'sthulaVyayama'])->name('sthula-vyayama');
     Route::get('/sukhsma-vyayama', [SukhsmaVyayamaController::class, 'sukhsmaVyayama'])->name('sukhsma-vyayama');
+
+    //Lotus Controller
+    Route::get('/lotus-page', [LotusPageController::class, 'getlotus'])->name('lotus-page');
 
     // Database Routes (for testing)
     Route::get('/test-insert-user', [UserController::class, 'testInsertUser']);

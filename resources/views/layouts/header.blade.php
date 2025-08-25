@@ -1,7 +1,11 @@
 <header>
     <nav class="nav-container">
         <!--Website Logo-->
-        <div class="logo">{{ __('messages.web-app-name') }}</div>
+        <div class="logo">
+            <a href="{{ url('/') }}" class="logo">
+                {{ __('messages.web-app-name') }}
+            </a>
+        </div>
 
         <!-- Language Dropdown (Mobile Friendly) -->
         <div class="translation-globe-logo">
@@ -22,12 +26,6 @@
                     class="nav-link {{ request()->is('/') ? 'active' : '' }}">{{ __('messages.home') }}</a></li>
             <li><a href="{{ route('guide') }}"
                     class="nav-link {{ request()->is('guide*') ? 'active' : '' }}">{{ __('messages.guide') }}</a></li>
-            <li><a href="{{ route('guru-stuti') }}"
-                    class="nav-link {{ request()->is('guru-stuti*') ? 'active' : '' }}">{{ __('messages.guru-stuti') }}</a>
-            </li>
-            <li><a href="{{ route('philosophy') }}"
-                    class="nav-link {{ request()->is('philosophy*') ? 'active' : '' }}">{{ __('messages.philosophy') }}</a>
-            </li>
             <!--
             <li><a href="{{ route('sukhsma-vyayama') }}" class="nav-link {{ request()->is('sukhsmavyayama*') ? 'active' : '' }}">{{ __('messages.sukhsmavyayama') }}</a></li>
             <li><a href="{{ route('sthula-vyayama') }}" class="nav-link {{ request()->is('sthulavyayama*') ? 'active' : '' }}">{{ __('messages.sthulavyayama') }}</a></li>
@@ -40,11 +38,6 @@
             </li>
             <li><a href="{{ route('videos') }}"
                     class="nav-link {{ request()->is('videos*') ? 'active' : '' }}">{{ __('messages.videos') }}</a>
-            </li>
-            <li><a href="{{ route('info') }}"
-                    class="nav-link {{ request()->is('info*') ? 'active' : '' }}">{{ __('messages.info') }}</a></li>
-            <li><a href="{{ route('contact') }}"
-                    class="nav-link {{ request()->is('contact*') ? 'active' : '' }}">{{ __('messages.contact-us') }}</a>
             </li>
             <!-- New Utility links-->
             {{-- <li><a href="{{ route('cover-letter') }}"

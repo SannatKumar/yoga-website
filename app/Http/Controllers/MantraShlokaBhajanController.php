@@ -30,6 +30,66 @@ class MantraShlokaBhajanController extends Controller
             'content' => 'ॐ त्र्यम्बकं यजामहे सुगन्धिं पुष्टिवर्धनम्। उर्वारुकमिव बन्धनान्मृत्योर्मुक्षीय माऽमृतात्॥',
             'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
             'translation_language' => 'English'
+        ],        
+        [
+            'id' => 3,
+            'title' => 'Sahanavavatu',
+            'author' => 'Rishi Markandeya',
+            'year' => '1000 BCE',
+            'book' => 'Rigveda',
+            'content' => 'ॐ सह नाववतु । सह नौ भुनक्तु । सह वीर्यं करवावहै । तेजस्वि नावधीतमस्तु मा विद्विषावहै । ॐ शान्तिः शान्तिः शान्तिः ॥',
+            'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
+            'translation_language' => 'English'
+        ],        
+        [
+            'id' => 4,
+            'title' => 'Purnamada',
+            'author' => 'Rishi Markandeya',
+            'year' => '1000 BCE',
+            'book' => 'Rigveda',
+            'content' => 'ॐ पूर्णमदः पूर्णमिदं पूर्णात्पूर्णमुदच्यते । पूर्णस्य पूर्णमादाय पूर्णमेवावशिष्यते ॥ ॐ शान्तिः शान्तिः शान्तिः ॥',
+            'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
+            'translation_language' => 'English'
+        ],        
+        [
+            'id' => 5,
+            'title' => 'Asatoma Sadgamaya',
+            'author' => 'Rishi Markandeya',
+            'year' => '1000 BCE',
+            'book' => 'Rigveda',
+            'content' => 'ॐ असतो मा सद्गमय । तमसो मा ज्योतिर्गमय । मृत्योर्मा अमृतं गमय । ॐ शान्तिः शान्तिः शान्तिः ॥',
+            'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
+            'translation_language' => 'English'
+        ],        
+        [
+            'id' => 6,
+            'title' => 'Sham no Mitra',
+            'author' => 'Rishi Markandeya',
+            'year' => '1000 BCE',
+            'book' => 'Rigveda',
+            'content' => 'ॐ शं नो मित्रः शं वरुणः । शं नो भवत्वर्यमा । शं नो इन्द्रो बृहस्पतिः । शं नो विष्णुरुरुक्रमः । नमो ब्रह्मणे । नमस्ते वायो ।त्वमेव प्रत्यक्षं ब्रह्मासि । तवामेव प्रत्यक्षं ब्रह्म वदिष्यामि । ॠतं वदिष्यामि । सत्यं वदिष्यामि । तन्मामवतु । तद्वक्तारमवतु । अवतु माम् । अवतु वक्तारम् ॥ ॐ शान्तिः शान्तिः शान्तिः ॥',
+            'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
+            'translation_language' => 'English'
+        ],        
+        [
+            'id' => 6,
+            'title' => 'Sarva Mangala Mangalye',
+            'author' => 'Rishi Markandeya',
+            'year' => '1000 BCE',
+            'book' => 'Rigveda',
+            'content' => 'सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके । शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥',
+            'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
+            'translation_language' => 'English'
+        ],        
+        [
+            'id' => 7,
+            'title' => 'Samgacchadhwam',
+            'author' => 'Rishi Markandeya',
+            'year' => '1000 BCE',
+            'book' => 'Rigveda',
+            'content' => 'संगच्छध्वं संवदध्वं सं वो मनांसि जानताम् देवा भागं यथा पूर्वे सञ्जानाना उपासते ||',
+            'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
+            'translation_language' => 'English'
         ]
     ];
 

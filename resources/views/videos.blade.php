@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+<a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
     <img src="/lotus-images/violet_lotus.svg" alt="Welcome Icon" class="mx-auto mb-0 w-48 h-20">
-   
+</a>
     <h1 style="text-align:center; margin-bottom:2rem;">Yoga Videos</h1>
     <style>
         .video-controls {

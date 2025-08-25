@@ -8,7 +8,7 @@
 <article class="bg-white rounded-2xl shadow hover:shadow-md transition p-4 flex flex-col h-80">
     @if($image)
         <div class="h-28 w-full overflow-hidden rounded-lg mb-3">
-            <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-full object-cover">
+            <!-- <img src="{{ $image }}" alt="{{ $title }}" class="w-full h-full object-cover"> -->
         </div>
     @endif
     <h3 class="text-xl font-semibold text-gray-800">{{ $title }}</h3>
