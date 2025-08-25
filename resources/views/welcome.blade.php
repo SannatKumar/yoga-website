@@ -50,6 +50,18 @@
             </div>
         </section>
 
+        <!-- Philosophy Highlights (2x2 Cards) -->
+        <section class="py-12 px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Yoga Philosophy Highlights</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    @foreach($philosophyHighlights as $item)
+                        <x-philosophy-card :title="$item['title']" :excerpt="$item['excerpt']" :href="$item['href']" :image="$item['image']" />
+                    @endforeach
+                </div>
+            </div>
+        </section>
+
         <!-- About Section -->
         <section class="py-20 px-6 from-green-50 to-blue-50">
             <div class="max-w-4xl mx-auto text-center">

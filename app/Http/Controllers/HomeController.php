@@ -45,7 +45,34 @@ class HomeController extends Controller
         ],
     ];
 
-        return view('welcome', compact('totalVisits', 'uniqueVisitors', 'yogaIntroCards'));
+        $philosophyHighlights = [
+            [
+                'title' => 'Yamas & Niyamas',
+                'excerpt' => 'Core ethical precepts that guide daily practice and mindset toward clarity and compassion.',
+                'href' => route('philosophy') . '#yamas-niyamas',
+                'image' => '/images/yogamudra.png',
+            ],
+            [
+                'title' => 'Eight Limbs of Yoga',
+                'excerpt' => 'A holistic path from discipline and posture to breath, focus, and meditative absorption.',
+                'href' => route('philosophy') . '#ashtanga',
+                'image' => '/images/virasana.jpeg',
+            ],
+            [
+                'title' => 'Kriya & Purification',
+                'excerpt' => 'Cleansing practices to prepare body and mind for deeper yoga and meditation.',
+                'href' => route('philosophy') . '#kriya',
+                'image' => '/images/tadasana.jpeg',
+            ],
+            [
+                'title' => 'Meditation & Samadhi',
+                'excerpt' => 'Cultivating steady attention leading to stillness, insight, and integration.',
+                'href' => route('philosophy') . '#samadhi',
+                'image' => '/images/Matsyasana.jpeg',
+            ],
+        ];
+
+        return view('welcome', compact('totalVisits', 'uniqueVisitors', 'yogaIntroCards', 'philosophyHighlights'));
     }
     
 }
