@@ -2,6 +2,7 @@
 return [
     'web-app-name' => 'Everest Yoga',
     'welcome' => 'Welcome!',
+    'meditation-guide' => 'Meditation Guide',
     'yoga-bliss' => 'Yoga Bliss',
     'find-your-inner-peace-and-balance'=> 'Find your Inner Peace and Balance',
     'welcome-to-your-yoga-journey'=> 'Welcome to Your Yoga Journey.',

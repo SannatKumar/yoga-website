@@ -1,6 +1,7 @@
 <?php
 return [
     'web-app-name' => 'Everest Yoga',
+    'meditation-guide' => 'Meditation Guide',
     'welcome' => 'Tervetuloa!',
     'yoga-bliss' => 'Joogan autuus',
     'find-your-inner-peace-and-balance' => 'Löydä sisäinen rauhasi ja tasapainosi',

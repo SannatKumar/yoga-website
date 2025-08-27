@@ -7,7 +7,7 @@
 
             <div class="welcome-block">
                 <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-                <img src="/lotus-images/yellow_lotus.svg" alt="Welcome Icon" class="lotus-image">
+                    <img src="/lotus-images/yellow_lotus.svg" alt="Welcome Icon" class="lotus-image">
                 </a>
                 <h1 class="welcome-text">
                     {{ __('messages.namaste-welcome') ?? '🙏 Namaste & Welcome to Your Yoga Journey' }}
@@ -25,8 +25,7 @@
             <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">
                 {{ __('messages.discover-yoga-through-questions') ?? 'Explore Yoga Through Curiosity' }}
             </h2>
-            <!--<div class="grid grid-cols-1 md:grid-cols-2 gap-6">-->
-            <div class="yoga-intro-cards">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach ($yogaIntroCards as $card)
                        @if (in_array($card['title'], ['Why Yoga?', 'When Yoga?', 'How Yoga?', 'Where Yoga?', 'What is Yoga?', 'For Whom Yoga?']))
                             <x-guide-block :title="$card['title']" :text="$card['text']" />
@@ -45,7 +44,7 @@
             <section class="py-12 px-6">
             <div class="max-w-6xl mx-auto">
                 <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Yoga Philosophy Highlights</h2>
-                <div class="yoga-philosophy-highlights">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach($philosophyHighlights as $item)
                         <x-philosophy-card :title="$item['title']" :excerpt="$item['excerpt']" :href="$item['href']" :image="$item['image']" />
                     @endforeach
@@ -227,16 +226,17 @@
     }
 
     .part-one-div p {
+        font-size: 12px;
         align-self: center;
 
     }
     .part-two-div {
-        margin-top: 10px;
+        /*margin-top: 10px;*/
 
     }
 
     .part-two-div p {
-        /* font-size: 12px; */
+        font-size: 12px;
         align-self: center;
 
     }
@@ -348,8 +348,7 @@
     @media (max-width: 575.98px) {
         .main-div {
             background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff);
-            width: 50%;
-            min-height: 100vh; /* min-h-screen */
+            width: 100%;
             display: flex;
             flex-direction: column;
         }
@@ -359,55 +358,20 @@
     @media (min-width: 576px) and (max-width: 767.98px) {
         .main-div {
             background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff);
-            width: 50%;
+            width: 100%;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* min-h-screen */
-        }
-        .welcome-block h1 {
-            font-size: 1.875rem;
-            line-height: 2.25rem;
-        }
-        .part-two-main-section{
-            display: flex;
-            flex-direction: column;
-        }
-        .yoga-intro-cards{
-            display: grid;
-            gap: 1.5rem;
         }
     }
 
-    /* This is for my phone*/
     /* Medium devices (tablets, ≥ 768px and < 992px) */
     @media (min-width: 768px) and (max-width: 991.98px) {
         .main-div {
             background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff);
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh; /* min-h-screen */
-        }
-        .welcome-block h1 {
-            font-size: 1.875rem;
-            line-height: 2.25rem;
-        }
-        .part-two-main-section{
+            width: 60%;
             display: flex;
             flex-direction: column;
         }
-        .yoga-philosophy-highlights{
-            width: 100%;
-            min-height: 250px;
-            gap: 5rem;
-            display: grid;
-            padding: 20px;
-            /* flex-direction: column; */
-            grid-template-columns: repeat(1, minmax(0,1fr)); /* md:grid-cols-2 */ 
-            text-align: center;
-            font-size: 50px;
-        }
-    
     }
 
     /* Large devices (laptops/desktops, ≥ 992px and < 1200px) */

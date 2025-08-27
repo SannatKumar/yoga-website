@@ -3,6 +3,7 @@ return [
     'web-app-name' => 'Everest Yoga',
     'welcome' => 'स्वागत छ!',
     'yoga-bliss' => 'योग ब्लिस',
+    'meditation-guide' => 'Meditation Guide',
     'find-your-inner-peace-and-balance' => 'आफ्नो भित्री शान्ति र सन्तुलन खोज्नुहोस्',
     'welcome-to-your-yoga-journey' => 'तपाईंको योग यात्रामा स्वागत छ।',
     'why-yoga' => 'किन योग?',

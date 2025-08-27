@@ -3,7 +3,8 @@
         <!--Website Logo-->
         <div class="logo">
             <a href="{{ url('/') }}" class="logo">
-                {{ __('messages.web-app-name') }}
+                {{-- {{ __('messages.web-app-name') }} --}}
+                <img src="/app-logo/app-logo-design_new.png" alt="Logo" />
             </a>
         </div>
 
@@ -36,9 +37,9 @@
             <li><a href="{{ route('gallery') }}"
                     class="nav-link {{ request()->is('gallery*') ? 'active' : '' }}">{{ __('messages.gallery') }}</a>
             </li>
-            <li><a href="{{ route('videos') }}"
+            {{-- <li><a href="{{ route('videos') }}"
                     class="nav-link {{ request()->is('videos*') ? 'active' : '' }}">{{ __('messages.videos') }}</a>
-            </li>
+            </li> --}}
             <!-- New Utility links-->
             {{-- <li><a href="{{ route('cover-letter') }}"
                     class="nav-link {{ request()->is('cover-letter*') ? 'active' : '' }}">{{ __('messages.cover-letter') }}</a>
@@ -87,10 +88,16 @@
             padding: 0 1rem;
         }
 
+        img {
+    width: 120px;
+    height: auto;   /* keeps proportions */
+}
+
         .logo {
             font-weight: 700;
             font-size: 1.3rem;
             letter-spacing: 1px;
+
         }
 
         .navbar {

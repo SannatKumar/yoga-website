@@ -7,10 +7,10 @@
 
             <div class="welcome-block">
                 <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-                    <img src="/lotus-images/yellow_lotus.svg" alt="Welcome Icon" class="lotus-image">
+                    <img src="/lotus-images/moon_lotus.svg" alt="Welcome Icon" class="lotus-image">
                 </a>
                 <h1 class="welcome-text">
-                    {{ __('messages.namaste-welcome') ?? '🙏 Namaste & Welcome to Your Yoga Journey' }}
+                    {{ __('messages.meditation-guide') ?? '🙏 Meditation Guide' }}
                 </h1>
             </div>
 
@@ -22,17 +22,34 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-main-section">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">
-                {{ __('messages.discover-yoga-through-questions') ?? 'Explore Yoga Through Curiosity' }}
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @foreach ($yogaIntroCards as $card)
-                       @if (in_array($card['title'], ['Why Yoga?', 'When Yoga?', 'How Yoga?', 'Where Yoga?', 'What is Yoga?', 'For Whom Yoga?']))
-                            <x-guide-block :title="$card['title']" :text="$card['text']" />
-                        @endif
-                    @endforeach
+                    <div class="row justify-content-center g-4 flex-wrap">
+            <div class="col-12 col-md-6 col-lg-2 mb-4 d-flex align-items-stretch">
+                <div class="quote-card p-4 h-100 w-100">
+                    <div class="quote-title mb-2">The Light Within</div>
+                    <div class="quote-text mb-3">Yoga is the journey of the self, through the self, to the self.</div>
+                    <div class="quote-ref">— The Bhagavad Gita</div>
                 </div>
-                
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                <div class="quote-card p-4 h-100 w-100">
+                    <div class="quote-title mb-2">On Practice</div>
+                    <div class="quote-text mb-3">Practice and all is coming.</div>
+                    <div class="quote-ref">— Sri K. Pattabhi Jois</div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                <div class="quote-card p-4 h-100 w-100">
+                    <div class="quote-title mb-2">Yoga Sutra</div>
+                    <div class="quote-text mb-3">Yogaś citta-vṛtti-nirodhaḥ (Yoga is the cessation of the fluctuations of the mind).</div>
+                    <div class="quote-ref">— Patanjali, Yoga Sutras 1.2</div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6 col-lg-3 mb-4 d-flex align-items-stretch">
+                <div class="quote-card p-4 h-100 w-100">
+                    <div class="quote-title mb-2">On Compassion</div>
+                    <div class="quote-text mb-3">Be kind whenever possible. It is always possible.</div>
+                    <div class="quote-ref">— The Dalai Lama</div>
+                </div>
             </div>
         
         </div>

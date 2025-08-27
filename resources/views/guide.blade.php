@@ -30,6 +30,8 @@
             <!-- Steps Section -->
             <div class="guide-text-block-div">
                 @foreach ($guideBlocks as $block)
+
+                {{-- <x-philosophy-card :title="$block['title']" :excerpt="$block['text']" :href="$block['reference']" /> --}}
                 <x-guide-block 
                     :title="$block['title']" 
                     :text="$block['text']" 
