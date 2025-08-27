@@ -4,6 +4,7 @@ return [
     'meditation-guide' => 'Meditation Guide',
     'welcome' => 'Tervetuloa!',
     'yoga-bliss' => 'Joogan autuus',
+    'asana-and-practices' => 'Asana & Practices',
     'find-your-inner-peace-and-balance' => 'Löydä sisäinen rauhasi ja tasapainosi',
     'welcome-to-your-yoga-journey' => 'Tervetuloa joogan matkallesi.',
     'why-yoga' => 'Miksi jooga?',

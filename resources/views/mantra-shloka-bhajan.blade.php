@@ -7,7 +7,7 @@
 
             <div class="welcome-block">
                 <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-                <img src="/lotus-images/red_lotus.svg" alt="Welcome Icon" class="lotus-image">
+                <img src="/lotus-images/violet_lotus.svg" alt="Welcome Icon" class="lotus-image">
                 </a>
                 <h1 class="welcome-text">
                     Mantras Collection

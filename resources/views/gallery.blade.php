@@ -2,19 +2,18 @@
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-    <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-    <img src="/lotus-images/sky_blue_lotus.svg" alt="Welcome Icon" class="mx-auto mb-0 w-48 h-20">
-    </a>
-    <!-- Header Section -->
-    <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
-        <div class="max-w-6xl mx-auto text-center text-white">
-            <h1 class="text-5xl font-bold mb-4">{{ __('messages.gallery') }}</h1>
-            <p class="text-xl text-green-100 max-w-3xl mx-auto">
-                {{ __('messages.gallery-desc') }}
-            </p>
-        </div>
-    </section>
-
+    
+            <div class="welcome-block">
+                <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
+                    <img src="/lotus-images/sky_blue_lotus.svg" alt="Welcome Icon" class="lotus-image">
+                </a>
+                <h1 class="welcome-text">
+                    {{ __('messages.gallery') ?? '🙏 Gallery' }}
+                </h1>
+                <p class="text-xl text-green-100 max-w-3xl mx-auto">
+                    {{ __('messages.gallery-desc') }}
+                </p>
+            </div>
     <!-- Search and Filters Section -->
     <section class="py-8 px-6 bg-white shadow-sm">
         <div class="max-w-6xl mx-auto">
@@ -166,13 +165,58 @@
 
     <!-- Call to Action -->
     <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
-        <div class="max-w-4xl mx-auto text-center text-white">
+        {{-- <div class="max-w-4xl mx-auto text-center text-white">
             <h2 class="text-3xl font-bold mb-4">{{ __('messages.share-your-yoga-journey') }}</h2>
             <p class="text-xl mb-8 text-green-100">{{ __('messages.have-beautiful-photos') }}</p>
             <a href="/contact" class="inline-block bg-white text-green-600 font-semibold px-8 py-4 rounded-full text-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
                 {{ __('messages.share-your-photos') }}
             </a>
-        </div>
+        </div> --}}
     </section>
 </div>
 @endsection 
+<style>
+        .welcome-block {
+        background: #1B4D3F;
+        border-left: 6px solid #22c55e;
+        border-right: 6px solid #3B82F5;
+        border-radius: 0 0 16px 16px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        padding: 0.5rem;
+        margin: 0.2rem auto;
+        max-width: 800px;
+        text-align: center;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        overflow: hidden;
+        transition: transform 0.3s ease;
+    }
+
+    .welcome-block:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .welcome-block h1 {
+        font-family: 'Georgia', serif;
+        font-size: 1.75rem;
+        color: white;
+        -webkit-background-clip: text;
+    }
+
+    .lotus-image{
+        margin-left: auto;   
+        margin-right: auto;
+        margin-bottom: 0;    
+        width: 12rem;        
+        height: 60px;  
+    }
+
+    .welcome-text{
+        font-weight: 600;       
+        font-size: 1.5rem;      
+        line-height: 60px;    
+    }
+    </style>
