@@ -96,7 +96,7 @@ class SukhsmaVyayamaController extends Controller
         $categories = array_unique(array_column($images, 'category'));
         $difficulties = array_unique(array_column($images, 'difficulty'));
 
-        return view('gallery', compact('images', 'categories', 'difficulties', 'category', 'difficulty', 'search'));
+        return view('sukhsma-vyayama', compact('images', 'categories', 'difficulties', 'category', 'difficulty', 'search'));
     }
 
     public function show(Request $request)
@@ -170,6 +170,6 @@ class SukhsmaVyayamaController extends Controller
         if (!$pose) {
             abort(404);
         }
-        return view('gallery-detail', compact('pose'));
+        return view('sukshma-vyayama', compact('pose'));
     }
 }

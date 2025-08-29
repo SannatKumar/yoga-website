@@ -2,19 +2,10 @@
 
 @section('content')
     <div class="main-div">
+
         <!--First Div starts -->
         <div class="part-one-div">
-
-            <div class="welcome-block">
-                                <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-                <img src="/lotus-images/red_lotus.svg" alt="Welcome Icon" class="lotus-image">
-                </a>
-                <h1 class="welcome-text">
-                    About Us
-                </h1>
-            </div>
-
-        
+            <x-page-header image_path="/lotus-images/red_lotus.svg" :text="__('messages.about-us') ?? '🙏 About Us' " />
         </div>
         <!--First Div Ends-->
 
@@ -34,8 +25,9 @@
 
         <div class="card-container">
             @foreach($teachers as $teacher)
-                <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch">
-                    <div class="card w-100 text-center">
+                {{-- <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch"> --}}
+                <div class="single-card">
+                    <div class="single-card-div">
                         <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" style="width:100%" class="fixed-size">
                                 <h2>
                     <a href="{{ url('teacher/'.$teacher['id']) }}">
@@ -135,35 +127,9 @@
         align-self: center;
 
     }
-
-    .welcome-block {
-        background: #1B4D3F;
-        border-left: 6px solid #22c55e;
-        border-right: 6px solid #3B82F5;
-        border-radius: 0 0 16px 16px;
-        color: #fff;
+    .part-three-div{
         display: flex;
         flex-direction: column;
-        padding: 0.5rem;
-        margin: 0.2rem auto;
-        max-width: 800px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-    .welcome-block:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .welcome-block h1 {
-        font-family: 'Georgia', serif;
-        font-size: 1.75rem;
-        color: white;
-        -webkit-background-clip: text;
     }
 
     .lotus-image{
@@ -180,16 +146,22 @@
         line-height: 60px;    
     }
 
+    .single-card{
+        width: 100%;                /* col-12 */
+        }
 
-
-
+        .single-card-div {
+        width: 40%;              /* w-100 */
+        text-align: center;       /* text-center */
+        background: #fff;         /* Bootstrap card default */
+        border: 1px solid #ddd;   /* light border */
+        border-radius: 0.25rem;   /* rounded corners */
+        padding: 1rem;            /* inner spacing */
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
+        }
 
     .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 40px;
-      justify-content: center;
-      padding: 20px;
+
       height: auto;
       align-items: stretch;
     }
@@ -198,10 +170,9 @@
 .card .card-footer { margin-top: auto; }
 .card .card-footer p { 
     margin: 1px 2px; 
-    
     height: 5px;
     background-color: #000; 
-    padding: 10px; 
+    padding: 5px; 
     border-radius: 5px;
 }
 
@@ -210,7 +181,6 @@
   max-width: 350px;
   min-height: 520px;
   display: flex;
-  flex-direction: column;
   height: 520px;
   margin: auto;
   text-align: center;

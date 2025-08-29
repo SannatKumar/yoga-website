@@ -3,19 +3,16 @@
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
     <!-- Header Section -->
-    <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
-        <div class="max-w-6xl mx-auto text-center text-white">
-            <h1 class="text-5xl font-bold mb-4">{{ __('messages.sthula-vyayama') }}</h1>
-            <p class="text-xl text-green-100 max-w-3xl mx-auto">
-                {{ __('messages.sthula-vyayama-desc') }}
-            </p>
-        </div>
-    </section>
+
+    <x-page-header image_path="/lotus-images/sky_blue_lotus.svg" :text="__('messages.sthula-vyayama') ??'🙏 Sthula Vyayama'" />
+                <p class="text-xl text-green-100 max-w-3xl mx-auto">
+                    {{ __('messages.sthula-vyayama-desc') }}
+                </p>
 
     <!-- Search and Filters Section -->
     <section class="py-8 px-6 bg-white shadow-sm">
         <div class="max-w-6xl mx-auto">
-            <form method="GET" action="{{ route('sthulavyayama', ['lang' => app()->getLocale()]) }}" class="space-y-4">
+            <form method="GET" action="{{ route('sthula-vyayama', ['lang' => app()->getLocale()]) }}" class="space-y-4">
                 <!-- Search Bar -->
                 <div class="flex flex-col md:flex-row gap-4">
                     <div class="flex-1">
@@ -152,7 +149,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ __('messages.no-images-found') }}</h3>
                     <p class="text-gray-600 mb-6">{{ __('messages.try-adjusting-search') }}</p>
-                    <a href="{{ route('gallery', ['lang' => app()->getLocale()]) }}" 
+                    <a href="{{ route('gallery-asana-detail', ['lang' => app()->getLocale()]) }}" 
                        class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
                         {{ __('messages.view-all-images') }}
                     </a>
@@ -173,3 +170,7 @@
     </section>
 </div>
 @endsection 
+
+
+<style>
+    </style>

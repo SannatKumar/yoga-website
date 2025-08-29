@@ -4,17 +4,8 @@
     <div class="main-div">
         <!--First Div starts -->
         <div class="part-one-div">
-
-            <div class="welcome-block">
-                <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-                    <img src="/lotus-images/red_lotus.svg" alt="Welcome Icon" class="lotus-image">
-                </a>
-                <h1 class="welcome-text">
-                    {{ __('messages.asana-and-practices') ?? '🙏 Asana & Practices' }}
-                </h1>
-            </div>
-
-        
+            <x-page-header image_path="/lotus-images/red_lotus.svg" :text="__('messages.asana-and-practices') ?? '🙏 Asana & Practices' " />
+       
         </div>
         <!--First Div Ends-->
 
@@ -22,39 +13,39 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-main-section">
-                <section id="yoga-practices" style="padding:2rem; font-family:sans-serif;">
+                <section id="yoga-practices" class= "part-two-main-section" style="padding:2rem; font-family:sans-serif;">
                 <div class="practice-grid">
                     <!-- Card 1 -->
                     <div class="practice-card">
-                    <h3>Sukshma Vyayama</h3>
+                    <h3 id="card-title">Sukshma Vyayama</h3>
                     <p>Gentle, subtle exercises that prepare the body for deeper yoga practices.</p>
-                    <a href="sukshma.html" class="btn">Learn More</a>
+                    <a href="{{ route('sukhsma-vyayama') }}" class="btn">Learn More</a>
                     </div>
 
                     <!-- Card 2 -->
                     <div class="practice-card">
-                    <h3>Sthula Vyayama</h3>
+                    <h3 id="card-title">Sthula Vyayama</h3>
                     <p>Physical warm-up movements to energize and awaken the body.</p>
-                    <a href="sthula.html" class="btn">Learn More</a>
+                    <a href="{{ route('sthula-vyayama') }}" class="btn">Learn More</a>
                     </div>
 
                     <!-- Card 3 -->
                     <div class="practice-card">
-                    <h3>Tibetan Rites</h3>
+                    <h3 id="card-title">Tibetan Rites</h3>
                     <p>Five ancient yoga-based exercises believed to enhance vitality and longevity.</p>
                     <a href="tibetan.html" class="btn">Learn More</a>
                     </div>
 
                     <!-- Card 4 -->
                     <div class="practice-card">
-                    <h3>Surya Namaskara</h3>
+                    <h3 id="card-title">Surya Namaskara</h3>
                     <p>Sun Salutations — a sequence of 12 postures harmonizing body and breath.</p>
                     <a href="surya.html" class="btn">Learn More</a>
                     </div>
 
                     <!-- Card 5 -->
                     <div class="practice-card">
-                    <h3>Yoga Nidra</h3>
+                    <h3 id="card-title">Yoga Nidra</h3>
                     <p>Guided yogic sleep for deep relaxation and inner awareness.</p>
                     <a href="nidra.html" class="btn">Learn More</a>
                     </div>
@@ -151,50 +142,6 @@
 
     }
 
-    .welcome-block {
-        background: #1B4D3F;
-        border-left: 6px solid #22c55e;
-        border-right: 6px solid #3B82F5;
-        border-radius: 0 0 16px 16px;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        padding: 0.5rem;
-        margin: 0.2rem auto;
-        max-width: 800px;
-        text-align: center;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-        position: relative;
-        overflow: hidden;
-        transition: transform 0.3s ease;
-    }
-
-    .welcome-block:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
-    }
-
-    .welcome-block h1 {
-        font-family: 'Georgia', serif;
-        font-size: 1.75rem;
-        color: white;
-        -webkit-background-clip: text;
-    }
-
-    .lotus-image{
-        margin-left: auto;   
-        margin-right: auto;
-        margin-bottom: 0;    
-        width: 12rem;        
-        height: 60px;  
-    }
-
-    .welcome-text{
-        font-weight: 600;       
-        font-size: 1.5rem;      
-        line-height: 60px;    
-    }
-
     .part-seven-div{
         text-align: center;
     }
@@ -268,6 +215,10 @@
   transition: transform 0.2s ease;
 }
 
+#card-title{
+    font-size: 1.25rem;
+    font-weight: bold;
+}
 .practice-card:hover {
   transform: translateY(-5px);
 }
@@ -278,7 +229,7 @@
 }
 
 .practice-card p {
-  font-size: 0.9rem;
+  font-size: 1.25rem;
   color: #666;
   margin-bottom: 1rem;
 }
@@ -286,7 +237,7 @@
 .practice-card .btn {
   display: inline-block;
   padding: 0.5rem 1rem;
-  background: #4CAF50;
+  background: #25c55d;
   color: white;
   text-decoration: none;
   border-radius: 8px;

@@ -2,15 +2,10 @@
 
 @section('content')
 <div class="min-h-screen bg-gradient-to-br from-green-50 to-blue-50">
-    <!-- Header Section -->
-    <section class="py-16 px-6 bg-gradient-to-r from-green-500 to-blue-500">
-        <div class="max-w-6xl mx-auto text-center text-white">
-            <h1 class="text-5xl font-bold mb-4">{{ __('messages.sukhsma-vyayama') }}</h1>
-            <p class="text-xl text-green-100 max-w-3xl mx-auto">
-                {{ __('messages.sukhsma-vyayama-desc') }}
-            </p>
-        </div>
-    </section>
+    <x-page-header image_path="/lotus-images/sky_blue_lotus.svg" :text="__('messages.sukhsma-vyayama') ?? '🙏 Sukhsma Vyayama'" />
+                <p class="text-xl text-green-100 max-w-3xl mx-auto">
+                    {{ __('messages.sukhsma-vyayama-desc') }}
+                </p>
 
     <!-- Search and Filters Section -->
     <section class="py-8 px-6 bg-white shadow-sm">
@@ -173,3 +168,6 @@
     </section>
 </div>
 @endsection 
+<style>
+        
+</style>

@@ -60,7 +60,7 @@ class SthulaVyayamaController extends Controller
         $categories = array_unique(array_column($images, 'category'));
         $difficulties = array_unique(array_column($images, 'difficulty'));
 
-        return view('gallery', compact('images', 'categories', 'difficulties', 'category', 'difficulty', 'search'));
+        return view('sthula-vyayama', compact('images', 'categories', 'difficulties', 'category', 'difficulty', 'search'));
     }
 
     public function show(Request $request)
