@@ -4,12 +4,18 @@
     'description' => null,
 ])
 <div class="welcome-block">
-    <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
-        <img src="{{$image_path}}" alt="Welcome Icon" class="lotus-image">
-    </a>
-    <h1 class="welcome-text">
-        {{$text}}
-    </h1>
+    
+    <img src="/lotus-images/sun.svg" alt="Welcome Icon" class="sun-image">
+    <div class="middle-section">
+        <a href="{{ route('lotus-page', ['lang' => app()->getLocale()]) }}">
+            <img src="{{$image_path}}" alt="Welcome Icon" class="lotus-image">
+        </a>
+        <h1 class="welcome-text">
+            {{$text}}
+        </h1>
+    </div>
+    <img src="/lotus-images/moon.svg" alt="Welcome Icon" class="moon-image">
+    
 </div>
 <style>
 .welcome-block {
@@ -19,7 +25,8 @@
         border-radius: 0 0 16px 16px;
         color: #fff;
         display: flex;
-        flex-direction: column;
+        flex-direction: row;
+        align-items: center;
         padding: 0.5rem;
         margin: 0.2rem auto;
         max-width: 800px;
@@ -49,6 +56,22 @@
         width: 12rem;        
         height: 60px;  
     }
+    .sun-image,
+.moon-image {
+    flex: 0 0 60px;  /* lock each image at 60px width */
+    height: 60px;    /* scale height to match */
+    object-fit: contain;
+    /* margin-top: 25px; */
+}
+
+.middle-section {
+    flex: 1;                 /* take up all remaining space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;     /* center inside */
+    justify-content: center;
+    padding: 0 0.5rem;       /* spacing from the sides */
+}
 
     .welcome-text{
         font-weight: 600;       
