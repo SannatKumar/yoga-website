@@ -4,7 +4,7 @@
     <div class="main-div">
         <!--First Div starts -->
         <div class="part-one-div">
-            <x-page-header image_path="/lotus-images/red_lotus.svg" :text="__('messages.lotus') ?? '🙏 Lotus' " />
+            <x-page-header image_path="/lotus-images/red_lotus.svg" :text="__('messages.lotus') ?? '🙏 Lotus'" />
         </div>
         <!--First Div Ends-->
 
@@ -12,9 +12,9 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <img src="/lotus-images/complete_chakra_image_lotus.png" alt="Meditative man" class="chakra-image">
-            
-        </div>        
+
         </div>
+        {{-- </div> --}}
         <!--Second Div Ends-->
 
         <!--Third Div starts -->
@@ -25,7 +25,7 @@
 
         <!--Fourth Div starts -->
         <div class="part-four-div">
-            
+
 
         </div>
         <!--Fourth Div Ends-->
@@ -46,9 +46,9 @@
 
         <!--Seven Div starts -->
         <div class="part-seven-div">
-            
 
-            
+
+
 
         </div>
         <!--Seven Div Ends-->
@@ -56,7 +56,7 @@
         <!--Eight Div starts -->
 
         <div class="part-eight-div">
-            
+
             <div class="part-eight-main-content">
             </div>
         </div>
@@ -64,7 +64,7 @@
 
         <!--Ninth Div starts -->
         <div class="part-nine-div">
-        </div> 
+        </div>
         <!--Ninth Div Ends -->
     </div>
 @endsection
@@ -76,6 +76,7 @@
         width: 60%;
         display: flex;
         flex-direction: column;
+        margin-bottom: 10px;
     }
 
     .part-one-div {
@@ -87,23 +88,26 @@
         align-self: center;
 
     }
-.part-two-div {
-    display: flex;
-    justify-content: center; /* horizontal center */
-    /*align-items: center;     vertical center*/
-    height: 100vh;           /* full viewport height */
-}
 
-.chakra-image {
-    max-width: 100%;
-    height: auto;
-        border: 4px solid #87ceeb; /* thickness + color */
-    border-radius: 48px;    /* optional: rounded corners */
-    padding: 4px; 
-}
+    .part-two-div {
+        display: flex;
+        justify-content: center;
+        /* height: 100vh;
+        margin-bottom: 50px; */
+    }
+
+    .chakra-image {
+        max-width: 100%;
+        height: auto;
+        border: 4px solid #87ceeb;
+        /* thickness + color */
+        border-radius: 48px;
+        /* optional: rounded corners */
+        padding: 4px;
+    }
 
 
-    .chakra-image{
+    .chakra-image {
         width: 600px;
         height: 800px;
     }
@@ -117,9 +121,17 @@
             display: flex;
             flex-direction: column;
         }
-        .chakra-image{
+
+        .chakra-image {
             width: 600px;
             height: 500px;
+        }
+
+        .part-two-div {
+            display: flex;
+            justify-content: center;
+            /* height: 100vh; */
+            /* margin-bottom: 10px; */
         }
     }
 
@@ -131,6 +143,13 @@
             display: flex;
             flex-direction: column;
         }
+
+        .part-two-div {
+            display: flex;
+            justify-content: center;
+            /* height: 100vh; */
+            /* margin-bottom: 10px; */
+        }
     }
 
     /* Medium devices (tablets, ≥ 768px and < 992px) */
@@ -140,6 +159,13 @@
             width: 60%;
             display: flex;
             flex-direction: column;
+        }
+
+        .part-two-div {
+            display: flex;
+            justify-content: center;
+            /* height: 100vh; */
+            margin-bottom: 10px;
         }
     }
 
