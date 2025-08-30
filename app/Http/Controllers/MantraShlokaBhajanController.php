@@ -13,6 +13,16 @@ class MantraShlokaBhajanController extends Controller
     private $mantraData = [
         [
             'id' => 1,
+            'title' => 'Pranava Mantra',
+            'author' => 'Maharishi Vishvamitra',
+            'year' => '1500 BCE',
+            'book' => 'Rigveda',
+            'content' => 'ॐ',
+            'translation' => 'We meditate on the glory of the Creator; who has created the Universe; who is worthy of Worship; who is the embodiment of Knowledge and Light; who is the remover of all Sin and Ignorance. May He enlighten our intellect.',
+            'translation_language' => 'English'
+        ],
+                [
+            'id' => 2,
             'title' => 'Gayatri Mantra',
             'author' => 'Maharishi Vishvamitra',
             'year' => '1500 BCE',
@@ -22,7 +32,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],
         [
-            'id' => 2,
+            'id' => 3,
             'title' => 'Mahamrityunjaya Mantra',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -32,7 +42,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],        
         [
-            'id' => 3,
+            'id' => 4,
             'title' => 'Sahanavavatu',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -42,7 +52,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],        
         [
-            'id' => 4,
+            'id' => 5,
             'title' => 'Purnamada',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -52,7 +62,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],        
         [
-            'id' => 5,
+            'id' => 6,
             'title' => 'Asatoma Sadgamaya',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -62,7 +72,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],        
         [
-            'id' => 6,
+            'id' => 7,
             'title' => 'Sham no Mitra',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -72,7 +82,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],        
         [
-            'id' => 6,
+            'id' => 8,
             'title' => 'Sarva Mangala Mangalye',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -82,7 +92,7 @@ class MantraShlokaBhajanController extends Controller
             'translation_language' => 'English'
         ],        
         [
-            'id' => 7,
+            'id' => 9,
             'title' => 'Samgacchadhwam',
             'author' => 'Rishi Markandeya',
             'year' => '1000 BCE',
@@ -90,7 +100,7 @@ class MantraShlokaBhajanController extends Controller
             'content' => 'संगच्छध्वं संवदध्वं सं वो मनांसि जानताम् देवा भागं यथा पूर्वे सञ्जानाना उपासते ||',
             'translation' => 'We worship the three-eyed Lord Shiva, who is fragrant and nourishes all beings; may He liberate us from the bondage of worldly attachments and death, bestowing us the nectar of immortality.',
             'translation_language' => 'English'
-        ]
+        ],
     ];
 
     public function getMantraShlokaBhajan(Request $request)

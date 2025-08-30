@@ -5,7 +5,7 @@
 
         <!--First Div starts -->
         <div class="part-one-div">
-            <x-page-header image_path="/lotus-images/red_lotus.svg" :text="__('messages.about-us') ?? '🙏 About Us' " />
+            <x-page-header image_path="/lotus-images/red_lotus.svg" :text="__('messages.about-us') ?? '🙏 About Us'" />
         </div>
         <!--First Div Ends-->
 
@@ -13,20 +13,50 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-main-section">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">
-            <span class="text-center text-lg text-gray-700">Meet our dedicated yoga teachers and contributors. Each brings their unique experience and passion to help you on your yoga journey.</span>
-            </h2>
-        </div>        
+                <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">
+                    <span class="text-center text-lg text-gray-700">Meet our dedicated yoga teachers and contributors. Each
+                        brings their unique experience and passion to help you on your yoga journey.</span>
+                </h2>
+            </div>
         </div>
         <!--Second Div Ends-->
 
         <!--Third Div starts -->
         <div class="part-three-div">
+            <div class="part-three-main-div">
+                @foreach ($teachers as $teacher)
+                    <div class="part-three-card-content">
+                        <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" style="width:100%"
+                            class="fixed-size">
+                        <h2 class="header-class"><a href="{{ url('teacher/' . $teacher['id']) }}">
+                                {{ $teacher['name'] }}
+                            </a>
+                        </h2>
 
-        <div class="card-container">
-            @foreach($teachers as $teacher)
+                        <p class="p-title">{{ $teacher['title'] }}</p>
+                        <p>{{ $teacher['bio'] }}</p>
+                        {{-- <p>{{ 'en/teacher/' . $teacher['id'] }}</p> --}}
+
+                        <div class="card-footer">
+                            <div class="social-links">
+                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-whatsapp"></i></a>
+                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-twitter"></i></a>
+                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-facebook"></i></a>
+                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-instagram"></i></a>
+                            </div>
+                            <p class="contact-button"><button>Contact</button></p>
+                        </div>
+
+
+                    </div>
+                @endforeach
+            </div>
+
+            {{-- <div class="card-container"> --}}
+            {{-- @foreach ($teachers as $teacher)
                 {{-- <div class="col-12 col-md-6 col-lg-4 d-flex align-items-stretch"> --}}
-                <div class="single-card">
+            {{-- <div class="single-card">
                     <div class="single-card-div">
                         <img src="{{ $teacher['photo'] }}" alt="{{ $teacher['name'] }}" style="width:100%" class="fixed-size">
                                 <h2>
@@ -38,24 +68,25 @@
                         <p class="title">{{ $teacher['title'] }}</p>
                         <p>{{ $teacher['bio'] }}</p>
                         <div class="card-footer">
-                            <div class="social-links" style="margin: 0; background-color: #fff; padding: 10px; border-radius: 5px;">
+                             <div class="social-links" style="margin: 0; background-color: #fff; padding: 10px; border-radius: 5px;">
                                 <a href="#" style="margin: 1px 16px;"><i class="fa fa-whatsapp"></i></a> 
                                 <a href="#" style="margin: 1px 16px;"><i class="fa fa-twitter"></i></a>  
                                 <a href="#" style="margin: 1px 16px;"><i class="fa fa-linkedin"></i></a>  
                                 <a href="#" style="margin: 1px 16px;"><i class="fa fa-facebook"></i></a>
                                 <a href="#" style="margin: 1px 16px;"><i class="fa fa-instagram"></i></a> 
-                            </div>
+                            </div> 
                             <p style="margin:0;"><button>Contact</button></p>
                         </div>
                     </div>
                 </div>
-            @endforeach
+            @endforeach --}}
+            {{-- </div> --}}
         </div>
         <!--Third Div Ends-->
 
         <!--Fourth Div starts -->
         <div class="part-four-div">
-            
+
 
         </div>
         <!--Fourth Div Ends-->
@@ -76,9 +107,9 @@
 
         <!--Seven Div starts -->
         <div class="part-seven-div">
-            
 
-            
+
+
 
         </div>
         <!--Seven Div Ends-->
@@ -86,7 +117,7 @@
         <!--Eight Div starts -->
 
         <div class="part-eight-div">
-            
+
             <div class="part-eight-main-content">
             </div>
         </div>
@@ -94,7 +125,7 @@
 
         <!--Ninth Div starts -->
         <div class="part-nine-div">
-        </div> 
+        </div>
         <!--Ninth Div Ends -->
     </div>
 @endsection
@@ -109,7 +140,7 @@
     }
 
     .part-one-div {
-        margin-bottom: 40px;
+        margin-bottom: 0px;
     }
 
     .part-one-div p {
@@ -117,6 +148,7 @@
         align-self: center;
 
     }
+
     .part-two-div {
         /*margin-top: 10px;*/
 
@@ -127,112 +159,85 @@
         align-self: center;
 
     }
-    .part-three-div{
+
+    .part-three-main-div {
         display: flex;
-        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 10px;
+        padding: 1px;
     }
 
-    .lotus-image{
-        margin-left: auto;   
-        margin-right: auto;
-        margin-bottom: 0;    
-        width: 12rem;        
-        height: 60px;  
+    .part-three-card-content {
+        width: 300px;
+        height: 500px;
+        border: 5px solid #ddd;
+        /* light border */
+        border-radius: 0.75rem;
+            display: flex;
+    flex-direction: column;   /* stack children vertically */
+    justify-content: space-between; /* push footer to bottom */
+    padding: 10px; /* optional padding */
     }
 
-    .welcome-text{
-        font-weight: 600;       
-        font-size: 1.5rem;      
-        line-height: 60px;    
+    .fixed-size {
+        width: 120px;
+        /* fixed width */
+        height: 200px;
+        /* fixed height */
+        object-fit: cover;
+        /* fill the box, crop overflow */
+        border-radius: 0.25rem;
+        /* optional rounded corners */
+        display: block;
+        /* remove inline spacing */
     }
 
-    .single-card{
-        width: 100%;                /* col-12 */
-        }
+    .header-class {
+        font-size: 1.75rem;
+        /* text-4xl → 36px (2.25rem) */
+        font-weight: 500;
+        /* font-bold */
+        color: #1f2937;
+        /* text-gray-800 */
+        margin-bottom: 1rem;
+        /* mb-12 → 48px (12 × 0.25rem) */
+        text-align: center;
+        /* text-center */
 
-        .single-card-div {
-        width: 40%;              /* w-100 */
-        text-align: center;       /* text-center */
-        background: #fff;         /* Bootstrap card default */
-        border: 1px solid #ddd;   /* light border */
-        border-radius: 0.25rem;   /* rounded corners */
-        padding: 1rem;            /* inner spacing */
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* subtle shadow */
-        }
-
-    .card-container {
-
-      height: auto;
-      align-items: stretch;
     }
 
-    /* Keep footer (icons + Contact) pinned to the bottom */
-.card .card-footer { margin-top: auto; }
-.card .card-footer p { 
-    margin: 1px 2px; 
-    height: 5px;
-    background-color: #000; 
-    padding: 5px; 
-    border-radius: 5px;
-}
+    .social-links{
+        margin: 2px 0px; 
+        background-color: white; 
+        padding: 10px; 
+        border-radius: 5px;
+    }   
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 350px;
-  min-height: 520px;
-  display: flex;
-  height: 520px;
-  margin: auto;
-  text-align: center;
-  font-family: arial;
-}
+    .p-title {
+        text-align: center;
+        min-height: 10px;
+        border: 2px solid black;
+        /* light border */
+        border-radius: 0.75rem;
 
-img.fixed-size {
-  width: 200px;       /* or any desired width */
-  height: 250px;      /* or any desired height */
-  object-fit: cover;  /* makes sure image fills the box */
-  object-position: center; /* keeps it centered */
-  border-radius: 8px; /* optional: for rounded corners */
-}
+    }
 
-/* Clamp bio text to avoid cards growing unevenly */
-/*
-.card p:not(.title):not(:last-of-type) {
-  display: -webkit-box;
-  -webkit-line-clamp: 4;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
-*/
+    .contact-button {
+        text-align: center;
+        min-height: 12px;
+        width: 100%;
+        background-color: black;
+        background-color: white;
+        background: black;
+        color: white;
+        border: 1px solid black;
+        /* light border */
+        border-radius: 0.75rem;
 
-.title {
-  color: grey;
-  font-size: 18px;
-}
-
-button {
-  border: none;
-  outline: 0;
-  display: inline-block;
-  padding: 8px;
-  color: white;
-  background-color: #000;
-  text-align: center;
-  cursor: pointer;
-  width: 100%;
-  font-size: 18px;
-}
-
-a {
-  text-decoration: none;
-  /* font-size: 22px; */
-  color: black;
-}
-
-button:hover, a:hover {
-  opacity: 0.7;
-}
-
+    }
+    .card-footer{
+        margin-top: auto;
+    }
 
     /* Small Screen Sizes CSS */
     /* Extra small devices (phones, < 576px) */

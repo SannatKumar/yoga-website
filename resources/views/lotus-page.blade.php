@@ -11,7 +11,7 @@
 
         <!--Second Div starts -->
         <div class="part-two-div">
-            <img src="/lotus-images/chakra_image.png" alt="Meditative man" class="chakra-image">
+            <img src="/lotus-images/complete_chakra_image_lotus.png" alt="Meditative man" class="chakra-image">
             
         </div>        
         </div>
@@ -116,6 +116,10 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+        }
+        .chakra-image{
+            width: 600px;
+            height: 500px;
         }
     }
 

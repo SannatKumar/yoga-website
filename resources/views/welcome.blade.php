@@ -14,7 +14,7 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-main-section">
-            <h2 class="text-4xl font-bold text-gray-800 mb-12 text-center">
+            <h2 class="header-class">
                 {{ __('messages.discover-yoga-through-questions') ?? 'Explore Yoga Through Curiosity' }}
             </h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -35,7 +35,8 @@
 
             <section class="py-12 px-6">
             <div class="max-w-6xl mx-auto">
-                <h2 class="text-3xl font-bold text-gray-800 mb-8 text-center">Yoga Philosophy Highlights</h2>
+                <h2 class="header-class
+                ">Yoga Philosophy Highlights</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach($philosophyHighlights as $item)
                         <x-philosophy-card :title="$item['title']" :excerpt="$item['excerpt']" :href="$item['href']" :image="$item['image']" />
@@ -50,7 +51,7 @@
         <!--Fourth Div starts -->
         <div class="part-four-div">
             
-            <div class="part-four-main-section">
+            {{-- <div class="part-four-main-section">
                 <section class="py-20 px-6 from-green-50 to-blue-50">
                     <div class="max-w-4xl mx-auto text-center">
                         <h2 class="text-4xl font-bold text-gray-800 mb-6">
@@ -60,7 +61,7 @@
                         </p>
                     </div>
                 </section>
-            </div>
+            </div> --}}
 
         </div>
         <!--Fourth Div Ends-->
@@ -68,7 +69,7 @@
         <!--Fifth Div starts -->
         <div class="part-five-div">
 
-            <div class="part-five-main-section">
+            {{-- <div class="part-five-main-section">
             
                 <section class="py-20 px-6 bg-gray-50">
                 <div class="max-w-6xl mx-auto">
@@ -135,7 +136,7 @@
                 </div>
                 </section>
 
-            </div>
+            </div> --}}
 
         </div>
         <!--Fifth Div Ends-->
@@ -143,7 +144,7 @@
         <!--Sixth Div starts -->
         <div class="part-six-div">
 
-            <div class="part-six-main-section">
+            {{-- <div class="part-six-main-section">
                 <section class="py-20 px-6 bg-gradient-to-r from-green-500 to-blue-500">
                     <div class="max-w-4xl mx-auto text-center text-white">
                         <h2 class="text-4xl font-bold mb-6">
@@ -157,7 +158,7 @@
                         </a>
                     </div>
                 </section>
-            </div>
+            </div> --}}
 
         </div>
         <!--Six Div Ends-->
@@ -214,8 +215,17 @@
     }
 
     .part-one-div {
-        margin-bottom: 40px;
+        margin-bottom: 0px;
+        /* background-color: #000; */
     }
+    .header-class{
+          font-size: 2.25rem;   /* text-4xl → 36px (2.25rem) */
+            font-weight: 700;     /* font-bold */
+            color: #1f2937;       /* text-gray-800 */
+            margin-bottom: 3rem;  /* mb-12 → 48px (12 × 0.25rem) */
+            text-align: center;   /* text-center */
+
+                }
 
     .part-one-div p {
         font-size: 12px;
@@ -223,7 +233,9 @@
 
     }
     .part-two-div {
-        /*margin-top: 10px;*/
+        /* background-color: #333; */
+        margin-top: 0px;
+        height: 50px;
 
     }
 
@@ -298,26 +310,55 @@
             width: 100%;
             display: flex;
             flex-direction: column;
+            /* background-color: #ff0000; */
         }
+
+        .header-class{
+          font-size: 1.25rem;   /* text-4xl → 36px (2.25rem) */
+            font-weight: 700;     /* font-bold */
+            color: #1f2937;       /* text-gray-800 */
+            margin-bottom: 0.5rem;  /* mb-12 → 48px (12 × 0.25rem) */
+            text-align: center;   /* text-center */
+
+                }
+
+        .part-two-div {
+        /* background-color: #333; */
+        margin-top: 2px;
+        margin-bottom: 2px;
+        height: 50px;
+
+    }
+    .part-three-div{
+        margin-top: 1800px;
+    }
     }
 
     /* Small devices (phones, ≥ 576px and < 768px) */
     @media (min-width: 576px) and (max-width: 767.98px) {
         .main-div {
-            background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff);
+            /* background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff); */
             width: 100%;
             display: flex;
             flex-direction: column;
+            /* background-color: #000; */
+            /* background-color: #0000; */
         }
     }
 
+    /*This is my one plus */
     /* Medium devices (tablets, ≥ 768px and < 992px) */
     @media (min-width: 768px) and (max-width: 991.98px) {
         .main-div {
-            background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff);
-            width: 60%;
+            /* background-image: linear-gradient(to bottom right, #f0fdf4, #eff6ff); */
+            width: 100%;
             display: flex;
             flex-direction: column;
+            /* background-color: #ff0000; */
+        }
+        .part-one-div {
+            width: 100%;
+            /* background-color: #000; */
         }
     }
 
@@ -328,6 +369,7 @@
             width: 60%;
             display: flex;
             flex-direction: column;
+            /* background-color: #ff0000; */
         }
     }
 

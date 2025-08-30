@@ -55,4 +55,81 @@
         font-size: 1.5rem;      
         line-height: 60px;    
     }
+
+    @media (min-width: 768px) and (max-width: 991.98px) {
+    .welcome-block {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        margin: 0rem auto;
+        max-width: 100%;
+    }
+
+    .welcome-block:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .welcome-block h1 {
+        font-family: 'Georgia', serif;
+        font-size: 25px;
+        color: white;
+        -webkit-background-clip: text;
+    }
+
+    .lotus-image{
+        margin-left: auto;   
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-top: 0;    
+        width: 12rem;        
+        height: 60px;  
+    }
+
+    .welcome-text{
+        font-weight: 1000;       
+        font-size: 1.5rem;      
+        line-height: 60px;    
+    }
+
+}
+
+@media (max-width: 575.98px) {
+        .welcome-block {
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        margin: 0.25rem auto;
+        max-width: 100%;
+    }
+
+    .welcome-block:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+    }
+
+    .welcome-block h1 {
+        font-family: 'Georgia', serif;
+        font-size: 15px;
+        color: white;
+        -webkit-background-clip: text;
+    }
+
+    .lotus-image{
+        padding: 0;
+        margin-left: auto;   
+        margin-right: auto;
+        margin-bottom: 0;
+        margin-top: 0;    
+        width: 12rem;        
+        height: 30px;  
+    }
+
+    .welcome-text{
+        font-weight: 1000;       
+        font-size: 1.5rem;      
+        line-height: 10px;    
+    }
+
+}
 </style>

@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="800" height="800">
+  <!-- background (optional) -->
+  <rect width="100%" height="100%" fill="transparent"/>
+
+  <!-- big group centered at 200,200 -->
+  <g transform="translate(0,0)">
+    <!-- 36 petals rotated around center (200,200). Each petal starts at center and curves outward. -->
+    <!-- Colors cycle through a bright palette -->
+    <g stroke="#222" stroke-width="1" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF3B30" transform="rotate(0 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF9500" transform="rotate(10 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FFCC00" transform="rotate(20 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#4CD964" transform="rotate(30 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#5AC8FA" transform="rotate(40 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#007AFF" transform="rotate(50 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#5856D6" transform="rotate(60 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF2D55" transform="rotate(70 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF9F0A" transform="rotate(80 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FFD60A" transform="rotate(90 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#34C759" transform="rotate(100 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#64D2FF" transform="rotate(110 200 200)"/>
+
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF3B30" transform="rotate(120 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF9500" transform="rotate(130 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FFCC00" transform="rotate(140 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#4CD964" transform="rotate(150 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#5AC8FA" transform="rotate(160 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#007AFF" transform="rotate(170 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#5856D6" transform="rotate(180 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF2D55" transform="rotate(190 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF9F0A" transform="rotate(200 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FFD60A" transform="rotate(210 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#34C759" transform="rotate(220 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#64D2FF" transform="rotate(230 200 200)"/>
+
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF3B30" transform="rotate(240 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF9500" transform="rotate(250 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FFCC00" transform="rotate(260 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#4CD964" transform="rotate(270 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#5AC8FA" transform="rotate(280 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#007AFF" transform="rotate(290 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#5856D6" transform="rotate(300 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF2D55" transform="rotate(310 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FF9F0A" transform="rotate(320 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#FFD60A" transform="rotate(330 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#34C759" transform="rotate(340 200 200)"/>
+      <path d="M200 200 C185 130, 215 130, 200 200 Z" fill="#64D2FF" transform="rotate(350 200 200)"/>
+    </g>
+
+    <!-- add a small center circle for polish -->
+    <circle cx="200" cy="200" r="18" fill="#FFF7E6" stroke="#E6B800" stroke-width="2"/>
+    <circle cx="200" cy="200" r="8" fill="#FFD60A" stroke="#C18B00" stroke-width="1"/>
+  </g>
+</svg>

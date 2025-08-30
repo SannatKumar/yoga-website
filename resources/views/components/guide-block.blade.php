@@ -58,7 +58,7 @@
 
         .guide-block {
             position: relative;
-            background-color: #000;
+            /* background-color: #000; */
             border-left: 6px solid #22c55e;
             border-right: 6px solid #3B82F5;
 
