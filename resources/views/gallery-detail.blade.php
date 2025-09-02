@@ -33,6 +33,9 @@
 
         <!--Third Div starts -->
         <div class="part-three-div">
+            <div class="div-three-main-div">
+                <x-asana-step-card image_path="/lotus-images/red_lotus.svg" header="'Sit in Bajrasana'" />
+            </div>
 
         </div>
         <!--Third Div Ends-->
@@ -93,7 +96,7 @@
     }
 
     .part-one-div {
-        margin-bottom: 40px;
+        margin-bottom: 1px;
     }
 
     .part-one-div p {
@@ -103,6 +106,7 @@
     }
 
     .part-two-div {
+        margin-bottom: 2px;
         /*margin-top: 10px;*/
 
     }
@@ -112,6 +116,22 @@
         align-self: center;
 
     }
+
+    .step-image-img{
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+
+    }
+    
+
+
+    
+
+
+
+
+
 
     .card-container {
         display: flex;
@@ -149,7 +169,7 @@
         font-family: arial;
     }
 
-    img.fixed-size {
+    .fixed-size {
         width: 200px;
         /* or any desired width */
         height: 250px;
@@ -218,6 +238,7 @@
 
     .asana-thumb {
         width: 150px;
+        height: 200px;
         /* small preview size */
         cursor: pointer;
         border-radius: 8px;
@@ -238,12 +259,16 @@
         height: 100%;
         background: rgba(0, 0, 0, 0.7);
         text-align: center;
+        /* padding: 50px; */
         padding-top: 5%;
     }
 
     .popup img {
-        max-width: 80%;
-        max-height: 80%;
+        margin: 100px;
+        height: 800px;
+        width: 800px;
+        max-width:100%;
+        max-height: 100%;
         border-radius: 10px;
         box-shadow: 0 0 20px #000;
     }

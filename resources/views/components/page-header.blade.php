@@ -58,8 +58,8 @@
     }
     .sun-image,
 .moon-image {
-    flex: 0 0 60px;  /* lock each image at 60px width */
-    height: 60px;    /* scale height to match */
+    flex: 0 0 30px;  /* lock each image at 60px width */
+    height: 30px;    /* scale height to match */
     object-fit: contain;
     /* margin-top: 25px; */
 }

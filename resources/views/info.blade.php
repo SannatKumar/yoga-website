@@ -181,7 +181,7 @@
         height: 500px;
 
         /* styling */
-        border: 5px solid #ddd;
+        border: 5px solid green;
         border-radius: 0.75rem;
         display: flex;
         flex-direction: column;
@@ -233,7 +233,7 @@
 
     .contact-button {
         text-align: center;
-        min-height: 12px;
+        min-height: 15px;
         width: 100%;
         background-color: black;
         background-color: white;
@@ -241,7 +241,7 @@
         color: white;
         border: 1px solid black;
         /* light border */
-        border-radius: 0.75rem;
+        border-radius: 0.10rem;
 
     }
 

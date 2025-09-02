@@ -4,9 +4,9 @@
     <div class="main-div">
         <!--First Div starts -->
         <div class="part-one-div">
-            <x-page-header image_path="/lotus-images/yellow_lotus.svg" :text="__('messages.namaste-welcome') ??'🙏 Namaste & Welcome to Your Yoga Journey'" />
+            <x-page-header image_path="/lotus-images/yellow_lotus.svg" :text="__('messages.namaste-welcome') ?? '🙏 Namaste & Welcome to Your Yoga Journey'" />
 
-        
+
         </div>
         <!--First Div Ends-->
 
@@ -14,31 +14,38 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-main-section">
-            <h2 class="header-class">
-                {{ __('messages.discover-yoga-through-questions') ?? 'Explore Yoga Through Curiosity' }}
-            </h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <h2 class="header-class">
+                    {{ __('messages.discover-yoga-through-questions') ?? 'Explore Yoga Through Curiosity' }}
+                </h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     @foreach ($yogaIntroCards as $card)
-                       @if (in_array($card['title'], ['Why Yoga?', 'When Yoga?', 'How Yoga?', 'Where Yoga?', 'What is Yoga?', 'For Whom Yoga?']))
+                        @if (in_array($card['title'], [
+                                'Why Yoga?',
+                                'When Yoga?',
+                                'How Yoga?',
+                                'Where Yoga?',
+                                'What is Yoga?',
+                                'For Whom Yoga?',
+                            ]))
                             <x-guide-block :title="$card['title']" :text="$card['text']" />
                         @endif
                     @endforeach
                 </div>
-                
+
             </div>
-        
+
         </div>
         <!--Second Div Ends-->
 
         <!--Third Div starts -->
         <div class="part-three-div">
-
+            <!--Philosophy Section"-->
             <section class="py-12 px-6">
             <div class="max-w-6xl mx-auto">
                 <h2 class="header-class
                 ">Yoga Philosophy Highlights</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    @foreach($philosophyHighlights as $item)
+                    @foreach ($philosophyHighlights as $item)
                         <x-philosophy-card :title="$item['title']" :excerpt="$item['excerpt']" :href="$item['href']" :image="$item['image']" />
                     @endforeach
                 </div>
@@ -50,8 +57,8 @@
 
         <!--Fourth Div starts -->
         <div class="part-four-div">
-            
-            {{-- <div class="part-four-main-section">
+
+            <div class="part-four-main-section">
                 <section class="py-20 px-6 from-green-50 to-blue-50">
                     <div class="max-w-4xl mx-auto text-center">
                         <h2 class="text-4xl font-bold text-gray-800 mb-6">
@@ -61,7 +68,7 @@
                         </p>
                     </div>
                 </section>
-            </div> --}}
+            </div>
 
         </div>
         <!--Fourth Div Ends-->
@@ -69,7 +76,7 @@
         <!--Fifth Div starts -->
         <div class="part-five-div">
 
-            {{-- <div class="part-five-main-section">
+            <div class="part-five-main-section">
             
                 <section class="py-20 px-6 bg-gray-50">
                 <div class="max-w-6xl mx-auto">
@@ -136,7 +143,7 @@
                 </div>
                 </section>
 
-            </div> --}}
+            </div>
 
         </div>
         <!--Fifth Div Ends-->
@@ -165,11 +172,11 @@
 
         <!--Seven Div starts -->
         <div class="part-seven-div">
-            
+
             <h2 class="part-seven-title">{{ __('messages.site-stats') ?? 'Site Statistics' }}</h2>
-            
+
             <div class="part-seven-main-content">
-                
+
                 <div class="stat-one">
                     <p class="stat-one-p">{{ number_format($totalVisits) }}</p>
                     <h2 class="stat-one-h2">{{ __('messages.total-visits') ?? 'Total Visits' }}</h2>
@@ -188,11 +195,14 @@
         <!--Eight Div starts -->
 
         <div class="part-eight-div">
-            
+
             <div class="part-eight-main-content">
                 <div class="eight-main-content-div">
-                    <p class="">{{ __('messages.thank-you-for-visiting') ?? 'Thank you for visiting the platform.' }}</p>
-                    <p class="">{{ __('messages.grateful-note') ?? 'We’re grateful you’re here. Stay curious, stay kind, keep practicing.' }}</p>
+                    <p class="">{{ __('messages.thank-you-for-visiting') ?? 'Thank you for visiting the platform.' }}
+                    </p>
+                    <p class="">
+                        {{ __('messages.grateful-note') ?? 'We’re grateful you’re here. Stay curious, stay kind, keep practicing.' }}
+                    </p>
                 </div>
             </div>
         </div>
@@ -200,8 +210,9 @@
 
         <!--Ninth Div starts -->
         <div class="part-nine-div">
-        </div> 
+        </div>
         <!--Ninth Div Ends -->
+        <!-- Main Div Ends -->
     </div>
 @endsection
 
@@ -216,26 +227,26 @@
 
     .part-one-div {
         margin-bottom: 0px;
-        /* background-color: #000; */
     }
-    .header-class{
-          font-size: 2.25rem;   /* text-4xl → 36px (2.25rem) */
-            font-weight: 700;     /* font-bold */
-            color: #1f2937;       /* text-gray-800 */
-            margin-bottom: 3rem;  /* mb-12 → 48px (12 × 0.25rem) */
-            text-align: center;   /* text-center */
 
-                }
+    .header-class {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 3rem;
+        text-align: center;
+    }
 
     .part-one-div p {
         font-size: 12px;
         align-self: center;
 
     }
+
     .part-two-div {
-        /* background-color: #333; */
         margin-top: 0px;
-        height: 50px;
+        margin-bottom: 10px;
+        height: auto;
 
     }
 
@@ -244,30 +255,38 @@
         align-self: center;
 
     }
-    .part-seven-div{
-        text-align: center;
+
+    .part-three-div {
+        height: auto;
     }
 
-    .part-seven-title{
+    .part-seven-div {
+        text-align: center;
+        height: auto;
+    }
+
+    .part-seven-title {
         margin: 15px 0px;
         font-family: 'Great Vibes', cursive;
         font-size: 2.75rem;
         font-weight: 600;
     }
 
-    .part-seven-main-content{
-        display:flex;
+    .part-seven-main-content {
+        display: flex;
         flex-direction: row;
-        justify-content:center;
+        justify-content: center;
         gap: 80px;
     }
 
-    .stat-one, .stat-two{
+    .stat-one,
+    .stat-two {
 
         width: 300px;
         height: 200px;
         background: radial-gradient(ellipse at center, #a7f3d0 0%, #34d399 100%);
-        border-radius: 100% 50% 50% 50% / 100% 70% 30% 30%; /* teardrop-like */
+        border-radius: 100% 50% 50% 50% / 100% 70% 30% 30%;
+        /* teardrop-like */
         transform: rotate(0deg);
         padding: 4rem;
         text-align: center;
@@ -275,10 +294,11 @@
         font-weight: 1000;
         font-size: 20px;
         /*color: #ffffff;           white numbers on green bg */
-        text-shadow: 0 1px 2px rgba(0,0,0,0.3); /* slight glow for contrast */  
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+        /* slight glow for contrast */
     }
 
-    .part-eight-div{
+    .part-eight-div {
         margin-top: 40px;
         text-align: center;
         padding: 10px;
@@ -287,15 +307,18 @@
         color: #000;
         font-family: 'Great Vibes', cursive;
         display: flex;
-        justify-content: center; /* horizontal centering */
-        align-items: center;     /* vertical centering */
+        justify-content: center;
+        /* horizontal centering */
+        align-items: center;
+        /* vertical centering */
     }
 
-    .part-eight-main-content{
+    .part-eight-main-content {
         width: 1200px;
         height: 200px;
         background: radial-gradient(ellipse at center, #a7f3d0 0%, #34d399 100%);
-        border-radius: 70% 50% 50% 50% / 70% 70% 30% 30%; /* teardrop-like */
+        border-radius: 70% 50% 50% 50% / 70% 70% 30% 30%;
+        /* teardrop-like */
         transform: rotate(0deg);
         padding: 5rem;
 
@@ -313,25 +336,31 @@
             /* background-color: #ff0000; */
         }
 
-        .header-class{
-          font-size: 1.25rem;   /* text-4xl → 36px (2.25rem) */
-            font-weight: 700;     /* font-bold */
-            color: #1f2937;       /* text-gray-800 */
-            margin-bottom: 0.5rem;  /* mb-12 → 48px (12 × 0.25rem) */
-            text-align: center;   /* text-center */
+        .header-class {
+            font-size: 1.25rem;
+            /* text-4xl → 36px (2.25rem) */
+            font-weight: 700;
+            /* font-bold */
+            color: #1f2937;
+            /* text-gray-800 */
+            margin-bottom: 0.5rem;
+            /* mb-12 → 48px (12 × 0.25rem) */
+            text-align: center;
+            /* text-center */
 
-                }
+        }
 
         .part-two-div {
-        /* background-color: #333; */
-        margin-top: 2px;
-        margin-bottom: 2px;
-        height: 50px;
+            /* background-color: #333; */
+            margin-top: 2px;
+            margin-bottom: 2px;
+            height: 50px;
 
-    }
-    .part-three-div{
-        margin-top: 1800px;
-    }
+        }
+
+        .part-three-div {
+            margin-top: 1800px;
+        }
     }
 
     /* Small devices (phones, ≥ 576px and < 768px) */
@@ -356,6 +385,7 @@
             flex-direction: column;
             /* background-color: #ff0000; */
         }
+
         .part-one-div {
             width: 100%;
             /* background-color: #000; */
