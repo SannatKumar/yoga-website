@@ -13,7 +13,7 @@
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-main-section">
-                <section id="yoga-practices" class= "part-two-main-section" style="padding:2rem; font-family:sans-serif;">
+                <section id="yoga-practices" class= "part-two-main-section" style="padding:2rem; font-family:system-ui;">
                 <div class="practice-grid">
                     <!-- Card 1 -->
                     <div class="practice-card">
@@ -207,16 +207,18 @@
 }
 
 .practice-card {
-  background: #f9f9f9;
+  background: #FFFFFF;
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   text-align: center;
   transition: transform 0.2s ease;
+  display: flex;
+  flex-direction: column;
 }
 
 #card-title{
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: bold;
 }
 .practice-card:hover {
@@ -229,7 +231,7 @@
 }
 
 .practice-card p {
-  font-size: 1.25rem;
+  font-size: 16px;
   color: #666;
   margin-bottom: 1rem;
 }
@@ -242,6 +244,7 @@
   text-decoration: none;
   border-radius: 8px;
   font-size: 0.9rem;
+  margin-top: auto;
 }
 
 .practice-card .btn:hover {

@@ -39,11 +39,11 @@
 
                         <div class="card-footer">
                             <div class="social-links">
-                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-whatsapp"></i></a>
-                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-twitter"></i></a>
-                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-linkedin"></i></a>
-                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-facebook"></i></a>
-                                <a href="#" style="margin: 1px 16px;"><i class="fa fa-instagram"></i></a>
+                                <a href="#" class="social-media-icon"><i class="fa fa-whatsapp"></i></a>
+                                <a href="#" class="social-media-icon"><i class="fa fa-twitter"></i></a>
+                                <a href="#" class="social-media-icon"><i class="fa fa-linkedin"></i></a>
+                                <a href="#" class="social-media-icon"><i class="fa fa-facebook"></i></a>
+                                <a href="#" class="social-media-icon"><i class="fa fa-instagram"></i></a>
                             </div>
                             <p class="contact-button"><button>Contact</button></p>
                         </div>
@@ -168,8 +168,8 @@
         margin-left:10px;
         display: flex;
         flex-wrap: wrap;
-        gap: 15px;
-        padding: 10px;
+        gap: 20px;
+        padding: 5px;
     }
 
     .part-three-card-content {
@@ -178,7 +178,7 @@
         max-width: calc(33.333% - 15px);
 
         min-width: 280px;
-        height: 500px;
+        height: 450px;
 
         /* styling */
         border: 5px solid green;
@@ -216,10 +216,14 @@
     }
 
     .social-links {
-        margin: 2px 0px;
-        background-color: white;
+        margin: 2px 0px 0px 0px;
+        background-color: #1B4D3F;
         padding: 10px;
-        border-radius: 5px;
+        border-radius: 1px;
+    }
+
+    .social-media-icon{
+        margin: 1px 16px; color:white;
     }
 
     .p-title {
@@ -233,7 +237,7 @@
 
     .contact-button {
         text-align: center;
-        min-height: 15px;
+        min-height: 20px;
         width: 100%;
         background-color: black;
         background-color: white;
@@ -243,6 +247,9 @@
         /* light border */
         border-radius: 0.10rem;
 
+    }
+    .contact-button button {
+        padding: 5px;
     }
 
     .card-footer {
