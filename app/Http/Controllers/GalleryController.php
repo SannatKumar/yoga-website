@@ -205,6 +205,20 @@ class GalleryController extends Controller
     {
         $id = $request->id;
 
+        $steps = [
+            "Stand firmly with the feet together or hip-width apart, arms relaxed by the sides.",
+            "Steady the body and distribute weight evenly across both feet.",
+            "Raise the arms overhead.",
+            "Interlock the fingers, turn the palms upward, and place the hands on top of the head.",
+            "Fix the gaze slightly above eye level on a point on the wall. Keep the eyes steady throughout the practice.",
+            "Inhale and stretch the arms, shoulders, and chest upward.",
+            "Rise onto the toes, lifting the heels off the floor.",
+            "Stretch the entire body from head to toe without losing balance or moving the feet.",
+            "Breathe normally. At first, balance may be challenging, but it improves with practice.",
+            "Exhale, lower the heels, and bring the hands back onto the head.",
+            "This completes one round."
+        ];
+
         // dd($id);
         // Sample yoga images data (same as in index)
         $images = [
@@ -272,6 +286,6 @@ class GalleryController extends Controller
         if (!$pose) {
             abort(404);
         }
-        return view('gallery-detail', compact('pose'));
+        return view('gallery-detail', compact('pose', 'steps'));
     }
 }
