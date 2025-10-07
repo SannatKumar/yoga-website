@@ -150,6 +150,21 @@
 
         <!--Sixth Div starts -->
         <div class="part-six-div">
+        {{-- <div class="card">
+  <div class="card-image">
+    <img src="/images/Vajroli.jpeg" alt="Yoga videos">
+  </div>
+  <div class="card-body">
+    <h3 class="card-title">{{ __('messages.videos') ?? 'Yoga Videos' }}</h3>
+    <p class="card-text">
+      {{ __('messages.videos-desc') ?? 'Watch guided yoga sessions, tutorials, and inspirational content to enhance your practice.' }}
+    </p>
+    <a href="{{ route('videos', ['lang' => app()->getLocale()]) }}"
+   class="btn-videos">
+  {{ __('messages.videos') ?? 'Watch Videos' }}
+</a>
+  </div>
+</div> --}}
 
             {{-- <div class="part-six-main-section">
                 <section class="py-20 px-6 bg-gradient-to-r from-green-500 to-blue-500">
@@ -325,6 +340,49 @@
     }
 
 
+
+    .card {
+  background-color: #ffffff;          /* bg-white */
+  border-radius: 1rem;                /* rounded-2xl */
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1),
+              0 4px 6px rgba(0,0,0,0.05); /* shadow-lg */
+  overflow: hidden;                   /* overflow-hidden */
+  transform: scale(1);                /* default state */
+  transition: transform 300ms ease;   /* transition-all duration-300 */
+}
+
+.card:hover {
+  transform: scale(1.05);             /* hover:scale-105 */
+}
+
+.card-image {
+  height: 16rem;                      /* h-64 */
+  overflow: hidden;                   /* overflow-hidden */
+}
+
+.card-image img {
+  width: 100%;                        /* w-full */
+  height: 100%;                       /* h-full */
+  object-fit: cover;                  /* object-cover */
+}
+
+.card-body {
+  padding: 1.5rem;                    /* p-6 */
+}
+
+.card-title {
+  font-size: 1.5rem;                  /* text-2xl */
+  font-weight: 700;                   /* font-bold */
+  color: #1f2937;                     /* text-gray-800 */
+  margin-bottom: 0.75rem;             /* mb-3 */
+}
+
+.card-text {
+  color: #4b5563;                     /* text-gray-600 */
+  margin-bottom: 1rem;                /* mb-4 */
+}
+
+
     /* Small Screen Sizes CSS */
     /* Extra small devices (phones, < 576px) */
     @media (max-width: 575.98px) {
@@ -412,4 +470,27 @@
             flex-direction: column;
         }
     }
+
+
+
+.btn-videos {
+  display: inline-block;                 /* inline-block */
+  background-color: #a855f7;             /* bg-purple-500 */
+  color: #ffffff;                         /* text-white */
+  font-weight: 600;                       /* font-semibold */
+  padding: 0.5rem 1.5rem;                 /* py-2 px-6 */
+  border-radius: 0.5rem;                  /* rounded-lg */
+  transition: background-color 300ms, color 300ms; /* transition-colors duration-300 */
+  text-decoration: none;
+}
+
+.btn-videos:hover {
+  background-color: #9333ea;             /* hover:bg-purple-600 */
+}
+
+/* Optional: better keyboard focus */
+.btn-videos:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
 </style>
