@@ -173,32 +173,38 @@
             font-size: 1.25rem;
             line-height: 1.8;
             white-space: pre-line;
-            color: #111;
+            /* color: #111; */
+            color: rgba(30, 144, 255, 0.7);
             text-align: center;
             /* Added CSS*/
             background: linear-gradient(90deg,
                     black,
-                    goldenrod,
+                    /* goldenrod, */
                     deepskyblue,
                     black);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-size: 300% 300%;
-            animation: mantraGlow 6s infinite alternate;
+            animation: mantraGlow 3s forwards alternate;
             text-shadow: 0 0 10px rgba(30, 144, 255, 0.7),
-                0 0 20px rgba(218, 165, 32, 0.7);
+                0 0 10px rgba(30, 144, 255, 0.7);
 
         }
 
         @keyframes mantraGlow {
             0% {
-                background-position: 0% 50%;
+                background-position: 0% 25%;
+            }
+            25% {
+                background-position: 25% 50%;
             }
 
             50% {
-                background-position: 100% 50%;
+                background-position: 75% 50%;
             }
-
+            75% {
+                background-position: 100% 75%;
+            }
             100% {
                 background-position: 0% 50%;
             }
