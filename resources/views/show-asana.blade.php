@@ -43,6 +43,7 @@
                     <a href="surya.html" class="btn">Learn More</a>
                     </div>
 
+                    
                     <!-- Card 5 -->
                     <div class="practice-card">
                     <h3 id="card-title">Yoga Nidra</h3>
@@ -61,6 +62,7 @@
 
         <!--Third Div starts -->
         <div class="part-three-div">
+            
 
         </div>
         <!--Third Div Ends-->
