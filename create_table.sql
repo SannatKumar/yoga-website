@@ -70,3 +70,11 @@ CREATE TABLE bandhas (
 
 
 
+
+
+My_sql Used Statements:
+SELECT * FROM yoga_project.asanas;
+UPDATE yoga_project.asanas SET category_id = 1, tag_id = 1 WHERE id < 2; 
+
+
+
