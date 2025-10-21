@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Gallery; 
 
 class GalleryController extends Controller
 {
@@ -287,5 +288,34 @@ class GalleryController extends Controller
             abort(404);
         }
         return view('gallery-detail', compact('pose', 'steps'));
+    }
+
+
+    //addAsanas
+    public function addAsanas(Request $request)
+    {
+        //Take all the asanas Data
+        $asanaName = $request->asana_name;
+        $asanaDescription = $request->asana_description;
+        $sourceId = $request->source_id;
+        $stepsId = $request->steps_id;
+        $tagId = $request->tag_id;
+        $timeOftheDayId = $request->time_of_the_day_id;
+        $referenceId = $request->reference_id;
+
+        $gallery = Gallery::create([
+            'asana_name' => $asanaName,
+            'asana_description' => $asanaDescription,
+            'source_id' => $sourceId,
+            'steps_id' => $stepsId,
+            'tags_id' => $tagId,
+            'time_of_the_day_id' => $timeOftheDayId,
+            'reference_id' => $referenceId,
+        ]);
+
+
+
+        return response()->json(['result' => $gallery], 200)
+        ->header('Content-Type', 'application/json' );
     }
 }

@@ -39,6 +39,9 @@ Route::get('/set-locale/{locale}', function ($locale) {
     return redirect()->back()->with('locale_changed', true);
 })->name('set-locale');
 
+//This route helps Postman to post data if some CSRF Issue has come.
+Route::post('/addAsanas', [GalleryController::class, 'addAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
 // Apply middleware to all routes
 Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits::class])->group(function () {
     
@@ -73,6 +76,9 @@ Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits
 
     // Show Asanas Controller
     Route::get('/show-asana', [ShowAsanaController::class, 'getAsana'])->name('show-asana');
+    //Add Asanas
+    // Route::post('/addAsanas', [GalleryController::class, 'addAsanas']);
+
 
     // Utility Section
     Route::get('/cover-letter', [CoverLetterController::class, 'getCoverLetter'])->name('cover-letter');

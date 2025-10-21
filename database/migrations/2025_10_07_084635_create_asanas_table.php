@@ -21,8 +21,6 @@ return new class extends Migration
             $table->integer('tag_id')->nullable();
             $table->integer('time_of_the_day_id')->nullable();
             $table->integer('reference_id')->nullable();
-            $table->dateTime('created')->useCurrent();
-            $table->dateTime('modified')->useCurrentOnUpdate();
             $table->boolean('deleted')->default(0);
 
 
