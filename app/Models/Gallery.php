@@ -15,6 +15,7 @@ class Gallery extends Model
         'source_id',
         'steps_id',
         'tag_id',
+        'category_id',
         'time_of_the_day_id',
         'reference_id',
     ];

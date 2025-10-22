@@ -9,6 +9,7 @@ use App\Http\Controllers\GuruStutiController;
 use App\Http\Controllers\LotusPageController;
 use App\Http\Controllers\ShowAsanaController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\TeacherController;
 use App\Http\Controllers\CurrencyConverterController;
 use App\Http\Controllers\CVGeneratorController;
@@ -40,7 +41,11 @@ Route::get('/set-locale/{locale}', function ($locale) {
 })->name('set-locale');
 
 //This route helps Postman to post data if some CSRF Issue has come.
-Route::post('/addAsanas', [GalleryController::class, 'addAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+Route::get('/get-asanas', [TestController::class, 'getAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+Route::post('/add-asanas', [TestController::class, 'addAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+Route::put('/update-asanas', [TestController::class, 'updateAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+Route::delete('/delete-asanas', [TestController::class, 'deleteAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
 
 // Apply middleware to all routes
 Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits::class])->group(function () {
