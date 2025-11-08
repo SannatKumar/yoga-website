@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Test;
+// use App\Models\Test;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
 use Illuminate\Http\Request;
