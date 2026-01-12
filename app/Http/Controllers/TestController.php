@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 // use App\Models\Test;
 use App\Http\Controllers\Controller;
 use App\Models\Gallery;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
 class TestController extends Controller
@@ -15,6 +16,7 @@ class TestController extends Controller
     //getAsanas
     public function getAsanas(Request $request)
     {
+        Log::info('Request Data: ' . $request);
         // Optional: you can apply filters if query parameters are passed
         $query = Gallery::query();
 

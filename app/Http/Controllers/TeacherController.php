@@ -107,7 +107,7 @@ class TeacherController extends Controller
         Log::info("Teacher:", (array)$teacher);
         return view('teacher-profile', compact('teacher'));
     }*/
-        public function getTeacher(Request $request, $id)
+public function getTeacher(Request $request, $id)
 {
     $id = $id-1;
 

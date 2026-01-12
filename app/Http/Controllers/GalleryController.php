@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Models\Gallery; 
 
 class GalleryController extends Controller
@@ -205,6 +206,9 @@ class GalleryController extends Controller
     public function show(Request $request)
     {
         $id = $request->id;
+        Log::info($id);
+
+        $id = 1;
 
         $steps = [
             "Stand firmly with the feet together or hip-width apart, arms relaxed by the sides.",
