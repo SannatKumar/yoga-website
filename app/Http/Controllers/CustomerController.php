@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-// use App\Models\Customer; 
+use Illuminate\Support\Facades\Log;
+use App\Models\Customer; 
 
 class CustomerController extends Controller
 {
@@ -15,20 +16,44 @@ class CustomerController extends Controller
     public function uploadExcel(Request $request)
     {
         $requestData = $request->all();
-        // $validated = $request->validate([
-        //     'FirstName' => 'required|string|max:255',
-        //     'LastName'  => 'required|string|max:255',
-        //     'Email'     => 'required|email|unique:customers,Email',
-        //     'Phone'     => 'nullable|string|max:50',
-        //     'Country'   => 'required|string|max:100',
-        //     'SignupDate'=> 'nullable|date',
-        // ]);
+        Log::info('Upload Excel request data', [
+            'type' => gettype($requestData),
+            'data' => $requestData,
+        ]);
 
-        // $customer = Customer::create($validated);
+        $data = $request->input('data');
+
+        if(!is_array($data)){
+            return response()->json(['error' => 'Invalid Data Format'], 400);
+        }
+
+        $createdCount = 0;
+        foreach ($data as $row) {
+
+        Log::info('Upload Excel request data', [
+            'type' => gettype($row),
+            'data' => $row,
+            'first' => $row[0],
+        ]);
+        if($createdCount > 0)
+        {
+            Customer::create([
+                'FirstName'  => $row[1] ?? null,
+                'LastName'   => $row[2] ?? null,
+                'Email'      => $row[3] ?? null,
+                'Phone'      => $row[4] ?? null,
+                'Country'    => $row[5] ?? null,
+                'SignupDate' => now(),
+            ]);    
+        }
+        $createdCount++;
+        }
+
 
         return response()->json([
             'message' => 'Customer created successfully',
-            'request' => $requestData
+            'request' => $requestData,
+            'successRows' => $createdCount,
             //'data' => $customer
         ], 201);
     }
