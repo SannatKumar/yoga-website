@@ -58,4 +58,43 @@ class CustomerController extends Controller
         ], 201);
     }
 
+
+    //Upload Xml
+    public function uploadXml(Request $request)
+    {
+
+    $request->validate([
+            'xml' => 'required|string',
+        ]);
+
+        $xmlString = $request->input('xml');
+
+        try {
+            // Parse XML string
+            $xml = simplexml_load_string($xmlString, "SimpleXMLElement", LIBXML_NOCDATA);
+            $json = json_encode($xml); // optional convert to JSON
+            $data = json_decode($json, true); // associative array
+
+            // Example: just log it
+            Log::info('Uploaded XML Data:', $data);
+
+            // TODO: save $data to DB or handle as needed
+
+            return response()->json([
+                'message' => 'XML processed successfully',
+                'data' => $data, // optional
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'message' => 'Failed to parse XML',
+                'error' => $e->getMessage(),
+            ], 400);
+        }
+
+
+
+
+
+    }
+
 }

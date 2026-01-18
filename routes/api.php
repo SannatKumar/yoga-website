@@ -9,3 +9,5 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('/upload-excel', [CustomerController::class, 'uploadExcel']);
+
+Route::post('/upload-xml', [CustomerController::class, 'uploadXml']);
