@@ -16,4 +16,9 @@ class AsanaStep extends Model
     ];
 
     public $timestamps = true;
+
+    public function asana()
+    {
+        return $this->belongsTo(Gallery::class, 'asanas_id');
+    }
 }
