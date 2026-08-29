@@ -50,8 +50,8 @@ class TestController extends Controller
         $asanaName = $request->asana_name;
         $asanaDescription = $request->asana_description;
         $sourceId = $request->source_id;
-        $stepsId = $request->steps_id;
-        $tagId = $request->tag_id;
+        $categoryId = $request->category_id;
+        $difficultyId = $request->difficulty_id;
         $timeOftheDayId = $request->time_of_the_day_id;
         $referenceId = $request->reference_id;
 
@@ -59,8 +59,8 @@ class TestController extends Controller
             'asana_name' => $asanaName,
             'asana_description' => $asanaDescription,
             'source_id' => $sourceId,
-            'steps_id' => $stepsId,
-            'tag_id' => $tagId,
+            'category_id' => $categoryId,
+            'difficulty_id' => $difficultyId,
             'time_of_the_day_id' => $timeOftheDayId,
             'reference_id' => $referenceId,
         ]);
@@ -91,9 +91,8 @@ class TestController extends Controller
             'asana_name' => $request->asana_name ?? $asana->asana_name,
             'asana_description' => $request->asana_description ?? $asana->asana_description,
             'source_id' => $request->source_id ?? $asana->source_id,
-            'steps_id' => $request->steps_id ?? $asana->steps_id,
             'category_id' => $request->category_id ?? $asana->category_id,
-            'tag_id' => $request->tag_id ?? $asana->tag_id,
+            'difficulty_id' => $request->difficulty_id ?? $asana->difficulty_id,
             'time_of_the_day_id' => $request->time_of_the_day_id ?? $asana->time_of_the_day_id,
             'reference_id' => $request->reference_id ?? $asana->reference_id,
         ]);
