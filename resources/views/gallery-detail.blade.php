@@ -35,15 +35,18 @@ $image_paths = [
                 <div class="images-and-desc">
                     <!-- Small preview image -->
                     <a href="#asana-popup">
-                        <img src="/images/yogasana_pictures/virasana.jpeg" alt="Asana" class="asana-thumb">
+                        <img src="{{ $pose['image_url'] ?? '/images/yogasana_pictures/virasana.jpeg' }}" alt="{{ $pose['title'] ?? 'Asana' }}" class="asana-thumb">
                     </a>
-                    <p>Virasana</p>
+                    <p class="asana-title">{{ $pose['title'] ?? 'Asana' }}</p>
+                    @if (!empty($pose['description']))
+                        <p class="asana-desc">{{ $pose['description'] }}</p>
+                    @endif
                 </div>
 
                 <!-- Hidden popup for bigger image -->
                 <div id="asana-popup" class="popup">
                     <a href="#" class="close">&times;</a>
-                    <img src="/images/yogasana_pictures/virasana.jpeg" alt="Asana Large">
+                    <img src="{{ $pose['image_url'] ?? '/images/yogasana_pictures/virasana.jpeg' }}" alt="{{ $pose['title'] ?? 'Asana' }} Large">
                 </div>
 
             </div>
@@ -53,7 +56,7 @@ $image_paths = [
         <!--Third Div starts -->
         <div class="part-three-div">
             <div class="div-three-main-div">
-                <x-asana-step-card  header="'First Sit in Bajrasana'" :steps="$steps" :image_paths="$image_paths" />
+                <x-asana-step-card :header="($pose['title'] ?? 'Asana') . ' — Practice Steps'" :steps="$steps" :image_paths="$image_paths" />
             </div>
 
         </div>
@@ -62,17 +65,31 @@ $image_paths = [
         <!--Fourth Div starts -->
         <div class="part-four-div">
 
-  <div class="asana-info benefits">
-    <h3>Benefits</h3>
-    <p>This asana develops physical and mental balance. The entire spine is stretched and loosened...</p>
-  </div>
+            <div class="asana-info benefits">
+                <h3>Benefits</h3>
+                @if (!empty($pose['benefits']))
+                    <ul class="info-list">
+                        @foreach ($pose['benefits'] as $benefit)
+                            <li>{{ $benefit }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>No benefits listed yet for this asana.</p>
+                @endif
+            </div>
 
-  <div class="asana-info contraindications">
-    <h3>Contraindications</h3>
-    <p>People with vertigo must take care or avoid it. Those with ankle injury need not stand on toes...</p>
-  </div>
-</div>
-
+            <div class="asana-info contraindications">
+                <h3>Contraindications</h3>
+                @if (!empty($pose['contraindications']))
+                    <ul class="info-list">
+                        @foreach ($pose['contraindications'] as $contraindication)
+                            <li>{{ $contraindication }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>No contraindications listed yet for this asana.</p>
+                @endif
+            </div>
 
         </div>
         <!--Fourth Div Ends-->
@@ -80,6 +97,14 @@ $image_paths = [
         <!--Fifth Div starts -->
         <div class="part-five-div">
 
+            <div class="asana-info meta">
+                <h3>At a Glance</h3>
+                <ul class="meta-list">
+                    <li class="meta-pill"><span class="meta-label">Category</span> {{ $pose['category'] ?? 'Not set' }}</li>
+                    <li class="meta-pill"><span class="meta-label">Difficulty</span> {{ $pose['difficulty'] ?? 'Not set' }}</li>
+                    <li class="meta-pill"><span class="meta-label">Best Time</span> {{ $pose['time_of_the_day'] ?? 'Not set' }}</li>
+                </ul>
+            </div>
 
         </div>
         <!--Fifth Div Ends-->
@@ -87,6 +112,18 @@ $image_paths = [
         <!--Sixth Div starts -->
         <div class="part-six-div">
 
+            <div class="asana-info tags">
+                <h3>Tags</h3>
+                @if (!empty($pose['tags']))
+                    <ul class="tag-list">
+                        @foreach ($pose['tags'] as $tag)
+                            <li class="tag-pill">{{ $tag }}</li>
+                        @endforeach
+                    </ul>
+                @else
+                    <p>No tags yet for this asana.</p>
+                @endif
+            </div>
 
         </div>
         <!--Six Div Ends-->
@@ -438,6 +475,53 @@ $image_paths = [
 .contraindications {
   background: #fff3f3;
   border: 1px solid #e74c3c;
+}
+
+.info-list {
+  margin: 0;
+  padding-left: 1.2rem;
+}
+
+.info-list li {
+  margin-bottom: 0.4rem;
+}
+
+.asana-desc {
+  color: #555;
+  font-size: 14px;
+  max-width: 320px;
+}
+
+.asana-info.meta,
+.asana-info.tags {
+  background: #eff6ff;
+  border: 1px solid #3498db;
+}
+
+.meta-list,
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.meta-pill,
+.tag-pill {
+  background: #fff;
+  border: 1px solid #3498db;
+  border-radius: 20px;
+  padding: 0.4rem 0.9rem;
+  font-size: 13px;
+  color: #2c3e50;
+}
+
+.meta-label {
+  font-weight: bold;
+  color: #3498db;
+  margin-right: 0.3rem;
 }
 
 </style>
