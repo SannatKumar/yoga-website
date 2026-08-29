@@ -31,6 +31,21 @@ class Gallery extends Model
         return $this->belongsToMany(Tag::class, 'asana_tag', 'asanas_id', 'tag_id');
     }
 
+    public function benefits()
+    {
+        return $this->hasMany(AsanaBenefit::class, 'asanas_id')->orderBy('sort_order');
+    }
+
+    public function contraindications()
+    {
+        return $this->hasMany(AsanaContraindication::class, 'asanas_id')->orderBy('sort_order');
+    }
+
+    public function images()
+    {
+        return $this->hasMany(Image::class, 'asanas_id')->orderBy('sort_order');
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class, 'category_id');
