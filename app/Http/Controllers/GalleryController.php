@@ -295,6 +295,45 @@ class GalleryController extends Controller
         return view('gallery-detail', compact('pose', 'steps'));
     }
 
+    //getAsanaWithDetails
+    public function getAsanaWithDetails(int $id)
+    {
+        $asana = Gallery::with([
+            'steps',
+            'benefits',
+            'contraindications',
+            'images',
+            'category',
+            'difficultyLevel',
+            'timeOfTheDay',
+            'source',
+            'reference',
+            'tags',
+        ])->findOrFail($id);
+
+        $primaryImage = $asana->images->firstWhere('is_primary', true) ?? $asana->images->first();
+
+        $steps = $asana->steps->pluck('asana_steps')->all();
+
+        $pose = [
+            'id' => $asana->id,
+            'title' => $asana->asana_name,
+            'description' => $asana->asana_description,
+            'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : null,
+            'category' => optional($asana->category)->category_name,
+            'difficulty' => optional($asana->difficultyLevel)->level_name,
+            'time_of_the_day' => optional($asana->timeOfTheDay)->time_name,
+            'source' => optional($asana->source)->source_name,
+            'reference' => optional($asana->reference)->reference_title,
+            'tags' => $asana->tags->pluck('tag_name')->all(),
+            'benefits' => $asana->benefits->pluck('benefit')->all(),
+            'contraindications' => $asana->contraindications->pluck('contraindication')->all(),
+            'steps' => $steps,
+        ];
+
+        return view('gallery-detail', compact('pose', 'steps'));
+    }
+
 
     //addAsanas
     public function addAsanas(Request $request)

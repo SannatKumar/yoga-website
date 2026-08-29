@@ -67,7 +67,8 @@ Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits
 
     // Gallery Routes
     Route::get('/gallery', [GalleryController::class, 'index'])->name('gallery');
-    Route::get('/showgallerycard/{id}', [GalleryController::class, 'show'])->name('showgallerycard');
+    Route::get('/showgallerycard/{id}', [GalleryController::class, 'getAsanaWithDetails'])->name('showgallerycard');
+    Route::get('/asana-details/{id}', [GalleryController::class, 'getAsanaWithDetails'])->name('asana-details');
 
     // Videos Routes
     Route::view('/videos', 'videos')->name('videos');
