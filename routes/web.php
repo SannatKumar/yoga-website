@@ -46,6 +46,9 @@ Route::post('/add-asanas', [TestController::class, 'addAsanas'])->withoutMiddlew
 Route::put('/update-asanas', [TestController::class, 'updateAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 Route::delete('/delete-asanas', [TestController::class, 'deleteAsanas'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 
+//This route helps Postman to post data for asana steps if some CSRF Issue has come.
+Route::post('/add-asana-steps', [GalleryController::class, 'addAsanaSteps'])->withoutMiddleware([Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
+
 
 // Apply middleware to all routes
 Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits::class])->group(function () {
