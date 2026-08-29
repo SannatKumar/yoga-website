@@ -303,8 +303,8 @@ class GalleryController extends Controller
         $asanaName = $request->asana_name;
         $asanaDescription = $request->asana_description;
         $sourceId = $request->source_id;
-        $stepsId = $request->steps_id;
-        $tagId = $request->tag_id;
+        $categoryId = $request->category_id;
+        $difficultyId = $request->difficulty_id;
         $timeOftheDayId = $request->time_of_the_day_id;
         $referenceId = $request->reference_id;
 
@@ -312,8 +312,8 @@ class GalleryController extends Controller
             'asana_name' => $asanaName,
             'asana_description' => $asanaDescription,
             'source_id' => $sourceId,
-            'steps_id' => $stepsId,
-            'tags_id' => $tagId,
+            'category_id' => $categoryId,
+            'difficulty_id' => $difficultyId,
             'time_of_the_day_id' => $timeOftheDayId,
             'reference_id' => $referenceId,
         ]);
