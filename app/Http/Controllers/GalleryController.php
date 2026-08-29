@@ -5,7 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
-use App\Models\Gallery; 
+use App\Models\Gallery;
+use App\Models\AsanaStep;
 
 class GalleryController extends Controller
 {
@@ -320,6 +321,27 @@ class GalleryController extends Controller
 
 
         return response()->json(['result' => $gallery], 200)
+        ->header('Content-Type', 'application/json' );
+    }
+
+    //addAsanaSteps
+    public function addAsanaSteps(Request $request)
+    {
+        //Take the asanas_id and the full ordered list of steps for that asana
+        $asanasId = $request->asanas_id;
+        $steps = $request->steps;
+
+        $createdSteps = [];
+
+        foreach ($steps as $index => $step) {
+            $createdSteps[] = AsanaStep::create([
+                'asana_steps' => $step,
+                'steps_order_number' => $index + 1,
+                'asanas_id' => $asanasId,
+            ]);
+        }
+
+        return response()->json(['result' => $createdSteps], 200)
         ->header('Content-Type', 'application/json' );
     }
 }
