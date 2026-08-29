@@ -26,6 +26,7 @@
     </div>
 
     <div class="step-images">
+        <h2 class="header-class">{{ $header }}</h2>
         <div class="image-container">
         @foreach ($image_paths as $path)
             <img src="{{ $path }}" alt="Asana Step" class="step-image-img">
@@ -51,15 +52,16 @@
 
 /* Text side */
 .div-three-main-element .text {
-    flex: 0 0 60%;
+    flex: 0 0 50%;
     padding: 20px;
+    min-width: 0;
 }
 
 /* Images side */
 .div-three-main-element .step-images {
-    flex: 0 0 40%;
+    flex: 0 0 50%;
     padding: 20px;
-    align-items: stretch;
+    min-width: 0;
 }
 
 
@@ -75,7 +77,7 @@
 /* Steps container */
 .steps-text {
     border-radius: 12px;
-    padding: 1rem;
+    padding: 20px;
     border: 1px solid #25c55d;
 }
 
@@ -119,21 +121,26 @@
 
 /* Individual images */
 .step-image-img {
-    flex: 1;
-    max-width: 250px;
-    /* height: 100%; */
+    width: 100%;
+    aspect-ratio: 3 / 4;
     border-radius: 12px;
     border: 1px solid #ccc;
     object-fit: cover;
+    display: block;
 }
-.image-container{
-    flex: 1; 
+
+/* Two equal-width columns so any two (or more, wrapping in pairs) angle
+   photos sit side by side without overlapping, regardless of each
+   image's own intrinsic size */
+.image-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
     width: 100%;
-    height: 25%;
+    align-content: start;
+    box-sizing: border-box;
     border-radius: 12px;
     padding: 1rem;
     border: 1px solid #25c55d;
-    /* margin: 72px 0px 5px 0px;; */
-
 }
 </style>

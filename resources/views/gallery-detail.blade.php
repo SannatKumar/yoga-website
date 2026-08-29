@@ -18,7 +18,7 @@
 @endphp
 @php
 $image_paths = [
-    '/lotus-images/red_lotus.svg','/lotus-images/yellow_lotus.svg'
+    '/lotus-images/red_lotus.svg','/lotus-images/yellow_lotus.svg', '/lotus-images/red_lotus.svg','/lotus-images/yellow_lotus.svg'
 ];
 @endphp
 @section('content')
@@ -184,13 +184,6 @@ $image_paths = [
 
     }
 
-    .step-image-img{
-        width: 100%;
-        height: 100%;
-        object-fit: contain;
-
-    }
-    
 
 
     
