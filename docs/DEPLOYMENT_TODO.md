@@ -18,10 +18,17 @@ and gives you an actual next-steps list, plus a private-testing path before you 
   [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md)). The `asanas` table now also holds
   Sukshma Vyayama, Sthula Vyayama, and Tibetan Rites practices (36 more rows), plus a whole
   separate Surya Namaskara sequence schema — see
-  [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md). What's **still not** done, and blocks a
-  real public launch: (1) the write routes are still unauthenticated, (2) most asanas still have no
-  image or tags, (3) `.env` is still pointed at local dev values, (4) none of the new Sukshma/
-  Sthula Vyayama/Tibetan Rites/Surya Namaskara content has a page to render it yet.
+  [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md). **Every practice type now has a real
+  page** (fixed 2026-09-19, see below) — Sukshma/Sthula Vyayama, Tibetan Rites listing pages,
+  a dedicated Surya Namaskara sequence page, and a friendly "coming soon" page for Yoga Nidra
+  (no data exists for it yet, by design — not a bug). What's **still not** done, and blocks a
+  real public launch: (1) the write routes are still unauthenticated, (2) most asanas still have
+  no image or tags, (3) `.env` is still pointed at local dev values.
+- **Note**: `/gallery`'s `practice_type_id` filter was deliberately removed by the project owner —
+  `/gallery` is meant to be a single library-style listing of everything (asanas *and* Sukshma/
+  Sthula Vyayama/Tibetan Rites), searchable by as many keywords as possible, not scoped to just
+  "Asana" rows. If you're reading this and wondering why `GalleryController::index()` doesn't
+  filter by type: that's intentional, don't reintroduce the filter.
 
 ## What's already done (the old docs don't know about this)
 
@@ -49,12 +56,14 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   real source text for those two was found — see `CONTENT_EXTRACTION_STATUS.md`).
 - **2026-09-19**: `GalleryController::index()` (the `/gallery` listing page) now queries
   `Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])` instead of returning the old
-  9-item hardcoded array — it shows all 40 real asanas, each linking to its own correct
-  `/showgallerycard/{id}`, with real image/category/difficulty/tags where seeded and graceful
-  fallbacks (`/lotus-images/blank_image.png`, "Uncategorized", "All Levels") where not. Category
-  filter, difficulty filter, and search all verified working against real data.
-  `gallery.blade.php` itself needed no changes — the controller maps DB rows into the same array
-  shape the view already expected.
+  9-item hardcoded array — each row links to its own correct `/showgallerycard/{id}`, with real
+  image/category/difficulty/tags where seeded and graceful fallbacks
+  (`/lotus-images/blank_image.png`, "Uncategorized", "All Levels") where not. Category filter,
+  difficulty filter, and search all verified working against real data. `gallery.blade.php` itself
+  needed no changes — the controller maps DB rows into the same array shape the view already
+  expected. (Originally scoped to `practice_type_id = 1`; the project owner intentionally removed
+  that filter afterward so `/gallery` is one searchable library across every practice type — see
+  the note in the TL;DR above.)
 - **2026-09-19**: Found `D:\Yoga_Asanas` — a folder of ~90 scanned note images plus 10
   hand-cleaned `.md` transcriptions covering ~29 poses' full steps/benefits/contraindications.
   Cross-referenced against the `asanas` table by name and inserted all 29 matches via
@@ -69,10 +78,33 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   with real content. Built a separate `surya_namaskara` + 3 child tables for the Surya Namaskara
   sequence (it references other postures rather than having its own steps) and seeded its full
   12-step sequence, verified resolving correctly end to end. `GalleryController::index()` was
-  updated to filter `practice_type_id = 1` so `/gallery` still shows only asanas, not the new
-  practice types. Full detail in [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md) —
-  including a real bug hit and fixed along the way (`asana_steps.asana_steps` was `varchar(100)`,
-  too small for real sentences, widened to `varchar(500)`).
+  briefly scoped to `practice_type_id = 1` at this point, later removed per the project owner (see
+  above). Full detail in [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md) — including a
+  real bug hit and fixed along the way (`asana_steps.asana_steps` was `varchar(100)`, too small
+  for real sentences, widened to `varchar(500)`).
+- **2026-09-19**: Connected the frontend to all of the above. `/show-asana` already had 5 practice
+  cards (Sukshma Vyayama, Sthula Vyayama, Tibetan Rites, Surya Namaskara, Yoga Nidra), but only the
+  first two linked anywhere real — the other three pointed at `tibetan.html`/`surya.html`/
+  `nidra.html`, static files that don't exist. Built out the rest:
+  - `SukhsmaVyayamaController`/`SthulaVyayamaController` now query the database (`practice_type_id`
+    2/3) instead of their own separate hardcoded arrays — same fix as `/gallery` got earlier.
+  - New `TibetanRitesController` + `/tibetan-rites` route + view, same listing-grid pattern,
+    querying `practice_type_id = 4`.
+  - New `SuryaNamaskaraController` + `/surya-namaskara` route + a dedicated sequence view (not the
+    filterable grid — it renders the 12-step sequence with breath/chakra/mantra per step, each
+    linking to its underlying posture's own detail page).
+  - New `/yoga-nidra` route + a friendly "coming soon" view — there's no data or table for Yoga
+    Nidra yet (intentionally deferred), so this is a real page with an honest message instead of a
+    dead link.
+  - Fixed a real bug found while doing this: the Sukshma/Sthula Vyayama (and now Tibetan Rites)
+    listing views hardcoded every card's link to asana `id => 1` — every single card, regardless of
+    which practice it displayed, linked to the same detail page. Now uses each row's actual id.
+    Also fixed `sthula-vyayama.blade.php`'s "no results" link, which pointed at a route name
+    (`gallery-asana-detail`) that doesn't exist and would have thrown if a search ever matched
+    nothing.
+  - Fixed a `stripos(): Passing null` deprecation warning in the search filter of all four listing
+    controllers (Gallery/Sukshma/Sthula/Tibetan) — several new practices have a `null`
+    `asana_description`, which `stripos()` doesn't accept.
 
 ## What's not done yet
 
@@ -112,12 +144,11 @@ longer an open item.
    transcribed by hand from the `.md` notes) — workable for a one-time batch like this, but not a
    repeatable "update content" workflow. Worth building the real pipeline before the *next* content
    batch (images/tags, or whatever surfaces to fill the 3 missing asanas).
-7. ~~The 6 remaining `.md` files have no database table~~ — **done 2026-09-19**, see
-   `UNIFIED_PRACTICE_SCHEMA.md`. What's still open: **no page renders any of it**.
-   `SukshmaVyayamaController`/`SthulaVyayamaController` still return their own old hardcoded/
-   placeholder arrays, completely disconnected from the new `asanas` rows — and there's no route
-   or view for Surya Namaskara at all yet. Right now the only way to see a Sukshma Vyayama practice
-   or a Tibetan Rite is `/asana-details/{id}` with the id looked up manually.
+7. ~~The 6 remaining `.md` files have no database table~~ / ~~no page renders any of it~~ —
+   **both done 2026-09-19**, see `UNIFIED_PRACTICE_SCHEMA.md`. `/sukhsma-vyayama`,
+   `/sthula-vyayama`, and the new `/tibetan-rites` all query the database now; `/surya-namaskara`
+   has its own dedicated sequence page; `/yoga-nidra` has an honest "coming soon" page rather than
+   the dead `nidra.html` link it used to be. No longer an open item.
 8. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
    repo root have real, usable content (per `PROJECT_FINDINGS.md`) that was never pulled into the
    database — separate from the `D:\Yoga_Asanas` folder, still worth using as source material for
