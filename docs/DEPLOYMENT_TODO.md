@@ -123,7 +123,12 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   vs. final result are now visually distinct. The same photo was also added beside the pose
   description near the top of the page (that section existed in the markup, commented out, from
   earlier in the project — re-enabled with a proper side-by-side layout instead of the stacked
-  layout its old CSS would have produced). Along the way, fixed a real bug: both spots previously
+  layout its old CSS would have produced). **Reverted by the project owner right after**: showing
+  the same photo in both spots read as a repeated/duplicated image on the page, so the top
+  "beside the description" block is commented out again (back to how it was before this session,
+  intentionally — don't re-enable it without a different image or a design reason to show it
+  twice). **Final state: the asana's photo appears in exactly one place — beside the steps, inside
+  the practice-steps card** (`<x-asana-step-card>`'s image side). Along the way, fixed a real bug: both spots previously
   fell back to a specific, real photo (`virasana.jpeg`) for any asana with no image of its own —
   meaning an asana with no photo yet would silently display someone else's pose as if it were its
   own. Now falls back to the generic `/lotus-images/blank_image.png` placeholder, matching what
@@ -226,6 +231,22 @@ longer an open item.
     page. Controllers, views, and language keys are untouched — re-enabling later is just
     uncommenting both blocks in `routes/web.php`. Verified via `php artisan route:list` that none
     of the four routes are registered.
+12. **New (2026-09-19), found while building the conventions linter, not fixed yet**:
+    `philosophy.blade.php` and `info.blade.php` use Bootstrap-style grid classes (`row`, `col-12`,
+    `col-md-6`, `d-flex`, `g-4`, `align-items-stretch`) — but this project has no Bootstrap CSS
+    anywhere (not in `package.json`, no CDN link in any layout file, and neither page defines
+    those class names itself in its own `<style>` block). These classes are very likely
+    completely inert right now — whatever layout is visible is happening despite them, not
+    because of them. Worth a proper look: either actually load Bootstrap (inconsistent with the
+    rest of the app, which is Tailwind v4 + hand-rolled CSS — see `CONVENTIONS_CSS.md`) or rewrite
+    these two pages' grids in real CSS/Tailwind.
+13. **New (2026-09-19)**: `cover-letter.blade.php` and `cv-generator.blade.php` each still contain
+    a live `route('cover-letter')` / `route('cv-generator')` self-reference (their own form
+    `action` attribute) even though those routes are now commented out (see item 11). Currently
+    harmless — nothing routes to these views either, so the broken self-reference never executes
+    — but if either page is ever reached another way without first restoring its route, it will
+    throw `RouteNotFoundException`. Worth fixing at the same time item 11 is ever revisited.
+    Caught by `scripts/lint-conventions.php`'s route-name check — see `RESUME_HERE.md`.
 
 ## Testing privately before launch
 

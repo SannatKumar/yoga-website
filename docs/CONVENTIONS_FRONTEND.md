@@ -59,7 +59,12 @@ defaults:
   `image_url`/`image_header`/`image_alt` for the single final-pose photo — it used to take an
   `image_paths` array rendered as a 2×2 grid of placeholder images; that was replaced with one
   real photo per asana, filled with `object-fit: cover`, once real photos existed for more than a
-  handful of asanas. If you're adding a new prop to an existing component, give it a sensible
+  handful of asanas. **This is the only place the asana's photo is shown on the detail page.** A
+  same-session attempt to *also* show the photo beside the description near the top of the page
+  was reverted by the project owner — the same image in two spots on one page read as a
+  duplicate/repeat, not a feature. That block (`.images-and-desc` in `gallery-detail.blade.php`)
+  is commented out again, deliberately — leave it that way unless there's a second, different
+  image to put there. If you're adding a new prop to an existing component, give it a sensible
   default in `@props([...])` so pages that don't pass it don't break.
 - `<x-locale-switcher>` — language switcher, used once in the header layout.
 - Components without an `x-` prefix in the directory name but still used as page fragments
