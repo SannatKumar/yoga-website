@@ -173,9 +173,15 @@ longer an open item.
     controller for the `/gallery` page, a real concept, not a mismatch. Verified via `php -l` on
     every touched file and by rendering `/gallery`, `/asana-details/{id}`, `/sukhsma-vyayama`,
     `/sthula-vyayama`, and `/tibetan-rites` through Tinker post-rename.
-11. Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
-    calendar) — already unlinked from nav, but still live at their routes. Confirm keep/hide/delete
-    before calling the site "launched."
+11. ~~Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
+    calendar)~~ — **Done (2026-09-19).** Decision: keep, not delete — planned for a later version.
+    For this launch they're hidden, not live: the nav links were already commented out in
+    `resources/views/layouts/header.blade.php`; their four routes in `routes/web.php` (and the
+    now-unused controller `use` imports) are commented out too, so `/cv-generator`,
+    `/cover-letter`, `/currency-converter`, `/nepali-calendar` return 404 instead of a working
+    page. Controllers, views, and language keys are untouched — re-enabling later is just
+    uncommenting both blocks in `routes/web.php`. Verified via `php artisan route:list` that none
+    of the four routes are registered.
 
 ## Testing privately before launch
 

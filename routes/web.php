@@ -11,10 +11,11 @@ use App\Http\Controllers\ShowAsanaController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\TeacherController;
-use App\Http\Controllers\CurrencyConverterController;
-use App\Http\Controllers\CVGeneratorController;
-use App\Http\Controllers\NepaliCalendarController;
-use App\Http\Controllers\CoverLetterController;
+// Non-yoga utility tools — routes disabled below for this launch, imports kept for later.
+// use App\Http\Controllers\CurrencyConverterController;
+// use App\Http\Controllers\CVGeneratorController;
+// use App\Http\Controllers\NepaliCalendarController;
+// use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\MantraShlokaBhajanController;
 use App\Http\Controllers\SthulaVyayamaController;
 use App\Http\Controllers\SukhsmaVyayamaController;
@@ -91,11 +92,15 @@ Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits
     // Route::post('/addAsanas', [GalleryController::class, 'addAsanas']);
 
 
-    // Utility Section
-    Route::get('/cover-letter', [CoverLetterController::class, 'getCoverLetter'])->name('cover-letter');
-    Route::get('/cv-generator', [CVGeneratorController::class, 'getCVGenerator'])->name('cv-generator');
-    Route::get('/currency-converter', [CurrencyConverterController::class, 'getCurrencyConverter'])->name('currency-converter');
-    Route::get('/nepali-calendar', [NepaliCalendarController::class, 'getNepaliCalendar'])->name('nepali-calendar');
+    // Utility Section — non-yoga tools (CV generator, cover letter, currency converter,
+    // Nepali calendar). Not part of this launch: already unlinked from nav, and these routes
+    // are disabled below so they're not reachable either. Controllers/views/language keys are
+    // kept in place on purpose — planned for a later version, not deleted. See
+    // docs/DEPLOYMENT_TODO.md item 11.
+    // Route::get('/cover-letter', [CoverLetterController::class, 'getCoverLetter'])->name('cover-letter');
+    // Route::get('/cv-generator', [CVGeneratorController::class, 'getCVGenerator'])->name('cv-generator');
+    // Route::get('/currency-converter', [CurrencyConverterController::class, 'getCurrencyConverter'])->name('currency-converter');
+    // Route::get('/nepali-calendar', [NepaliCalendarController::class, 'getNepaliCalendar'])->name('nepali-calendar');
 
     // Mantras, Shlokas and Bhajans
     Route::get('/mantra', [MantraShlokaBhajanController::class, 'getMantraShlokaBhajan'])->name('mantra-shloka-bhajan');
