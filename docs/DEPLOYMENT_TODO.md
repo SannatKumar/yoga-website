@@ -135,25 +135,29 @@ longer an open item.
    and should probably be deleted rather than filled in — see the data-quality note in
    `CONTENT_EXTRACTION_STATUS.md`.
 5. **Images: substantially improved (2026-09-19), tags still open.** Was: only Tadasana,
-   Padahastasana, Vajrasana had an image. Now 16 of 76 asanas do. Sourced from (in priority order
+   Padahastasana, Vajrasana had an image. Now 17 of 76 asanas do. Sourced from (in priority order
    given): `D:\Yoga_certificates\YogaMaterials\Haukkaniemi_yoga_pose_pictures` (already copied into
    `public/images/yogasana_pictures` by an earlier session, just never linked in the database —
    covers Vrikshasana, Trikonasanaa, Bhadrasana, Uttana Mandukasana, Manduka Asana, Gomukhasana,
    Yoga Mudrasana, Padmasana), existing but unlinked top-level files in `public/images`
    (Halasana, Sarvanga Asana, Vipareeta Karani), and
-   `C:\Users\chitr\OneDrive\Pictures\EditedOnes\cuttedones` (Simha Garjasana, Vakrasana — copied in
-   after visually checking each photo against its filename). Every candidate image was opened and
-   visually compared to the named pose before use, not just matched by filename — this caught two
-   real mislabels in the `cuttedones` folder (`Bhujanga.png` is a hands-and-knees stretch, not
-   Cobra; `HalasanaProper.jpeg` is a prone backbend holding the feet, not Plow Pose), both excluded
-   rather than inserted wrong. `D:\...\Forest_August_Suryanamaskara` was checked too but not used —
-   generic camera filenames (`P1010xxx`) with mostly repeated/indistinguishable standing frames,
-   not reliably attributable to one specific step of the 12-pose sequence without a dedicated
-   frame-by-frame session; left for later rather than guessed. Full row-by-row list and reasoning
-   in migration `2026_09_19_170000_seed_images_for_newly_photographed_asanas.php`. Verified by
-   rendering `/gallery` and all 13 affected `/asana-details/{id}` pages and confirming every
+   `C:\Users\chitr\OneDrive\Pictures\EditedOnes\cuttedones` (Simha Garjasana, Vakrasana, Bhujanga
+   Asana — copied in after visually checking each photo against its filename). Every candidate
+   image was opened and visually compared to the named pose before use, not just matched by
+   filename — this caught one real mislabel in the `cuttedones` folder (`HalasanaProper.jpeg` is a
+   prone backbend holding the feet, not Plow Pose), excluded rather than inserted wrong.
+   `Bhujanga.png` was initially excluded on the same visual-mismatch reasoning (looked like a
+   hands-and-knees stretch rather than the classic prone Cobra Pose), but the project owner
+   confirmed it's their own practiced variation of the pose — added back in via
+   `2026_09_19_171000_seed_bhujanga_asana_image.php` rather than editing the already-run migration.
+   `D:\...\Forest_August_Suryanamaskara` was checked too but not used — generic camera filenames
+   (`P1010xxx`) with mostly repeated/indistinguishable standing frames, not reliably attributable
+   to one specific step of the 12-pose sequence without a dedicated frame-by-frame session; left
+   for later rather than guessed. Full row-by-row list and reasoning in migration
+   `2026_09_19_170000_seed_images_for_newly_photographed_asanas.php`. Verified by
+   rendering `/gallery` and all affected `/asana-details/{id}` pages and confirming every
    referenced file exists on disk.
-   **Still open:** 60 asanas still have no image (fallback placeholder still applies to them); tags
+   **Still open:** 59 asanas still have no image (fallback placeholder still applies to them); tags
    are unchanged (still only Tadasana/Padahastasana) — this round was scoped to images only.
 6. No seeder/content-pipeline exists yet to populate content from a single structured source file —
    `CONTENT_PIPELINE.md` describes the intended JSON → seeder approach; it hasn't been built. The 29
