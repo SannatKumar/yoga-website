@@ -3,69 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class SukhsmaVyayamaController extends Controller
 {
     public function sukhsmaVyayama(Request $request)
     {
-        // Sample yoga images data (in a real app, this would come from the database)
-        $images = [
-            [
-                'id' => 1,
-                'title' => 'griva-shakti-bikasaka',
-                'description' => 'griva-shakti-bikasaka-desc',
-                'image_url' => '/images/yogasana_pictures/vajrasana_front_side.jpg',
-                'category' => 'griva-shakti-bikasaka',
-                'difficulty' => 'Beginner',
-                'tags' => ['spinal strength', 'Robust digestion', 'energizing']
-            ],
-            [
-                'id' => 2,
-                'title' => 'bhuja-balli-shakti-bikasaka',
-                'description' => 'bhuja-balli-shakti-bikasaka-desc',
-                'image_url' => '/images/yogasana_pictures/padmasana_front_side.jpg',
-                'category' => 'bhuja-balli-shakti-bikasaka',
-                'difficulty' => 'All Levels',
-                'tags' => ['meditation', 'peace', 'mindfulness']
-            ],
-            [
-                'id' => 3,
-                'title' => 'kati-shakti-bikasaka',
-                'description' => 'kati-shakti-bikasaka-desc',
-                'image_url' => '/images/yogasana_pictures/virasana.jpeg',
-                'category' => 'kati-shakti-bikasaka',
-                'difficulty' => 'Intermediate',
-                'tags' => ['strength', 'balance', 'focus']
-            ],
-            [
-                'id' => 4,
-                'title' => 'janga-shakti-bikasaka',
-                'description' => 'janga-shakti-bikasaka-desc',
-                'image_url' => '/images/yogasana_pictures/vrikshasana_front_side_left_leg_up.jpeg',
-                'category' => 'janga-shakti-bikasaka-category',
-                'difficulty' => 'Beginner',
-                'tags' => ['balance', 'nature', 'grounding']
-            ],
-            [
-                'id' => 5,
-                'title' => 'pada-mula-shakti-vikasaka',
-                'description' => 'pada-mula-shakti-vikasaka-desc',
-                'image_url' => '/images/Halasana.jpeg',
-                'category' => 'pada-mula-shakti-vikasaka-category',
-                'difficulty' => 'Beginner',
-                'tags' => ['inversion', 'strength', 'stretch']
-            ],
-            [
-                'id' => 6,
-                'title' => 'gulpha-pada-pristha-pada-tala-shakti-vikasaka',
-                'description' => 'gulpha-pada-pristha-pada-tala-shakti-vikasaka-desc',
-                'image_url' => '/images/virasana.jpeg',
-                'category' => 'gulpha-pada-pristha-pada-tala-shakti-vikasaka-category',
-                'difficulty' => 'Advanced',
-                'tags' => ['meditation', 'traditional', 'flexibility']
-            ]
-        ];
+        // Real Sukshma Vyayama practices (practice_type_id 2), replacing the old hardcoded sample array.
+        $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+            ->where('practice_type_id', 2)
+            ->get()
+            ->map(function ($asana) {
+                $primaryImage = $asana->images->firstWhere('is_primary', true) ?? $asana->images->first();
+
+                return [
+                    'id' => $asana->id,
+                    'title' => $asana->asana_name,
+                    'description' => $asana->asana_description,
+                    'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'category' => optional($asana->category)->category_name ?? 'Uncategorized',
+                    'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
+                    'tags' => $asana->tags->pluck('tag_name')->all(),
+                ];
+            })
+            ->all();
 
         // Filter by category if requested
         $category = $request->get('category');
@@ -87,8 +49,8 @@ class SukhsmaVyayamaController extends Controller
         $search = $request->get('search');
         if ($search) {
             $images = array_filter($images, function($image) use ($search) {
-                return stripos($image['title'], $search) !== false || 
-                       stripos($image['description'], $search) !== false;
+                return stripos($image['title'], $search) !== false ||
+                       stripos($image['description'] ?? '', $search) !== false;
             });
         }
 
