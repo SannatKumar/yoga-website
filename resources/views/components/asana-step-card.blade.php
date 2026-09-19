@@ -1,8 +1,10 @@
 @props([
-    'image_paths' => [],
     'header' => 'header-text',
     'description' => null,
     'steps' => [],
+    'image_url' => null,
+    'image_header' => 'Final Pose',
+    'image_alt' => 'Asana final pose',
 ])
 
 <div class="div-three-main-element">
@@ -26,11 +28,9 @@
     </div>
 
     <div class="step-images">
-        <h2 class="header-class">{{ $header }}</h2>
+        <h2 class="header-class">{{ $image_header }}</h2>
         <div class="image-container">
-        @foreach ($image_paths as $path)
-            <img src="{{ $path }}" alt="Asana Step" class="step-image-img">
-        @endforeach
+            <img src="{{ $image_url ?? '/lotus-images/blank_image.png' }}" alt="{{ $image_alt }}" class="step-image-img">
         </div>
     </div>
 </div>
@@ -62,6 +62,8 @@
     flex: 0 0 50%;
     padding: 20px;
     min-width: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 
@@ -119,25 +121,19 @@
 
 
 
-/* Individual images */
+/* Single final-pose image, filling its container without distortion */
 .step-image-img {
     width: 100%;
-    aspect-ratio: 3 / 4;
-    border-radius: 12px;
-    border: 1px solid #ccc;
+    height: 100%;
+    min-height: 280px;
+    border-radius: 8px;
     object-fit: cover;
     display: block;
 }
 
-/* Two equal-width columns so any two (or more, wrapping in pairs) angle
-   photos sit side by side without overlapping, regardless of each
-   image's own intrinsic size */
 .image-container {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    flex: 1;
     width: 100%;
-    align-content: start;
     box-sizing: border-box;
     border-radius: 12px;
     padding: 1rem;

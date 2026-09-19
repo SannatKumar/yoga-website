@@ -16,11 +16,6 @@
 //     "This completes one round."
 // ];
 @endphp
-@php
-$image_paths = [
-    '/lotus-images/red_lotus.svg','/lotus-images/yellow_lotus.svg', '/lotus-images/red_lotus.svg','/lotus-images/yellow_lotus.svg'
-];
-@endphp
 @section('content')
     <div class="main-div">
         <!--First Div starts -->
@@ -33,20 +28,24 @@ $image_paths = [
         <div class="part-two-div">
             <div class="part-two-div-main-section">
                 {{-- <div class="images-and-desc">
-                    <!-- Small preview image -->
+                    <!-- Small preview image, beside the description -->
                     <a href="#asana-popup">
-                        <img src="{{ $pose['image_url'] ?? '/images/yogasana_pictures/virasana.jpeg' }}" alt="{{ $pose['title'] ?? 'Asana' }}" class="asana-thumb">
+                        <img src="{{ $pose['image_url'] ?? '/lotus-images/blank_image.png' }}" alt="{{ $pose['title'] ?? 'Asana' }}" class="asana-thumb">
                     </a>
-                    <p class="asana-title">{{ $pose['title'] ?? 'Asana' }}</p>
-                    @if (!empty($pose['description']))
-                        <p class="asana-desc">{{ $pose['description'] }}</p>
-                    @endif
+                    <div class="asana-title-desc">
+                        <p class="asana-title">{{ $pose['title'] ?? 'Asana' }}</p>
+                        @if (!empty($pose['description']))
+                            <p class="asana-desc">{{ $pose['description'] }}</p>
+                        @else
+                            <p class="asana-desc">No description written yet for this asana.</p>
+                        @endif
+                    </div>
                 </div> --}}
 
                 <!-- Hidden popup for bigger image -->
                 <div id="asana-popup" class="popup">
                     <a href="#" class="close">&times;</a>
-                    <img src="{{ $pose['image_url'] ?? '/images/yogasana_pictures/virasana.jpeg' }}" alt="{{ $pose['title'] ?? 'Asana' }} Large">
+                    <img src="{{ $pose['image_url'] ?? '/lotus-images/blank_image.png' }}" alt="{{ $pose['title'] ?? 'Asana' }} Large">
                 </div>
 
             </div>
@@ -56,7 +55,13 @@ $image_paths = [
         <!--Third Div starts -->
         <div class="part-three-div">
             <div class="div-three-main-div">
-                <x-asana-step-card :header="($pose['title'] ?? 'Asana') . ' — Practice Steps'" :steps="$steps" :image_paths="$image_paths" />
+                <x-asana-step-card
+                    :header="($pose['title'] ?? 'Asana') . ' — Practice Steps'"
+                    :steps="$steps"
+                    :image_url="$pose['image_url'] ?? null"
+                    :image_header="'Final ' . ($pose['title'] ?? 'Asana') . ' Pose'"
+                    :image_alt="($pose['title'] ?? 'Asana') . ' — final pose'"
+                />
             </div>
 
         </div>
@@ -281,15 +286,31 @@ $image_paths = [
         opacity: 0.7;
     }
 
-    .images-and-desc{
-        display: flex;              /* enable flexbox */
-        flex-direction: column; 
-            align-items: center;        /* center horizontally */
-    justify-content: center;    /* center vertically (if height given) */
-    text-align: center;         /* center text inside <p> or <h> */
-    min-height: 300px;          /* optional: sets height to demonstrate vertical centering */
-    gap: 10px;  
+    .images-and-desc {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        gap: 24px;
+        min-height: 220px;
+        max-width: 700px;
+        margin: 0 auto;
+        text-align: left;
+    }
 
+    .asana-title-desc {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .asana-title-desc .asana-title {
+        text-align: left;
+        margin: 0 0 0.5rem;
+    }
+
+    .asana-title-desc .asana-desc {
+        max-width: none;
     }
     .part-two-div {
         text-align: center;
