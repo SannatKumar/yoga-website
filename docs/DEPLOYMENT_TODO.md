@@ -13,9 +13,11 @@ and gives you an actual next-steps list, plus a private-testing path before you 
   DigitalOcean Droplet with its firewall locked to your own IP, or HTTP Basic Auth in front of the
   whole site. Both let you test on real infrastructure with a real URL, visible only to you.
 - The database/schema work (Phase 2 of the old plan) is substantially done. `/gallery` is now
-  DB-driven too (fixed 2026-09-19, see below). What's **still not** done, and blocks a real public
-  launch: (1) the write routes are still unauthenticated, (2) only 3 of 40 asanas have real content
-  (steps/benefits/tags/image), (3) `.env` is still pointed at local dev values.
+  DB-driven too (fixed 2026-09-19, see below), and **31 of 40 asanas now have real
+  steps/benefits/contraindications** (up from 3, also 2026-09-19 — see
+  [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md)). What's **still not** done, and
+  blocks a real public launch: (1) the write routes are still unauthenticated, (2) most asanas
+  still have no image or tags, (3) `.env` is still pointed at local dev values.
 
 ## What's already done (the old docs don't know about this)
 
@@ -36,8 +38,11 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
 - `gallery-detail.blade.php` now renders real category/difficulty/time-of-day/tags/benefits/
   contraindications/image from the database instead of hardcoded placeholder text, with graceful
   empty states for asanas that don't have content yet.
-- 3 asanas (Tadasana `id 1`, Padahastasana `id 2`, Vajrasana `id 8`) have full dummy content
-  seeded end-to-end, as a working example of the shape every asana eventually needs.
+- 3 asanas (Tadasana `id 1`, Padahastasana `id 2`, Vajrasana `id 8`) originally had dummy/partial
+  content seeded end-to-end, as a working example of the shape every asana eventually needs —
+  **superseded 2026-09-19**, see below (Vajrasana's dummy content was replaced with its real
+  content; Tadasana/Padahastasana's dummy benefits/contraindications are still dummy, since no
+  real source text for those two was found — see `CONTENT_EXTRACTION_STATUS.md`).
 - **2026-09-19**: `GalleryController::index()` (the `/gallery` listing page) now queries
   `Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])` instead of returning the old
   9-item hardcoded array — it shows all 40 real asanas, each linking to its own correct
@@ -46,6 +51,14 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   filter, difficulty filter, and search all verified working against real data.
   `gallery.blade.php` itself needed no changes — the controller maps DB rows into the same array
   shape the view already expected.
+- **2026-09-19**: Found `D:\Yoga_Asanas` — a folder of ~90 scanned note images plus 10
+  hand-cleaned `.md` transcriptions covering ~29 poses' full steps/benefits/contraindications.
+  Cross-referenced against the `asanas` table by name and inserted all 29 matches via
+  `database/migrations/2026_09_19_150000_seed_real_asana_content_from_notes.php`. Full source
+  mapping, what's still missing (Ardha Chakrasana, Ardhakatichakrasanaa, Balasana have no source
+  text anywhere yet), and a data-quality flag (a duplicate Vajrasana row, `id 30`, plus several
+  `Trysana*` test rows that should probably be deleted) are in
+  [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md).
 
 ## What's not done yet
 
@@ -69,30 +82,46 @@ longer an open item.
 
 ### Content completeness (the actual "70%" bar from PROJECT_PLAN.md)
 
-4. Only 3 of 40 real asanas (in the `asanas` table) have steps/benefits/contraindications/tags/an
-   image row. The other 37 render with the empty-state fallbacks ("No benefits listed yet", no
-   image, "Uncategorized"/"All Levels" on the gallery grid). `category_id`/`source_id`/
-   `time_of_the_day_id`/`reference_id` are still the placeholder `1` for every asana except the 3
-   seeded ones — real values haven't been assigned per-asana.
-5. No seeder/content-pipeline exists yet to populate the other 37 from a single source file —
-   `CONTENT_PIPELINE.md` describes the intended JSON → seeder approach; it hasn't been built. Right
-   now, populating an asana means writing one-off `DB::table()->insert()` calls (as this session
-   did for the 3 demo asanas), which doesn't scale to 37 more.
-6. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
+4. **31 of 40 real asanas now have real steps/benefits/contraindications** (as of 2026-09-19 — see
+   `CONTENT_EXTRACTION_STATUS.md`). 3 of those 40 (Ardha Chakrasana, Ardhakatichakrasanaa, Balasana)
+   have **no source text anywhere yet** — a genuine content gap, not a data-entry backlog. The
+   remaining 6 (a duplicate Vajrasana row, `id 30`, plus 5 `Trysana*` test rows) aren't real asanas
+   and should probably be deleted rather than filled in — see the data-quality note in
+   `CONTENT_EXTRACTION_STATUS.md`.
+5. Almost no asana has an image row or tags yet (only Tadasana, Padahastasana, Vajrasana have an
+   image; only Tadasana/Padahastasana have tags) — these render with graceful fallbacks
+   (placeholder image, "No tags yet") but are still visibly incomplete on both `/gallery` and the
+   detail pages.
+6. No seeder/content-pipeline exists yet to populate content from a single structured source file —
+   `CONTENT_PIPELINE.md` describes the intended JSON → seeder approach; it hasn't been built. The 29
+   asanas populated 2026-09-19 were inserted via one large data-only migration (a PHP array,
+   transcribed by hand from the `.md` notes) — workable for a one-time batch like this, but not a
+   repeatable "update content" workflow. Worth building the real pipeline before the *next* content
+   batch (images/tags, or whatever surfaces to fill the 3 missing asanas).
+7. The 6 remaining `D:\Yoga_Asanas\Asanasdata\*.md` files (Pawanamuktasana series, Shakti Vikasaka,
+   Shakti Bandha Asanas, Sthula Vyayama, Tibetan Rites, Surya Namaskara) have real, usable content
+   but **no database table to go into** — they belong to `SukshmaVyayamaController`/
+   `SthulaVyayamaController`, which still hold hardcoded/placeholder PHP arrays entirely separate
+   from the `asanas` schema. Needs a schema decision (new tables, or extend the `asanas` family with
+   a type/category distinction) before any of that content can be inserted — see
+   `CONTENT_EXTRACTION_STATUS.md`'s "Suggested next step."
+8. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
    repo root have real, usable content (per `PROJECT_FINDINGS.md`) that was never pulled into the
-   database — worth using as source material for item 5 rather than writing content from scratch.
+   database — separate from the `D:\Yoga_Asanas` folder, still worth using as source material,
+   likely for whatever ends up populating item 7's Sukshma Vyayama content (Griva Shakti Vikasaka
+   content exists in both places).
 
 ### Small cleanups (not blockers, but worth doing before or shortly after launch)
 
-7. `GalleryController::show()` still has the `$id = 1;` bug — it's dead code now (nothing routes
+9. `GalleryController::show()` still has the `$id = 1;` bug — it's dead code now (nothing routes
    to it), but leaving a known-buggy unused method in the controller is confusing for the next
    person. Either delete it or fix the one-line bug.
-8. The `Gallery` model name still doesn't match what it holds (`asanas` table) — a rename to
-   `Asana` was suggested in the old plan; purely cosmetic, do it whenever it's convenient, not
-   urgent.
-9. Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
-   calendar) — already unlinked from nav, but still live at their routes. Confirm keep/hide/delete
-   before calling the site "launched."
+10. The `Gallery` model name still doesn't match what it holds (`asanas` table) — a rename to
+    `Asana` was suggested in the old plan; purely cosmetic, do it whenever it's convenient, not
+    urgent.
+11. Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
+    calendar) — already unlinked from nav, but still live at their routes. Confirm keep/hide/delete
+    before calling the site "launched."
 
 ## Testing privately before launch
 
@@ -131,16 +160,17 @@ a quick look at the current state on your phone before setting anything up.
 ```
 1. Security fixes (items 1-3)          ─────▶ 2. Deploy privately (Droplet + IP allowlist)
                                                           │
-3. Populate remaining 37 asanas          ────────────────┴─▶ 4. Review privately, fix what looks wrong
-   (items 4-6, can happen after                                  │
-   the private deploy is up)                                      ▼
-                                                            5. Open the firewall — you're live
+3. Images/tags + the 3 missing asanas    ────────────────┴─▶ 4. Review privately, fix what looks wrong
+   + decide Sukshma Vyayama schema                                │
+   (items 4-7, can happen after                                    ▼
+   the private deploy is up)                                5. Open the firewall — you're live
 ```
 
-The security fixes are small and mechanical — do those first (`/gallery` is already fixed).
-Content population (items 4-6) is the long pole and doesn't have to finish before you deploy
-privately; you can deploy with partial content, look at it on real infrastructure, and keep
-filling in asanas while it sits behind the IP allowlist.
+The security fixes are small and mechanical — do those first (`/gallery` is fixed, and steps/
+benefits/contraindications are now populated for 31/40 asanas). What's left in content (items 4-7)
+is the long pole and doesn't have to finish before you deploy privately; you can deploy with
+partial content, look at it on real infrastructure, and keep filling in images/tags/the remaining
+3 asanas while it sits behind the IP allowlist.
 
 ## Deployment steps (once ready to actually deploy, public or private)
 
