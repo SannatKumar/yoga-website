@@ -53,8 +53,8 @@ class GalleryController extends Controller
         $search = $request->get('search');
         if ($search) {
             $images = array_filter($images, function($image) use ($search) {
-                return stripos($image['title'], $search) !== false || 
-                       stripos($image['description'], $search) !== false;
+                return stripos($image['title'], $search) !== false ||
+                       stripos($image['description'] ?? '', $search) !== false;
             });
         }
 
