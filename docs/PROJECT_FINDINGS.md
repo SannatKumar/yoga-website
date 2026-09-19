@@ -1,5 +1,8 @@
 # Codebase Findings — Yoga Practice Website
 
+> **Superseded — this is a 2026-07-20 snapshot, kept as historical record.** For current status,
+> read [RESUME_HERE.md](RESUME_HERE.md) and [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md) instead.
+
 Audit date: 2026-07-20. This is a factual snapshot of what exists in the repo today, used as the
 basis for [PROJECT_PLAN.md](PROJECT_PLAN.md) and the role-based READMEs in this folder.
 

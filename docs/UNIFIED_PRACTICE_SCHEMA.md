@@ -1,5 +1,8 @@
 # Unified Practice Schema — Sukshma/Sthula Vyayama, Tibetan Rites, Surya Namaskara
 
+> **For current overall status, see [RESUME_HERE.md](RESUME_HERE.md) and
+> [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).**
+
 Written 2026-09-19. Follow-up to [DATABASE_SCHEMA_ASANAS.md](DATABASE_SCHEMA_ASANAS.md) and
 [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md). Answers: where do Sukshma Vyayama,
 Sthula Vyayama, Tibetan Rites, and Surya Namaskara content live now that real text for all of them

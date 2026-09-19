@@ -1,5 +1,10 @@
 # Project Plan — Path to 70% and DigitalOcean Launch
 
+> **Superseded — written 2026-07-20, describes an early plan.** Most of what's below has since
+> happened or changed shape. For current status and next steps, read
+> [RESUME_HERE.md](RESUME_HERE.md), [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md), and
+> [DEPLOYMENT_TODO.md](DEPLOYMENT_TODO.md) instead. Kept here as historical record.
+
 Builds on [PROJECT_FINDINGS.md](PROJECT_FINDINGS.md). Read that first if you haven't — every task
 below points back to a specific finding.
 
