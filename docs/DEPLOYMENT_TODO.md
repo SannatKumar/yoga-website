@@ -12,11 +12,10 @@ and gives you an actual next-steps list, plus a private-testing path before you 
   [Testing privately before launch](#testing-privately-before-launch) below. Recommended: a
   DigitalOcean Droplet with its firewall locked to your own IP, or HTTP Basic Auth in front of the
   whole site. Both let you test on real infrastructure with a real URL, visible only to you.
-- The database/schema work (Phase 2 of the old plan) is substantially done. What's **not** done
-  yet, and blocks a real public launch: (1) the write routes are still unauthenticated, (2) the
-  `/gallery` listing page still shows old hardcoded/mismatched data even though the detail page is
-  now DB-driven, (3) only 3 of 42 asanas have real content (steps/benefits/tags/image), (4) `.env`
-  is still pointed at local dev values.
+- The database/schema work (Phase 2 of the old plan) is substantially done. `/gallery` is now
+  DB-driven too (fixed 2026-09-19, see below). What's **still not** done, and blocks a real public
+  launch: (1) the write routes are still unauthenticated, (2) only 3 of 40 asanas have real content
+  (steps/benefits/tags/image), (3) `.env` is still pointed at local dev values.
 
 ## What's already done (the old docs don't know about this)
 
@@ -39,6 +38,14 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   empty states for asanas that don't have content yet.
 - 3 asanas (Tadasana `id 1`, Padahastasana `id 2`, Vajrasana `id 8`) have full dummy content
   seeded end-to-end, as a working example of the shape every asana eventually needs.
+- **2026-09-19**: `GalleryController::index()` (the `/gallery` listing page) now queries
+  `Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])` instead of returning the old
+  9-item hardcoded array — it shows all 40 real asanas, each linking to its own correct
+  `/showgallerycard/{id}`, with real image/category/difficulty/tags where seeded and graceful
+  fallbacks (`/lotus-images/blank_image.png`, "Uncategorized", "All Levels") where not. Category
+  filter, difficulty filter, and search all verified working against real data.
+  `gallery.blade.php` itself needed no changes — the controller maps DB rows into the same array
+  shape the view already expected.
 
 ## What's not done yet
 
@@ -55,36 +62,37 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
 3. The duplicate `GalleryController::addAsanas()` (there's also one in `TestController`) —
    decide whether to keep both or delete the redundant one.
 
+### ~~`/gallery` listing was hardcoded~~ — fixed 2026-09-19
+
+`GalleryController::index()` now queries the database (see "What's already done" above). No
+longer an open item.
+
 ### Content completeness (the actual "70%" bar from PROJECT_PLAN.md)
 
-4. `/gallery` (`GalleryController::index()`) still returns the old hardcoded PHP array, including
-   the known mismatches (id 9 "Sun Salutation" pointing at a Shoulderstand photo, id 6 "Balasana"
-   with Padmasana's description, id 5 "Halasana" with Adho Mukha Svanasana's description). The
-   detail page was fixed this session; the listing page wasn't — visitors would still see wrong
-   data on the page that links *into* the now-correct detail page.
-5. Only 3 of 42 real asanas (in the `asanas` table) have steps/benefits/contraindications/tags/an
-   image row. The other 39 render with the empty-state fallbacks ("No benefits listed yet", no
-   image). `category_id`/`source_id`/`time_of_the_day_id`/`reference_id` are still the placeholder
-   `1` for every asana except the 3 seeded ones — real values haven't been assigned per-asana.
-6. No seeder/content-pipeline exists yet to populate the other 39 from a single source file —
+4. Only 3 of 40 real asanas (in the `asanas` table) have steps/benefits/contraindications/tags/an
+   image row. The other 37 render with the empty-state fallbacks ("No benefits listed yet", no
+   image, "Uncategorized"/"All Levels" on the gallery grid). `category_id`/`source_id`/
+   `time_of_the_day_id`/`reference_id` are still the placeholder `1` for every asana except the 3
+   seeded ones — real values haven't been assigned per-asana.
+5. No seeder/content-pipeline exists yet to populate the other 37 from a single source file —
    `CONTENT_PIPELINE.md` describes the intended JSON → seeder approach; it hasn't been built. Right
    now, populating an asana means writing one-off `DB::table()->insert()` calls (as this session
-   did for the 3 demo asanas), which doesn't scale to 39 more.
-7. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
+   did for the 3 demo asanas), which doesn't scale to 37 more.
+6. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
    repo root have real, usable content (per `PROJECT_FINDINGS.md`) that was never pulled into the
-   database — worth using as source material for item 6 rather than writing content from scratch.
+   database — worth using as source material for item 5 rather than writing content from scratch.
 
 ### Small cleanups (not blockers, but worth doing before or shortly after launch)
 
-8. `GalleryController::show()` still has the `$id = 1;` bug — it's dead code now (nothing routes
+7. `GalleryController::show()` still has the `$id = 1;` bug — it's dead code now (nothing routes
    to it), but leaving a known-buggy unused method in the controller is confusing for the next
    person. Either delete it or fix the one-line bug.
-9. The `Gallery` model name still doesn't match what it holds (`asanas` table) — a rename to
+8. The `Gallery` model name still doesn't match what it holds (`asanas` table) — a rename to
    `Asana` was suggested in the old plan; purely cosmetic, do it whenever it's convenient, not
    urgent.
-10. Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
-    calendar) — already unlinked from nav, but still live at their routes. Confirm keep/hide/delete
-    before calling the site "launched."
+9. Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
+   calendar) — already unlinked from nav, but still live at their routes. Confirm keep/hide/delete
+   before calling the site "launched."
 
 ## Testing privately before launch
 
@@ -121,17 +129,16 @@ a quick look at the current state on your phone before setting anything up.
 ## Suggested order of work
 
 ```
-1. Security fixes (items 1-3)          ─┐
-                                          ├─▶ 4. Deploy privately (Droplet + IP allowlist)
-2. Fix /gallery listing (item 4)        ─┘        │
-3. Populate remaining 39 asanas          ─────────┴─▶ 5. Review privately, fix what looks wrong
-   (items 5-7, can happen after                          │
-   the private deploy is up)                              ▼
-                                                    6. Open the firewall — you're live
+1. Security fixes (items 1-3)          ─────▶ 2. Deploy privately (Droplet + IP allowlist)
+                                                          │
+3. Populate remaining 37 asanas          ────────────────┴─▶ 4. Review privately, fix what looks wrong
+   (items 4-6, can happen after                                  │
+   the private deploy is up)                                      ▼
+                                                            5. Open the firewall — you're live
 ```
 
-The security fixes and the `/gallery` listing fix are small and mechanical — do those first.
-Content population (item 5-7) is the long pole and doesn't have to finish before you deploy
+The security fixes are small and mechanical — do those first (`/gallery` is already fixed).
+Content population (items 4-6) is the long pole and doesn't have to finish before you deploy
 privately; you can deploy with partial content, look at it on real infrastructure, and keep
 filling in asanas while it sits behind the IP allowlist.
 
@@ -164,5 +171,5 @@ Carried over from `PROJECT_PLAN.md`, still unresolved:
 2. Droplet vs. App Platform for hosting? (Droplet gives you the IP-allowlist private-testing path
    above directly; App Platform would need the Basic Auth approach instead since you don't get
    direct firewall control.)
-3. How many of the 42 asanas need full content to call this launched — all of them, or a smaller
+3. How many of the 40 asanas need full content to call this launched — all of them, or a smaller
    set with the rest following post-launch?
