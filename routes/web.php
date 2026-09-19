@@ -18,6 +18,8 @@ use App\Http\Controllers\CoverLetterController;
 use App\Http\Controllers\MantraShlokaBhajanController;
 use App\Http\Controllers\SthulaVyayamaController;
 use App\Http\Controllers\SukhsmaVyayamaController;
+use App\Http\Controllers\TibetanRitesController;
+use App\Http\Controllers\SuryaNamaskaraController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TrackVisits;
 use App\Http\Middleware\SetLocale;
@@ -102,6 +104,11 @@ Route::middleware([SetLocale::class, SetDefaultLocaleForUrls::class, TrackVisits
     // Sthula Vyayama and Sukhsma Vyayama
     Route::get('/sthula-vyayama', [SthulaVyayamaController::class, 'sthulaVyayama'])->name('sthula-vyayama');
     Route::get('/sukhsma-vyayama', [SukhsmaVyayamaController::class, 'sukhsmaVyayama'])->name('sukhsma-vyayama');
+
+    // Tibetan Rites, Surya Namaskara, Yoga Nidra
+    Route::get('/tibetan-rites', [TibetanRitesController::class, 'index'])->name('tibetan-rites');
+    Route::get('/surya-namaskara', [SuryaNamaskaraController::class, 'index'])->name('surya-namaskara');
+    Route::view('/yoga-nidra', 'yoga-nidra')->name('yoga-nidra');
 
     //Lotus Controller
     Route::get('/lotus-page', [LotusPageController::class, 'getlotus'])->name('lotus-page');
