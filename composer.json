@@ -55,6 +55,16 @@
         "test": [
             "@php artisan config:clear --ansi",
             "@php artisan test"
+        ],
+        "lint": [
+            "vendor/bin/pint --test",
+            "@php scripts/lint-conventions.php"
+        ],
+        "lint:fix": [
+            "vendor/bin/pint"
+        ],
+        "lint:conventions": [
+            "@php scripts/lint-conventions.php"
         ]
     },
     "extra": {
