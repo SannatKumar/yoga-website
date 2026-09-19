@@ -10,6 +10,7 @@ class Gallery extends Model
     protected $table = 'asanas';
 
     protected $fillable = [
+        'practice_type_id',
         'asana_name',
         'asana_description',
         'source_id',
@@ -69,5 +70,10 @@ class Gallery extends Model
     public function reference()
     {
         return $this->belongsTo(AsanaReference::class, 'reference_id');
+    }
+
+    public function practiceType()
+    {
+        return $this->belongsTo(PracticeType::class, 'practice_type_id');
     }
 }
