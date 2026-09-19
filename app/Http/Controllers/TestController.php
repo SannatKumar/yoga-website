@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 // use App\Models\Test;
 use App\Http\Controllers\Controller;
-use App\Models\Gallery;
+use App\Models\Asana;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
 
@@ -18,7 +18,7 @@ class TestController extends Controller
     {
         Log::info('Request Data: ' . $request);
         // Optional: you can apply filters if query parameters are passed
-        $query = Gallery::query();
+        $query = Asana::query();
 
         if ($request->has('tag_id')) {
             $query->where('tag_id', $request->tag_id);
@@ -55,7 +55,7 @@ class TestController extends Controller
         $timeOftheDayId = $request->time_of_the_day_id;
         $referenceId = $request->reference_id;
 
-        $gallery = Gallery::create([
+        $asana = Asana::create([
             'asana_name' => $asanaName,
             'asana_description' => $asanaDescription,
             'source_id' => $sourceId,
@@ -67,7 +67,7 @@ class TestController extends Controller
 
 
 
-        return response()->json(['result' => $gallery], 200)
+        return response()->json(['result' => $asana], 200)
         ->header('Content-Type', 'application/json' );
     }
 
@@ -79,7 +79,7 @@ class TestController extends Controller
     {
         $asanaId = $request->id;
             // Find the asana by ID
-        $asana = Gallery::find($asanaId);
+        $asana = Asana::find($asanaId);
 
         // Check if record exists
         if (!$asana) {
@@ -110,7 +110,7 @@ class TestController extends Controller
     public function deleteAsanas(Request $request)
     {
         $asanaId = $request->id;
-        $asana = Gallery::find($asanaId);
+        $asana = Asana::find($asanaId);
 
         if (!$asana) {
             return response()->json(['message' => 'Asana not found'], 404);

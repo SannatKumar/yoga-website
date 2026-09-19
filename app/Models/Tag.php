@@ -17,6 +17,6 @@ class Tag extends Model
 
     public function asanas()
     {
-        return $this->belongsToMany(Gallery::class, 'asana_tag', 'tag_id', 'asanas_id');
+        return $this->belongsToMany(Asana::class, 'asana_tag', 'tag_id', 'asanas_id');
     }
 }

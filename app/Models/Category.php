@@ -17,6 +17,6 @@ class Category extends Model
 
     public function asanas()
     {
-        return $this->hasMany(Gallery::class, 'category_id');
+        return $this->hasMany(Asana::class, 'category_id');
     }
 }

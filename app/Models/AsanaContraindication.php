@@ -18,6 +18,6 @@ class AsanaContraindication extends Model
 
     public function asana()
     {
-        return $this->belongsTo(Gallery::class, 'asanas_id');
+        return $this->belongsTo(Asana::class, 'asanas_id');
     }
 }

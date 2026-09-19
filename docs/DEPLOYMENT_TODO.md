@@ -38,8 +38,8 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   `asanas`), fixed `images` to have real `path`/`name` columns, and added `categories`,
   `difficulty_levels`, `time_of_the_day`, `sources`, `asana_references`, plus an `asana_tag`
   many-to-many pivot. Full detail in [DATABASE_SCHEMA_ASANAS.md](DATABASE_SCHEMA_ASANAS.md).
-- Added Eloquent models for all of the above, with relationships wired onto `Gallery` (the
-  `asanas` model — still named `Gallery`, see [Small cleanups](#small-cleanups-not-blockers)).
+- Added Eloquent models for all of the above, with relationships wired onto the `asanas` model
+  (originally named `Gallery`; renamed to `Asana` — see [Small cleanups](#small-cleanups-not-blockers)).
 - Added `GalleryController::getAsanaWithDetails()`, which actually queries the database (not a
   hardcoded array) and builds the pose/steps/benefits/contraindications/tags data the detail page
   needs. `/showgallerycard/{id}` now routes here instead of the old broken `show()` — **the
@@ -162,9 +162,17 @@ longer an open item.
    nothing in `routes/web.php` referenced it (`/gallery` uses `index()`, `/showgallerycard/{id}` and
    `/asana-details/{id}` use `getAsanaWithDetails()`), so the whole dead method was deleted along
    with its now-unused `Log` facade import, instead of fixing a bug in code nothing calls.
-10. The `Gallery` model name still doesn't match what it holds (`asanas` table) — a rename to
-    `Asana` was suggested in the old plan; purely cosmetic, do it whenever it's convenient, not
-    urgent.
+10. ~~The `Gallery` model name still doesn't match what it holds (`asanas` table)~~ — **Done
+    (2026-09-19).** Renamed `app/Models/Gallery.php` to `app/Models/Asana.php` (class `Gallery` →
+    `Asana`, same `asanas` table/columns/relationships, nothing else changed). Updated every
+    reference: `GalleryController`, `TestController`, `TibetanRitesController`,
+    `SukhsmaVyayamaController`, `SthulaVyayamaController`, and the `belongsTo`/`hasMany`/
+    `belongsToMany` relationships in `Category`, `DifficultyLevel`, `TimeOfTheDay`, `Source`,
+    `AsanaReference`, `Tag`, `AsanaStep`, `AsanaBenefit`, `AsanaContraindication`, `Image`,
+    `PracticeType`, and `SuryaNamaskaraStep`. `GalleryController` itself keeps its name — it's the
+    controller for the `/gallery` page, a real concept, not a mismatch. Verified via `php -l` on
+    every touched file and by rendering `/gallery`, `/asana-details/{id}`, `/sukhsma-vyayama`,
+    `/sthula-vyayama`, and `/tibetan-rites` through Tinker post-rename.
 11. Decide on the non-yoga utility tools (CV generator, cover letter, currency converter, Nepali
     calendar) — already unlinked from nav, but still live at their routes. Confirm keep/hide/delete
     before calling the site "launched."

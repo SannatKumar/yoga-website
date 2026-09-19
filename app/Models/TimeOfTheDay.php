@@ -17,6 +17,6 @@ class TimeOfTheDay extends Model
 
     public function asanas()
     {
-        return $this->hasMany(Gallery::class, 'time_of_the_day_id');
+        return $this->hasMany(Asana::class, 'time_of_the_day_id');
     }
 }

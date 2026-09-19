@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Gallery;
+use App\Models\Asana;
 use App\Models\AsanaStep;
 
 class GalleryController extends Controller
@@ -14,7 +14,7 @@ class GalleryController extends Controller
         // Real asana data from the database, replacing the old hardcoded sample array.
         // Scoped to practice_type_id 1 (Asana) — Sukshma Vyayama, Sthula Vyayama, and
         // Tibetan Rite practices now share this table but don't belong on the asana gallery.
-        $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+        $images = Asana::with(['category', 'difficultyLevel', 'tags', 'images'])
             // ->where('practice_type_id', 1)
             ->get()
             ->map(function ($asana) {
@@ -67,7 +67,7 @@ class GalleryController extends Controller
     //getAsanaWithDetails
     public function getAsanaWithDetails(int $id)
     {
-        $asana = Gallery::with([
+        $asana = Asana::with([
             'steps',
             'benefits',
             'contraindications',
@@ -116,7 +116,7 @@ class GalleryController extends Controller
         $timeOftheDayId = $request->time_of_the_day_id;
         $referenceId = $request->reference_id;
 
-        $gallery = Gallery::create([
+        $asana = Asana::create([
             'asana_name' => $asanaName,
             'asana_description' => $asanaDescription,
             'source_id' => $sourceId,
@@ -128,7 +128,7 @@ class GalleryController extends Controller
 
 
 
-        return response()->json(['result' => $gallery], 200)
+        return response()->json(['result' => $asana], 200)
         ->header('Content-Type', 'application/json' );
     }
 

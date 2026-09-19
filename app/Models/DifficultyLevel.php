@@ -17,6 +17,6 @@ class DifficultyLevel extends Model
 
     public function asanas()
     {
-        return $this->hasMany(Gallery::class, 'difficulty_id');
+        return $this->hasMany(Asana::class, 'difficulty_id');
     }
 }

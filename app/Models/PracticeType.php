@@ -17,6 +17,6 @@ class PracticeType extends Model
 
     public function asanas()
     {
-        return $this->hasMany(Gallery::class, 'practice_type_id');
+        return $this->hasMany(Asana::class, 'practice_type_id');
     }
 }

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gallery;
+use App\Models\Asana;
 use Illuminate\Http\Request;
 
 class TibetanRitesController extends Controller
@@ -11,7 +11,7 @@ class TibetanRitesController extends Controller
     public function index(Request $request)
     {
         // Real Tibetan Rite practices (practice_type_id 4).
-        $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+        $images = Asana::with(['category', 'difficultyLevel', 'tags', 'images'])
             ->where('practice_type_id', 4)
             ->get()
             ->map(function ($asana) {

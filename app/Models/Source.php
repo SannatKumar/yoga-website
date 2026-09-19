@@ -18,6 +18,6 @@ class Source extends Model
 
     public function asanas()
     {
-        return $this->hasMany(Gallery::class, 'source_id');
+        return $this->hasMany(Asana::class, 'source_id');
     }
 }

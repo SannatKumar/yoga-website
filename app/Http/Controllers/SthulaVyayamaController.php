@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Gallery;
+use App\Models\Asana;
 use Illuminate\Http\Request;
 
 class SthulaVyayamaController extends Controller
@@ -11,7 +11,7 @@ class SthulaVyayamaController extends Controller
     public function sthulaVyayama(Request $request)
     {
         // Real Sthula Vyayama practices (practice_type_id 3), replacing the old hardcoded sample array.
-        $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+        $images = Asana::with(['category', 'difficultyLevel', 'tags', 'images'])
             ->where('practice_type_id', 3)
             ->get()
             ->map(function ($asana) {

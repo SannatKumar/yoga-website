@@ -18,6 +18,6 @@ class AsanaReference extends Model
 
     public function asanas()
     {
-        return $this->hasMany(Gallery::class, 'reference_id');
+        return $this->hasMany(Asana::class, 'reference_id');
     }
 }
