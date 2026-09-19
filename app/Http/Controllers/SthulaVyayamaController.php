@@ -3,33 +3,31 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 class SthulaVyayamaController extends Controller
 {
     public function sthulaVyayama(Request $request)
     {
-        // Sample yoga images data (in a real app, this would come from the database)
-        $images = [
-            [
-                'id' => 1,
-                'title' => 'sarvanga-pushti',
-                'description' => 'sarvanga-pushti-desc',
-                'image_url' => '/images/yogasana_pictures/vajrasana_front_side.jpg',
-                'category' => 'sarvanga-pushti-category',
-                'difficulty' => 'Beginner',
-                'tags' => ['spinal strength', 'Robust digestion', 'energizing']
-            ],
-            [
-                'id' => 2,
-                'title' => 'hrid-gati',
-                'description' => 'hrid-gati-desc',
-                'image_url' => '/images/yogasana_pictures/padmasana_front_side.jpg',
-                'category' => 'hrid-gati-category',
-                'difficulty' => 'All Levels',
-                'tags' => ['meditation', 'peace', 'mindfulness']
-            ],
-        ];
+        // Real Sthula Vyayama practices (practice_type_id 3), replacing the old hardcoded sample array.
+        $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+            ->where('practice_type_id', 3)
+            ->get()
+            ->map(function ($asana) {
+                $primaryImage = $asana->images->firstWhere('is_primary', true) ?? $asana->images->first();
+
+                return [
+                    'id' => $asana->id,
+                    'title' => $asana->asana_name,
+                    'description' => $asana->asana_description,
+                    'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'category' => optional($asana->category)->category_name ?? 'Uncategorized',
+                    'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
+                    'tags' => $asana->tags->pluck('tag_name')->all(),
+                ];
+            })
+            ->all();
 
         // Filter by category if requested
         $category = $request->get('category');
@@ -51,8 +49,8 @@ class SthulaVyayamaController extends Controller
         $search = $request->get('search');
         if ($search) {
             $images = array_filter($images, function($image) use ($search) {
-                return stripos($image['title'], $search) !== false || 
-                       stripos($image['description'], $search) !== false;
+                return stripos($image['title'], $search) !== false ||
+                       stripos($image['description'] ?? '', $search) !== false;
             });
         }
 
