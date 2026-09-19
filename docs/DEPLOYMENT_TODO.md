@@ -149,12 +149,10 @@ longer an open item.
    `/sthula-vyayama`, and the new `/tibetan-rites` all query the database now; `/surya-namaskara`
    has its own dedicated sequence page; `/yoga-nidra` has an honest "coming soon" page rather than
    the dead `nidra.html` link it used to be. No longer an open item.
-8. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
-   repo root have real, usable content (per `PROJECT_FINDINGS.md`) that was never pulled into the
-   database — separate from the `D:\Yoga_Asanas` folder, still worth using as source material for
-   whatever's still missing (Griva Shakti Vikasaka content exists in both places, so this is now
-   redundant with what's already inserted, but Tadasana's fuller writeup in `data.md` may still be
-   worth folding in over the current dummy benefits/contraindications for asana `id 1`).
+8. ~~`data.md`/`new_data.md`/`yogasana.json` at the repo root have real, usable content that was
+   never pulled into the database~~ — **Done/deleted (2026-09-19).** Per the project owner: this
+   has been handled with more data than these files held at the time this item was written, and
+   the files have since been deleted from the repo root. No longer an open item.
 
 ### Small cleanups (not blockers, but worth doing before or shortly after launch)
 
