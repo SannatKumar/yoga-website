@@ -12,165 +12,23 @@ class GalleryController extends Controller
 {
     public function index(Request $request)
     {
-        // Sample yoga images data (in a real app, this would come from the database)
-        $images = [
-                        [
-                'id' => 1,
-                'title' => 'Vajrasana',
-                'description' => 'One of the 4 Major Asanas',
-                'image_url' => '/images/yogasana_pictures/vajrasana_front_side.jpg',
-                'category' => 'Meditation',
-                'difficulty' => 'Beginner',
-                'tags' => ['spinal strength', 'Robust digestion', 'energizing']
-            ],
-            [
-                'id' => 2,
-                'title' => 'Padmasana',
-                'description' => 'One of the Best Meditation Posture',
-                'image_url' => '/images/yogasana_pictures/padmasana_front_side.jpg',
-                'category' => 'Meditation',
-                'difficulty' => 'All Levels',
-                'tags' => ['meditation', 'peace', 'mindfulness']
-            ],
-            [
-                'id' => 3,
-                'title' => 'Veerasana',
-                'description' => 'Calm and powerful Hero pose',
-                'image_url' => '/images/yogasana_pictures/virasana.jpeg',
-                'category' => 'Hatha',
-                'difficulty' => 'Intermediate',
-                'tags' => ['strength', 'balance', 'focus']
-            ],
-            [
-                'id' => 4,
-                'title' => 'Vrikshasana',
-                'description' => 'Balanced tree pose in the forest',
-                'image_url' => '/images/yogasana_pictures/vrikshasana_front_side_left_leg_up.jpeg',
-                'category' => 'Hatha',
-                'difficulty' => 'Beginner',
-                'tags' => ['balance', 'nature', 'grounding']
-            ],
-            [
-                'id' => 5,
-                'title' => 'Halasana',
-                'description' => 'Classic downward facing dog pose',
-                'image_url' => '/images/Halasana.jpeg',
-                'category' => 'Vinyasa',
-                'difficulty' => 'Beginner',
-                'tags' => ['inversion', 'strength', 'stretch']
-            ],
-            [
-                'id' => 6,
-                'title' => 'Balasana',
-                'description' => 'Traditional lotus meditation pose',
-                'image_url' => '/images/virasana.jpeg',
-                'category' => 'Meditation',
-                'difficulty' => 'Advanced',
-                'tags' => ['meditation', 'traditional', 'flexibility']
-            ],
-            [
-                'id' => 7,
-                'title' => 'Tadasana',
-                'description' => 'Energizing cobra backbend',
-                'image_url' => '/images/tadasana.jpeg',
-                'category' => 'Hatha',
-                'difficulty' => 'Beginner',
-                'tags' => ['backbend', 'energy', 'opening']
-            ],
-            [
-                'id' => 8,
-                'title' => 'Yogamudrasana',
-                'description' => 'Restorative child\'s pose',
-                'image_url' => '/images/yogamudra.png',
-                'category' => 'Restorative',
-                'difficulty' => 'All Levels',
-                'tags' => ['restorative', 'relaxation', 'gentle']
-            ],
-                        [
-                'id' => 9,
-                'title' => 'Sun Salutation',
-                'description' => 'A beautiful morning sun salutation sequence',
-                'image_url' => '/images/Sarvangasana.jpeg',
-                'category' => 'Vinyasa',
-                'difficulty' => 'Beginner',
-                'tags' => ['morning', 'flow', 'energizing']
-            ],
+        // Real asana data from the database, replacing the old hardcoded sample array.
+        $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+            ->get()
+            ->map(function ($asana) {
+                $primaryImage = $asana->images->firstWhere('is_primary', true) ?? $asana->images->first();
 
-            /*
-            [
-                'id' => 1,
-                'title' => 'Sun Salutation',
-                'description' => 'A beautiful morning sun salutation sequence',
-                'image_url' => '/images/Sarvangasana.jpeg',
-                'category' => 'Vinyasa',
-                'difficulty' => 'Beginner',
-                'tags' => ['morning', 'flow', 'energizing']
-            ],
-            [
-                'id' => 2,
-                'title' => 'Meditation Pose',
-                'description' => 'Peaceful meditation in nature',
-                'image_url' => '/images/Matsyasana.jpeg',
-                'category' => 'Meditation',
-                'difficulty' => 'All Levels',
-                'tags' => ['meditation', 'peace', 'mindfulness']
-            ],
-            [
-                'id' => 3,
-                'title' => 'Warrior Pose',
-                'description' => 'Strong and powerful warrior II pose',
-                'image_url' => '/images/Vajroli.jpeg',
-                'category' => 'Hatha',
-                'difficulty' => 'Intermediate',
-                'tags' => ['strength', 'balance', 'focus']
-            ],
-            [
-                'id' => 4,
-                'title' => 'Tree Pose',
-                'description' => 'Balanced tree pose in the forest',
-                'image_url' => '/images/Halasana.jpeg',
-                'category' => 'Hatha',
-                'difficulty' => 'Beginner',
-                'tags' => ['balance', 'nature', 'grounding']
-            ],
-            [
-                'id' => 5,
-                'title' => 'Downward Dog',
-                'description' => 'Classic downward facing dog pose',
-                'image_url' => '/images/Halasana.jpeg',
-                'category' => 'Vinyasa',
-                'difficulty' => 'Beginner',
-                'tags' => ['inversion', 'strength', 'stretch']
-            ],
-            [
-                'id' => 6,
-                'title' => 'Lotus Pose',
-                'description' => 'Traditional lotus meditation pose',
-                'image_url' => '/images/virasana.jpeg',
-                'category' => 'Meditation',
-                'difficulty' => 'Advanced',
-                'tags' => ['meditation', 'traditional', 'flexibility']
-            ],
-            [
-                'id' => 7,
-                'title' => 'Cobra Pose',
-                'description' => 'Energizing cobra backbend',
-                'image_url' => '/images/tadasana.jpeg',
-                'category' => 'Hatha',
-                'difficulty' => 'Beginner',
-                'tags' => ['backbend', 'energy', 'opening']
-            ],
-            [
-                'id' => 8,
-                'title' => 'Child\'s Pose',
-                'description' => 'Restorative child\'s pose',
-                'image_url' => '/images/yogamudra.png',
-                'category' => 'Restorative',
-                'difficulty' => 'All Levels',
-                'tags' => ['restorative', 'relaxation', 'gentle']
-            ]
-                */
-        ];
+                return [
+                    'id' => $asana->id,
+                    'title' => $asana->asana_name,
+                    'description' => $asana->asana_description,
+                    'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'category' => optional($asana->category)->category_name ?? 'Uncategorized',
+                    'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
+                    'tags' => $asana->tags->pluck('tag_name')->all(),
+                ];
+            })
+            ->all();
 
         // Filter by category if requested
         $category = $request->get('category');
