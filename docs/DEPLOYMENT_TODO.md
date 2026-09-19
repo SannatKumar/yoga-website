@@ -158,9 +158,10 @@ longer an open item.
 
 ### Small cleanups (not blockers, but worth doing before or shortly after launch)
 
-9. `GalleryController::show()` still has the `$id = 1;` bug — it's dead code now (nothing routes
-   to it), but leaving a known-buggy unused method in the controller is confusing for the next
-   person. Either delete it or fix the one-line bug.
+9. ~~`GalleryController::show()` still has the `$id = 1;` bug~~ — **Done (2026-09-19).** Confirmed
+   nothing in `routes/web.php` referenced it (`/gallery` uses `index()`, `/showgallerycard/{id}` and
+   `/asana-details/{id}` use `getAsanaWithDetails()`), so the whole dead method was deleted along
+   with its now-unused `Log` facade import, instead of fixing a bug in code nothing calls.
 10. The `Gallery` model name still doesn't match what it holds (`asanas` table) — a rename to
     `Asana` was suggested in the old plan; purely cosmetic, do it whenever it's convenient, not
     urgent.
