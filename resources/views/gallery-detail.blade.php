@@ -32,7 +32,7 @@ $image_paths = [
         <!--Second Div starts -->
         <div class="part-two-div">
             <div class="part-two-div-main-section">
-                <div class="images-and-desc">
+                {{-- <div class="images-and-desc">
                     <!-- Small preview image -->
                     <a href="#asana-popup">
                         <img src="{{ $pose['image_url'] ?? '/images/yogasana_pictures/virasana.jpeg' }}" alt="{{ $pose['title'] ?? 'Asana' }}" class="asana-thumb">
@@ -41,7 +41,7 @@ $image_paths = [
                     @if (!empty($pose['description']))
                         <p class="asana-desc">{{ $pose['description'] }}</p>
                     @endif
-                </div>
+                </div> --}}
 
                 <!-- Hidden popup for bigger image -->
                 <div id="asana-popup" class="popup">
