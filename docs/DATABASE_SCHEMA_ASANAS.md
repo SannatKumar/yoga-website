@@ -1,5 +1,9 @@
 # Asana Schema — Categories, Difficulty, Time of Day, Tags, Source, Reference, Benefits, Contraindications, Images
 
+> **Historical record, not a living doc.** For current status, read
+> [RESUME_HERE.md](RESUME_HERE.md) and [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md). For the
+> conventions this schema established, see [CONVENTIONS_DATABASE.md](CONVENTIONS_DATABASE.md).
+
 Written 2026-08-29, updated same day with a follow-up (benefits,
 contraindications, images). Follows on from
 [ADD_ASANA_STEPS_FEATURE.md](ADD_ASANA_STEPS_FEATURE.md), which split

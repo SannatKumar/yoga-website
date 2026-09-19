@@ -1,5 +1,9 @@
 # Content Extraction Status — D:\Yoga_Asanas Notes → Database
 
+> **For current overall status, see [RESUME_HERE.md](RESUME_HERE.md) and
+> [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).** This doc stays focused on the `D:\Yoga_Asanas`
+> extraction specifically.
+
 Written 2026-09-19. State of converting the scanned notes in `D:\Yoga_Asanas` into database
 content for this project. Read this before doing any more extraction work — it tells you what's
 already inserted, what source text exists but isn't inserted yet, and what has no usable text yet
