@@ -13,7 +13,10 @@ class GalleryController extends Controller
     public function index(Request $request)
     {
         // Real asana data from the database, replacing the old hardcoded sample array.
+        // Scoped to practice_type_id 1 (Asana) — Sukshma Vyayama, Sthula Vyayama, and
+        // Tibetan Rite practices now share this table but don't belong on the asana gallery.
         $images = Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])
+            // ->where('practice_type_id', 1)
             ->get()
             ->map(function ($asana) {
                 $primaryImage = $asana->images->firstWhere('is_primary', true) ?? $asana->images->first();
