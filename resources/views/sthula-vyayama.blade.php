@@ -86,7 +86,7 @@
                         <div class="bg-white rounded-2xl shadow-lg overflow-hidden transform hover:scale-105 transition-all duration-300 group">
                             <!-- Image -->
                             <div class="relative h-64 overflow-hidden">
-                               <a href="{{ route('showgallerycard',['lang' => app()->getLocale(), 'id'=>1])}}">
+                               <a href="{{ route('showgallerycard',['lang' => app()->getLocale(), 'id'=>$image['id']])}}">
                                     <img src="{{ $image['image_url'] }}" 
                                          alt="{{ $image['title'] }}" 
                                          class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
@@ -95,7 +95,7 @@
                                 <!-- Overlay with info -->
                                 <div class="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-50 transition-all duration-300 flex items-center justify-center">
                                     <div class="text-white text-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                        <a href="{{ route('showgallerycard',['lang' => app()->getLocale(), 'id' => 1])}}" class="text-xl font-bold mb-2 block hover:underline">{{ $image['title'] }}</a>
+                                        <a href="{{ route('showgallerycard',['lang' => app()->getLocale(), 'id' => $image['id']])}}" class="text-xl font-bold mb-2 block hover:underline">{{ $image['title'] }}</a>
                                         <p class="text-sm">{{ $image['description'] }}</p>
                                     </div>
                                 </div>
@@ -149,7 +149,7 @@
                     </div>
                     <h3 class="text-2xl font-bold text-gray-800 mb-2">{{ __('messages.no-images-found') }}</h3>
                     <p class="text-gray-600 mb-6">{{ __('messages.try-adjusting-search') }}</p>
-                    <a href="{{ route('gallery-asana-detail', ['lang' => app()->getLocale()]) }}" 
+                    <a href="{{ route('sthula-vyayama', ['lang' => app()->getLocale()]) }}"
                        class="bg-green-500 hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-colors duration-300">
                         {{ __('messages.view-all-images') }}
                     </a>

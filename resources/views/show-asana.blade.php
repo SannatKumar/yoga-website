@@ -33,22 +33,22 @@
                     <div class="practice-card">
                     <h3 id="card-title">Tibetan Rites</h3>
                     <p>Five ancient yoga-based exercises believed to enhance vitality and longevity.</p>
-                    <a href="tibetan.html" class="btn">Learn More</a>
+                    <a href="{{ route('tibetan-rites') }}" class="btn">Learn More</a>
                     </div>
 
                     <!-- Card 4 -->
                     <div class="practice-card">
                     <h3 id="card-title">Surya Namaskara</h3>
                     <p>Sun Salutations — a sequence of 12 postures harmonizing body and breath.</p>
-                    <a href="surya.html" class="btn">Learn More</a>
+                    <a href="{{ route('surya-namaskara') }}" class="btn">Learn More</a>
                     </div>
 
-                    
+
                     <!-- Card 5 -->
                     <div class="practice-card">
                     <h3 id="card-title">Yoga Nidra</h3>
                     <p>Guided yogic sleep for deep relaxation and inner awareness.</p>
-                    <a href="nidra.html" class="btn">Learn More</a>
+                    <a href="{{ route('yoga-nidra') }}" class="btn">Learn More</a>
                     </div>
                 </div>
             </section>
