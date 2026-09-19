@@ -6,6 +6,12 @@ those were written 2026-07-20 and describe an earlier state of the codebase. A l
 schema work has happened since (see "What's already done" below); this doc corrects the picture
 and gives you an actual next-steps list, plus a private-testing path before you go public.
 
+**New to this doc, or coming back after a break?** Start with
+[RESUME_HERE.md](RESUME_HERE.md) instead — it's the short version with a "what to do first"
+pointer. [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md) has the full percentage breakdown behind the
+TL;DR below. The `CONVENTIONS_*.md` docs (database, functions, routes, frontend, variables, css)
+describe how this codebase is actually written, for keeping new code consistent.
+
 ## TL;DR
 
 - Yes — you can deploy to a real server **without making it public**. See
@@ -24,6 +30,10 @@ and gives you an actual next-steps list, plus a private-testing path before you 
   (no data exists for it yet, by design — not a bug). What's **still not** done, and blocks a
   real public launch: (1) the write routes are still unauthenticated, (2) most asanas still have
   no image or tags, (3) `.env` is still pointed at local dev values.
+- **Overall progress**: roughly 53% of the way to a public launch, ~80% of the way to a private
+  test deploy (security + hosting are the gap between those two numbers, not content). Full
+  breakdown with the reasoning behind those numbers in
+  [PROJECT_PROGRESS.md](PROJECT_PROGRESS.md).
 - **Note**: `/gallery`'s `practice_type_id` filter was deliberately removed by the project owner —
   `/gallery` is meant to be a single library-style listing of everything (asanas *and* Sukshma/
   Sthula Vyayama/Tibetan Rites), searchable by as many keywords as possible, not scoped to just
@@ -105,6 +115,21 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   - Fixed a `stripos(): Passing null` deprecation warning in the search filter of all four listing
     controllers (Gallery/Sukshma/Sthula/Tibetan) — several new practices have a `null`
     `asana_description`, which `stripos()` doesn't accept.
+- **2026-09-19 (later same session)**: Reworked the asana detail page's "Practice Steps" card
+  (`<x-asana-step-card>`, used on `/showgallerycard/{id}` and `/asana-details/{id}`) — it used to
+  render 4 hardcoded, unrelated lotus-icon placeholders in a 2×2 grid on the image side. Now shows
+  one real photo (the asana's own primary image, `object-fit: cover`, filling the space), and that
+  side's header changed from repeating "Practice Steps" to "Final {{ Asana Name }} Pose" — steps
+  vs. final result are now visually distinct. The same photo was also added beside the pose
+  description near the top of the page (that section existed in the markup, commented out, from
+  earlier in the project — re-enabled with a proper side-by-side layout instead of the stacked
+  layout its old CSS would have produced). Along the way, fixed a real bug: both spots previously
+  fell back to a specific, real photo (`virasana.jpeg`) for any asana with no image of its own —
+  meaning an asana with no photo yet would silently display someone else's pose as if it were its
+  own. Now falls back to the generic `/lotus-images/blank_image.png` placeholder, matching what
+  `/gallery` already does. Verified by rendering an asana with an image (Tadasana), one without
+  (Ardha Chakrasana), and the newly-added Bhujanga Asana, confirming the right header text, no
+  leftover `virasana` references, and the correct fallback/real image in each case.
 
 ## What's not done yet
 
