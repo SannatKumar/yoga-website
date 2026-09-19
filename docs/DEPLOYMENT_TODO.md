@@ -13,11 +13,15 @@ and gives you an actual next-steps list, plus a private-testing path before you 
   DigitalOcean Droplet with its firewall locked to your own IP, or HTTP Basic Auth in front of the
   whole site. Both let you test on real infrastructure with a real URL, visible only to you.
 - The database/schema work (Phase 2 of the old plan) is substantially done. `/gallery` is now
-  DB-driven too (fixed 2026-09-19, see below), and **31 of 40 asanas now have real
+  DB-driven too (fixed 2026-09-19, see below), and **31 of the 40 original asanas now have real
   steps/benefits/contraindications** (up from 3, also 2026-09-19 — see
-  [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md)). What's **still not** done, and
-  blocks a real public launch: (1) the write routes are still unauthenticated, (2) most asanas
-  still have no image or tags, (3) `.env` is still pointed at local dev values.
+  [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md)). The `asanas` table now also holds
+  Sukshma Vyayama, Sthula Vyayama, and Tibetan Rites practices (36 more rows), plus a whole
+  separate Surya Namaskara sequence schema — see
+  [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md). What's **still not** done, and blocks a
+  real public launch: (1) the write routes are still unauthenticated, (2) most asanas still have no
+  image or tags, (3) `.env` is still pointed at local dev values, (4) none of the new Sukshma/
+  Sthula Vyayama/Tibetan Rites/Surya Namaskara content has a page to render it yet.
 
 ## What's already done (the old docs don't know about this)
 
@@ -59,6 +63,16 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   text anywhere yet), and a data-quality flag (a duplicate Vajrasana row, `id 30`, plus several
   `Trysana*` test rows that should probably be deleted) are in
   [CONTENT_EXTRACTION_STATUS.md](CONTENT_EXTRACTION_STATUS.md).
+- **2026-09-19**: Unified Sukshma Vyayama, Sthula Vyayama, and Tibetan Rites into the `asanas`
+  table (new `practice_type_id` column + `practice_types` lookup) rather than building 3 more
+  copies of the steps/benefits/contraindications schema — added 31 new practice rows this way, all
+  with real content. Built a separate `surya_namaskara` + 3 child tables for the Surya Namaskara
+  sequence (it references other postures rather than having its own steps) and seeded its full
+  12-step sequence, verified resolving correctly end to end. `GalleryController::index()` was
+  updated to filter `practice_type_id = 1` so `/gallery` still shows only asanas, not the new
+  practice types. Full detail in [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md) —
+  including a real bug hit and fixed along the way (`asana_steps.asana_steps` was `varchar(100)`,
+  too small for real sentences, widened to `varchar(500)`).
 
 ## What's not done yet
 
@@ -98,18 +112,18 @@ longer an open item.
    transcribed by hand from the `.md` notes) — workable for a one-time batch like this, but not a
    repeatable "update content" workflow. Worth building the real pipeline before the *next* content
    batch (images/tags, or whatever surfaces to fill the 3 missing asanas).
-7. The 6 remaining `D:\Yoga_Asanas\Asanasdata\*.md` files (Pawanamuktasana series, Shakti Vikasaka,
-   Shakti Bandha Asanas, Sthula Vyayama, Tibetan Rites, Surya Namaskara) have real, usable content
-   but **no database table to go into** — they belong to `SukshmaVyayamaController`/
-   `SthulaVyayamaController`, which still hold hardcoded/placeholder PHP arrays entirely separate
-   from the `asanas` schema. Needs a schema decision (new tables, or extend the `asanas` family with
-   a type/category distinction) before any of that content can be inserted — see
-   `CONTENT_EXTRACTION_STATUS.md`'s "Suggested next step."
+7. ~~The 6 remaining `.md` files have no database table~~ — **done 2026-09-19**, see
+   `UNIFIED_PRACTICE_SCHEMA.md`. What's still open: **no page renders any of it**.
+   `SukshmaVyayamaController`/`SthulaVyayamaController` still return their own old hardcoded/
+   placeholder arrays, completely disconnected from the new `asanas` rows — and there's no route
+   or view for Surya Namaskara at all yet. Right now the only way to see a Sukshma Vyayama practice
+   or a Tibetan Rite is `/asana-details/{id}` with the id looked up manually.
 8. `data.md` (modified, uncommitted) and `new_data.md`/`yogasana.json` (untracked) sitting in the
    repo root have real, usable content (per `PROJECT_FINDINGS.md`) that was never pulled into the
-   database — separate from the `D:\Yoga_Asanas` folder, still worth using as source material,
-   likely for whatever ends up populating item 7's Sukshma Vyayama content (Griva Shakti Vikasaka
-   content exists in both places).
+   database — separate from the `D:\Yoga_Asanas` folder, still worth using as source material for
+   whatever's still missing (Griva Shakti Vikasaka content exists in both places, so this is now
+   redundant with what's already inserted, but Tadasana's fuller writeup in `data.md` may still be
+   worth folding in over the current dummy benefits/contraindications for asana `id 1`).
 
 ### Small cleanups (not blockers, but worth doing before or shortly after launch)
 

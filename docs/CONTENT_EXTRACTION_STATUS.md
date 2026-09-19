@@ -90,28 +90,22 @@ Notes on a few specific transcriptions:
   from the `D:\Yoga_Asanas` folder, these already have real Tadasana and Griva Shakti Vikasaka
   content. Not touched in this pass; still relevant for whatever populates Sukshma Vyayama content
   (see below).
-- The 6 `.md` files covering **series/sequences rather than individual poses** —
-  `PawanaMukatanasana.md`, `shakti-vikasaka.md`, `shakti-bandha-asanas.md`, `Sthula-vyayama.md`,
-  `Tibetan-rites.md`, `surya-namaskara.md` — have real, usable, well-structured content, but there
-  is **no database table for any of it yet**. These map to `SukshmaVyayamaController` and
-  `SthulaVyayamaController` in the code (per `README_DEVELOPER.md`), which currently hold their own
-  hardcoded/placeholder PHP arrays, entirely separate from the `asanas` schema built this session.
-  Populating these would need: (1) deciding whether they get their own tables (e.g.
-  `sukshma_vyayama_practices` with the same steps/benefits/contraindications shape) or reuse the
-  `asanas` family of tables with a `type`/`category` distinguishing "asana" from "vyayama practice",
-  and (2) building that schema before any content insert makes sense. Not started.
-- `surya-namaskara.md` itself is incomplete even as source material — it has the 12-posture
-  breath/chakra/mantra sequence but no per-posture body instructions (how to actually move into
-  Ashwa Sanchalanasana, etc.). Whoever built out Surya Namaskara content would need to source those
-  steps from the individual pose entries above (7 of the 12 postures — Pranamasana, Hasta
-  Uttanasana, Pada Hastasana, Ashwa Sanchalanasana, Parvatasana, Ashtanga Pranama, Bhujangasana —
-  substantially overlap with named asanas already in the notes or the `asanas` table) rather than
-  from this file alone.
+- ~~The 6 `.md` files covering series/sequences~~ — **done 2026-09-19**, see
+  [UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md). `PawanaMukatanasana.md`,
+  `shakti-vikasaka.md`, and `shakti-bandha-asanas.md` (Sukshma Vyayama), `Sthula-vyayama.md`
+  (Sthula Vyayama), and `Tibetan-rites.md` (Tibetan Rites) are all now inserted as `asanas` rows
+  distinguished by a new `practice_type_id` column, reusing the existing steps/benefits/
+  contraindications tables. `surya-namaskara.md` got its own small schema
+  (`surya_namaskara` + 3 child tables) instead, since it's a sequence referencing other postures
+  rather than a standalone practice — its 12-posture breath/chakra/mantra sequence (with no
+  per-posture body instructions, exactly as flagged below) is fully captured there.
+- No controller/route/view renders any of this new content yet (no Surya Namaskara page, no
+  Sukshma/Sthula Vyayama listing) — still open, see `UNIFIED_PRACTICE_SCHEMA.md`'s "Not done".
 
 ## Suggested next step
 
-If continuing this work: decide on the Vajrasana-duplicate and Trysana-junk-row cleanup first
-(cheap, unblocks nothing else but removes noise), then decide whether Sukshma/Sthula Vyayama
-content gets its own schema before transcribing those 6 remaining `.md` files — that's a schema
-decision, not a data-entry one, and belongs in a design pass like the one in
-[DATABASE_SCHEMA_ASANAS.md](DATABASE_SCHEMA_ASANAS.md) rather than another one-off migration.
+All source content in `D:\Yoga_Asanas` is now in the database (see
+[UNIFIED_PRACTICE_SCHEMA.md](UNIFIED_PRACTICE_SCHEMA.md)). What's left: build a page/route for
+Surya Namaskara and a listing page for Sukshma/Sthula Vyayama and Tibetan Rites (currently reachable
+only by direct `id`), and separately, whenever convenient, the Vajrasana-duplicate and
+Trysana-junk-row cleanup (cheap, unblocks nothing else, just removes noise).
