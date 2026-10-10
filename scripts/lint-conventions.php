@@ -209,7 +209,7 @@ foreach ($searchDirs as $dir) {
             if (preg_match("/\\?\\?\\s*'(\\/images\\/[^']+)'/", $line, $m)) {
                 if (! str_contains($m[1], $approvedFallback)) {
                     addFinding($findings, 'error', relPath($root, $file->getPathname()), $i + 1,
-                        "falls back to a specific photo ('{$m[1]}') for a missing image — use '/lotus-images/blank_image.png' as the generic fallback instead (see CONVENTIONS_FRONTEND.md, 'Fallback images')");
+                        "falls back to a specific photo ('{$m[1]}') for a missing image — use '/lotus-images/blank_image.jpg' as the generic fallback instead (see CONVENTIONS_FRONTEND.md, 'Fallback images')");
                 }
             }
         }

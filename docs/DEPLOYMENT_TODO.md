@@ -68,7 +68,7 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   `Gallery::with(['category', 'difficultyLevel', 'tags', 'images'])` instead of returning the old
   9-item hardcoded array — each row links to its own correct `/showgallerycard/{id}`, with real
   image/category/difficulty/tags where seeded and graceful fallbacks
-  (`/lotus-images/blank_image.png`, "Uncategorized", "All Levels") where not. Category filter,
+  (`/lotus-images/blank_image.jpg`, "Uncategorized", "All Levels") where not. Category filter,
   difficulty filter, and search all verified working against real data. `gallery.blade.php` itself
   needed no changes — the controller maps DB rows into the same array shape the view already
   expected. (Originally scoped to `practice_type_id = 1`; the project owner intentionally removed
@@ -131,7 +131,7 @@ Since the 2026-07-20 audit, this session did the following — don't redo it:
   the practice-steps card** (`<x-asana-step-card>`'s image side). Along the way, fixed a real bug: both spots previously
   fell back to a specific, real photo (`virasana.jpeg`) for any asana with no image of its own —
   meaning an asana with no photo yet would silently display someone else's pose as if it were its
-  own. Now falls back to the generic `/lotus-images/blank_image.png` placeholder, matching what
+  own. Now falls back to the generic `/lotus-images/blank_image.jpg` placeholder, matching what
   `/gallery` already does. Verified by rendering an asana with an image (Tadasana), one without
   (Ardha Chakrasana), and the newly-added Bhujanga Asana, confirming the right header text, no
   leftover `virasana` references, and the correct fallback/real image in each case.

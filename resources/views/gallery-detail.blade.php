@@ -30,7 +30,7 @@
                 {{-- <div class="images-and-desc">
                     <!-- Small preview image, beside the description -->
                     <a href="#asana-popup">
-                        <img src="{{ $pose['image_url'] ?? '/lotus-images/blank_image.png' }}" alt="{{ $pose['title'] ?? 'Asana' }}" class="asana-thumb">
+                        <img src="{{ $pose['image_url'] ?? '/lotus-images/blank_image.jpg' }}" alt="{{ $pose['title'] ?? 'Asana' }}" class="asana-thumb">
                     </a>
                     <div class="asana-title-desc">
                         <p class="asana-title">{{ $pose['title'] ?? 'Asana' }}</p>
@@ -45,7 +45,7 @@
                 <!-- Hidden popup for bigger image -->
                 <div id="asana-popup" class="popup">
                     <a href="#" class="close">&times;</a>
-                    <img src="{{ $pose['image_url'] ?? '/lotus-images/blank_image.png' }}" alt="{{ $pose['title'] ?? 'Asana' }} Large">
+                    <img src="{{ $pose['image_url'] ?? '/lotus-images/blank_image.jpg' }}" alt="{{ $pose['title'] ?? 'Asana' }} Large">
                 </div>
 
             </div>

@@ -84,7 +84,7 @@ defaults:
 
 ## Fallback images
 
-- **Use `/lotus-images/blank_image.png` as the generic "no image yet" placeholder** — this is
+- **Use `/lotus-images/blank_image.jpg` as the generic "no image yet" placeholder** — this is
   what `GalleryController::index()` and (as of 2026-09-19) `gallery-detail.blade.php` /
   `asana-step-card.blade.php` fall back to when an asana has no `images` row.
   **Never fall back to a real, named asana's photo file as a generic placeholder** — an earlier

@@ -20,7 +20,7 @@ class SukhsmaVyayamaController extends Controller
                     'id' => $asana->id,
                     'title' => $asana->asana_name,
                     'description' => $asana->asana_description,
-                    'image_url' => $primaryImage ? '/'.ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'image_url' => $primaryImage ? '/'.ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.jpg',
                     'category' => optional($asana->category)->category_name ?? 'Uncategorized',
                     'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
                     'tags' => $asana->tags->pluck('tag_name')->all(),

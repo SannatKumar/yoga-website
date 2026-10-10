@@ -30,7 +30,7 @@
     <div class="step-images">
         <h2 class="header-class">{{ $image_header }}</h2>
         <div class="image-container">
-            <img src="{{ $image_url ?? '/lotus-images/blank_image.png' }}" alt="{{ $image_alt }}" class="step-image-img">
+            <img src="{{ $image_url ?? '/lotus-images/blank_image.jpg' }}" alt="{{ $image_alt }}" class="step-image-img">
         </div>
     </div>
 </div>

@@ -125,7 +125,7 @@ Two coexisting page styles — pick one per page, don't mix on the same page:
 - Every top-level page opens with `<x-page-header>`. Reusable prop-driven fragments use `@props`
   + `<x-component-name>`, with sane defaults for every prop (new props on existing components
   too). Use `@include('components.x')` only to stay consistent with an existing caller.
-- Every asana photo falls back to **`/lotus-images/blank_image.png`** when missing — never to a
+- Every asana photo falls back to **`/lotus-images/blank_image.jpg`** when missing — never to a
   specific real pose's photo file. (This exact bug shipped twice already — an asana with no image
   of its own silently showing a different, real asana's photo. Don't reintroduce it.)
 - **The asana's photo appears in exactly one place on the detail page** — beside the steps, inside

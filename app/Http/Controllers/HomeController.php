@@ -49,7 +49,7 @@ class HomeController extends Controller
                 'title' => 'Yamas & Niyamas',
                 'excerpt' => 'Core ethical precepts that guide daily practice and mindset toward clarity and compassion.',
                 'href' => route('philosophy').'#yamas-niyamas',
-                'image' => '/images/yogamudra.png',
+                'image' => '/images/yogamudra.jpg',
             ],
             [
                 'title' => 'Eight Limbs of Yoga',

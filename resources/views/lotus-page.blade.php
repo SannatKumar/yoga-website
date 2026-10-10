@@ -11,7 +11,7 @@
 
         <!--Second Div starts -->
         <div class="part-two-div">
-            <img src="/lotus-images/complete_chakra_image_lotus.png" alt="Meditative man" class="chakra-image">
+            <img src="/lotus-images/complete_chakra_image_lotus.jpg" alt="Meditative man" class="chakra-image">
 
         </div>
         {{-- </div> --}}
