@@ -98,7 +98,7 @@ return new class extends Migration
 
             return [
                 'asanas_id' => $asanasId,
-                'image_path' => 'images/' . $path,
+                'image_path' => 'images/'.$path,
                 'image_name' => $name,
                 'alt_text' => $alt,
                 'is_primary' => $isPrimary,

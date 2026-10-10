@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Asana;
 use Illuminate\Http\Request;
 
@@ -21,7 +20,7 @@ class TibetanRitesController extends Controller
                     'id' => $asana->id,
                     'title' => $asana->asana_name,
                     'description' => $asana->asana_description,
-                    'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'image_url' => $primaryImage ? '/'.ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
                     'category' => optional($asana->category)->category_name ?? 'Uncategorized',
                     'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
                     'tags' => $asana->tags->pluck('tag_name')->all(),

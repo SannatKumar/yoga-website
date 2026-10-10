@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Visit;
 use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
-use App\Models\Visit; 
 
 class TrackVisits
 {
@@ -25,6 +25,7 @@ class TrackVisits
             'user_agent' => $request->userAgent(),
             'url' => $request->fullUrl(),
         ]);
+
         return $next($request);
     }
 }

@@ -17,7 +17,7 @@ class YogaPost extends Model
         'category',
         'difficulty_level',
         'duration',
-        'user_id'
+        'user_id',
     ];
 
     protected $casts = [
@@ -33,16 +33,18 @@ class YogaPost extends Model
     public function getImageUrlAttribute()
     {
         if ($this->image_path) {
-            return asset('storage/' . $this->image_path);
+            return asset('storage/'.$this->image_path);
         }
+
         return null;
     }
 
     public function getVideoUrlAttribute()
     {
         if ($this->video_path) {
-            return asset('storage/' . $this->video_path);
+            return asset('storage/'.$this->video_path);
         }
+
         return null;
     }
-} 
+}

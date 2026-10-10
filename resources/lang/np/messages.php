@@ -1,4 +1,5 @@
 <?php
+
 return [
     'web-app-name' => 'Everest Yoga',
     'welcome' => 'स्वागत छ!',
@@ -77,6 +78,6 @@ return [
     'unique-visitors' => 'अद्वितीय आगन्तुकहरू',
     'site-stats' => 'साइट तथ्याङ्क',
     'cv-generator' => 'सिवि जनेरतोर',
-    'free-cv-generator' => 'फ्री सिवि जनेरतोर'
-    
-]; 
+    'free-cv-generator' => 'फ्री सिवि जनेरतोर',
+
+];

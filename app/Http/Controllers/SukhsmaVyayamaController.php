@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Asana;
 use Illuminate\Http\Request;
 
@@ -21,7 +20,7 @@ class SukhsmaVyayamaController extends Controller
                     'id' => $asana->id,
                     'title' => $asana->asana_name,
                     'description' => $asana->asana_description,
-                    'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'image_url' => $primaryImage ? '/'.ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
                     'category' => optional($asana->category)->category_name ?? 'Uncategorized',
                     'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
                     'tags' => $asana->tags->pluck('tag_name')->all(),
@@ -32,7 +31,7 @@ class SukhsmaVyayamaController extends Controller
         // Filter by category if requested
         $category = $request->get('category');
         if ($category) {
-            $images = array_filter($images, function($image) use ($category) {
+            $images = array_filter($images, function ($image) use ($category) {
                 return $image['category'] === $category;
             });
         }
@@ -40,7 +39,7 @@ class SukhsmaVyayamaController extends Controller
         // Filter by difficulty if requested
         $difficulty = $request->get('difficulty');
         if ($difficulty) {
-            $images = array_filter($images, function($image) use ($difficulty) {
+            $images = array_filter($images, function ($image) use ($difficulty) {
                 return $image['difficulty'] === $difficulty;
             });
         }
@@ -48,7 +47,7 @@ class SukhsmaVyayamaController extends Controller
         // Search by title or description
         $search = $request->get('search');
         if ($search) {
-            $images = array_filter($images, function($image) use ($search) {
+            $images = array_filter($images, function ($image) use ($search) {
                 return stripos($image['title'], $search) !== false ||
                        stripos($image['description'] ?? '', $search) !== false;
             });
@@ -128,10 +127,11 @@ class SukhsmaVyayamaController extends Controller
             // ... add similar details for other poses as needed ...
         ];
 
-        $pose = collect($images)->firstWhere('id', (int)$id);
-        if (!$pose) {
+        $pose = collect($images)->firstWhere('id', (int) $id);
+        if (! $pose) {
             abort(404);
         }
+
         return view('sukshma-vyayama', compact('pose'));
     }
 }

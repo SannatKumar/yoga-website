@@ -1,4 +1,5 @@
 <?php
+
 return [
     'web-app-name' => 'Everest Yoga',
     'meditation-guide' => 'Meditation Guide',
@@ -69,13 +70,13 @@ return [
     'learning-and-understanding' => 'Oppiminen ja ymmärtäminen',
     'sthulavyayama' => 'Sthula Vyayama',
     'sukhsmavyayama' => 'Sukhsma Vyayama',
-        'sukhsma-vyayama' => 'Sukhsma Vyayama',
+    'sukhsma-vyayama' => 'Sukhsma Vyayama',
     'sukhsma-vyayama-desc' => 'Sukhsma Vyayama Desc',
     'sthula-vyayama' => 'Sthula Vyayama',
     'sthula-vyayama-desc' => 'Sthula Vyayama Desc',
-        'total-visits' => 'Käyntejä yhteensä',
+    'total-visits' => 'Käyntejä yhteensä',
     'unique-visitors' => 'Ainutlaatuiset Vierailijat',
-        'site-stats' => 'sivustotilastot',
-        'free-cv-generator' => 'Vapaa CV Generatio',
-    
-]; 
+    'site-stats' => 'sivustotilastot',
+    'free-cv-generator' => 'Vapaa CV Generatio',
+
+];

@@ -1,0 +1,107 @@
+# Start Here Next Time
+
+Written 2026-09-19, end of session. Read this one first — it points at everything else.
+
+## 30-second status
+
+The database and every practice-type page (Asana, Sukshma Vyayama, Sthula Vyayama, Tibetan Rites,
+Surya Namaskara, plus an honest "coming soon" for Yoga Nidra) are built and working. What's left
+is mostly **content** (images, tags, a few missing asanas) and **security/deployment** (nothing
+deployed yet, a handful of write routes still open to anyone). Full numbers in
+`PROJECT_PROGRESS.md`.
+
+## If you only do one thing this session
+
+Pick based on what you actually want next:
+
+- **Want to see it live, privately, on real infrastructure?** → `DEPLOYMENT_TODO.md`, "Suggested
+  order of work": do the 3 security items first (they're small and mechanical), then follow
+  "Testing privately before launch" (a DigitalOcean Droplet with the firewall locked to your own
+  IP is the recommended option). You don't need finished content for this — partial content is
+  fine to look at on a private deploy.
+- **Want to keep filling in content?** → Images are the easiest next win (54 asanas still need
+  one); see the "Sourcing more images" section below for the same process used this session.
+  Tags are the other open one — only 2 of 76 asanas have any.
+- **Want to clean up loose ends first?** → Three small open items: the duplicate Vajrasana row +
+  `Trysana*` test rows (you said "handle at last" — now might be "last"), the duplicate
+  `addAsanas()` method in two controllers, and the 3 asanas with genuinely no source text
+  anywhere (Ardha Chakrasana, Ardhakatichakrasanaa, Balasana).
+
+## Keeping new code consistent — run this before calling anything done
+
+```bash
+composer lint              # Pint style check + the project conventions linter
+composer lint:fix          # Pint auto-fix
+composer lint:conventions  # Just scripts/lint-conventions.php
+```
+
+`scripts/lint-conventions.php` is custom to this project — it checks things a generic PHP linter
+can't know about (route names matching paths, every `route('x')` call actually resolving, the
+`asana()`/`asanas()` relationship naming rule, migration conventions, the real-photo-as-fallback
+bug class). The condensed rulebook it enforces lives in
+`.claude/skills/yoga-app-conventions/SKILL.md` — that's also the file to point a fresh Claude Code
+session at for this project's conventions; the full reasoning behind each rule is in the
+`CONVENTIONS_*.md` docs it's built from.
+
+**Status (2026-10-10)**: `composer lint` passes — 0 errors. The repo-wide Pint formatting drift
+was fixed in one pass (`vendor/bin/pint`), and `philosophy.blade.php`'s dead Bootstrap grid
+classes (Bootstrap was never loaded) were replaced with plain CSS in its `<style>` block. The
+linter now ignores commented-out markup and reports links to parked (commented-out) routes like
+`cv-generator`/`cover-letter` as WARN, not ERROR. The 4 remaining warnings are tracked items:
+`DEPLOYMENT_TODO.md` #1 (open write routes), #3 (duplicate `addAsanas()`), and the two parked
+utility views.
+
+**Known failing test**: `tests/Feature/ExampleTest` (GET `/` → 500) fails because the test DB is
+an empty in-memory SQLite and `TrackVisits` writes to a `visits` table that was never migrated
+there. This predates the lint work — fix with `RefreshDatabase` in the test (or by skipping
+`TrackVisits` during tests).
+
+## Where everything lives
+
+| Question | Read |
+|---|---|
+| What's the overall status, in numbers? | `PROJECT_PROGRESS.md` |
+| What's left before I can deploy, and how do I test privately first? | `DEPLOYMENT_TODO.md` |
+| How is the asana schema shaped, and why? | `DATABASE_SCHEMA_ASANAS.md` |
+| How do Sukshma/Sthula Vyayama, Tibetan Rites, Surya Namaskara fit in? | `UNIFIED_PRACTICE_SCHEMA.md` |
+| What content has and hasn't been pulled in from my notes? | `CONTENT_EXTRACTION_STATUS.md` |
+| How do I keep new code consistent with what's here? | `CONVENTIONS_DATABASE.md`, `CONVENTIONS_FUNCTIONS.md`, `CONVENTIONS_ROUTES.md`, `CONVENTIONS_FRONTEND.md`, `CONVENTIONS_VARIABLES.md`, `CONVENTIONS_CSS.md` |
+
+## Sourcing more images (the process that worked this session)
+
+1. Point me at a folder of real photos.
+2. I open and visually compare **every** candidate photo to the pose it's supposedly named after
+   before using it — filenames alone aren't trustworthy (this caught a real mislabel this
+   session: a file named for Halasana was actually a different pose entirely).
+3. Matches get copied into `public/images/yogasana_pictures/` and linked via a new data-only
+   migration (never edit an already-run one — see `CONVENTIONS_DATABASE.md`).
+4. Anything ambiguous gets flagged to you rather than guessed — as happened with the Surya
+   Namaskara forest photoshoot (generic camera filenames, couldn't reliably tell which of the 5
+   sequence-only postures each frame showed) and with Bhujanga Asana (I read the pose wrong from
+   the photo alone; you corrected it, and it's in now).
+
+If you have more photos anywhere else, just point me at the folder — same process.
+
+## Known rough edges, not urgent
+
+- `docs/DATABASE_SCHEMA_ASANAS.md`, `ADD_ASANA_STEPS_FEATURE.md`, `CONTENT_PIPELINE.md`,
+  `PROJECT_FINDINGS.md`, `PROJECT_PLAN.md`, `README_DEVELOPER.md` describe earlier states of the
+  codebase and are kept as historical record, not living docs — `DEPLOYMENT_TODO.md` and
+  `PROJECT_PROGRESS.md` are the current source of truth; the older docs say so at the top where
+  relevant.
+- The ordering-column name differs slightly across tables (`sort_order` vs `steps_order_number`
+  vs `step_order`) — cosmetic, documented in `CONVENTIONS_DATABASE.md`, not worth a migration on
+  its own.
+- No admin UI exists for editing content — everything so far has gone in through one-off data
+  migrations or the CSRF-exempt Postman routes (which is exactly why those routes need
+  authentication before going public, not deletion — you may still want them for content entry).
+
+## One open question for you, whenever you're back
+
+`DEPLOYMENT_TODO.md`'s "Open decisions only you can make" section has three items still
+unresolved — worth a look before the next deploy push, but none of them block continuing content
+or code work in the meantime:
+1. Droplet vs. App Platform for hosting?
+2. How many of the 76 asanas need full content before you'd call this "launched" — all of them,
+   or a smaller set with the rest following post-launch?
+3. (Already answered this session: utility tools are kept, hidden for now.)

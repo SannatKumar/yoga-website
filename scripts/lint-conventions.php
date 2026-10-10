@@ -41,6 +41,7 @@ function relPath(string $root, string $path): string
 // ---------------------------------------------------------------------------
 $routesFile = $root.'/routes/web.php';
 $definedRouteNames = [];
+$parkedRouteNames = [];
 
 // Pre-existing, intentional exceptions to "name matches path" — descriptive names
 // chosen deliberately, predate that convention being written down. Not bugs.
@@ -54,10 +55,14 @@ if (is_file($routesFile)) {
     // closure-bodied route (e.g. /set-locale/{locale}) has its ->name() call on
     // a different line than Route::get(, so this can't be a single-line regex.
     foreach ($lines as $line) {
-        if (str_starts_with(ltrim($line), '//')) {
-            continue; // commented-out route — not actually registered
+        if (! preg_match("/->name\\('([^']+)'\\)/", $line, $m)) {
+            continue;
         }
-        if (preg_match("/->name\\('([^']+)'\\)/", $line, $m)) {
+        if (str_starts_with(ltrim($line), '//')) {
+            // Commented-out route — not registered, but deliberately parked
+            // (see "Disabled-but-kept routes" in CONVENTIONS_ROUTES.md).
+            $parkedRouteNames[$m[1]] = true;
+        } else {
             $definedRouteNames[$m[1]] = true;
         }
     }
@@ -132,7 +137,13 @@ if (! empty($definedRouteNames)) {
                 }
                 if (preg_match_all("/route\\(\\s*['\"]([a-z0-9\\-]+)['\"]/", $line, $matches)) {
                     foreach ($matches[1] as $usedName) {
-                        if (! isset($definedRouteNames[$usedName])) {
+                        if (! isset($definedRouteNames[$usedName]) && isset($parkedRouteNames[$usedName])) {
+                            // Only reachable through the parked route's own controller,
+                            // so it can't throw today — but it will if the view gets
+                            // linked/rendered before the route is re-enabled.
+                            addFinding($findings, 'warn', relPath($root, $file->getPathname()), $i + 1,
+                                "route('{$usedName}') points at a parked (commented-out) route — re-enable it in routes/web.php before linking to this view");
+                        } elseif (! isset($definedRouteNames[$usedName])) {
                             addFinding($findings, 'error', relPath($root, $file->getPathname()), $i + 1,
                                 "route('{$usedName}') does not match any route name defined in routes/web.php — this will throw RouteNotFoundException at runtime");
                         }
@@ -154,6 +165,9 @@ foreach ($pageBladeFiles as $file) {
         continue;
     }
     $content = file_get_contents($file);
+    // Ignore commented-out markup ({{-- --}} and <!-- -->) — it isn't rendered,
+    // so dead classes inside a comment can't cause a layout bug.
+    $content = preg_replace(['/\{\{--.*?--\}\}/s', '/<!--.*?-->/s'], '', $content);
     // Only count a <style> block that actually has non-whitespace CSS in it —
     // a few pages have a leftover empty <style></style> tag that doesn't count.
     $hasStyleBlock = false;

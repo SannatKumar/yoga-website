@@ -23,7 +23,6 @@ return new class extends Migration
             $table->integer('reference_id')->nullable();
             $table->boolean('deleted')->default(0);
 
-
             $table->timestamps();
         });
     }

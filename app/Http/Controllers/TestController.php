@@ -3,20 +3,19 @@
 namespace App\Http\Controllers;
 
 // use App\Models\Test;
-use App\Http\Controllers\Controller;
 use App\Models\Asana;
-use Illuminate\Support\Facades\Log;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class TestController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    //getAsanas
+    // getAsanas
     public function getAsanas(Request $request)
     {
-        Log::info('Request Data: ' . $request);
+        Log::info('Request Data: '.$request);
         // Optional: you can apply filters if query parameters are passed
         $query = Asana::query();
 
@@ -43,10 +42,10 @@ class TestController extends Controller
     /**
      * Write function to create a new resource.
      */
-    //addAsanas
+    // addAsanas
     public function addAsanas(Request $request)
     {
-        //Take all the asanas Data
+        // Take all the asanas Data
         $asanaName = $request->asana_name;
         $asanaDescription = $request->asana_description;
         $sourceId = $request->source_id;
@@ -65,24 +64,22 @@ class TestController extends Controller
             'reference_id' => $referenceId,
         ]);
 
-
-
         return response()->json(['result' => $asana], 200)
-        ->header('Content-Type', 'application/json' );
+            ->header('Content-Type', 'application/json');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    //updateAsanas
+    // updateAsanas
     public function updateAsanas(Request $request)
     {
         $asanaId = $request->id;
-            // Find the asana by ID
+        // Find the asana by ID
         $asana = Asana::find($asanaId);
 
         // Check if record exists
-        if (!$asana) {
+        if (! $asana) {
             return response()->json(['message' => 'Asana not found'], 404);
         }
 
@@ -106,13 +103,13 @@ class TestController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-        //deleteAsanas
+    // deleteAsanas
     public function deleteAsanas(Request $request)
     {
         $asanaId = $request->id;
         $asana = Asana::find($asanaId);
 
-        if (!$asana) {
+        if (! $asana) {
             return response()->json(['message' => 'Asana not found'], 404);
         }
 

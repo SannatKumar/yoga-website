@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Visit extends Model
 {
     //
-        protected $fillable = [
+    protected $fillable = [
         'ip_address',
         'user_agent',
         'url',

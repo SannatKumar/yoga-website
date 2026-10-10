@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Asana;
 use App\Models\AsanaStep;
+use Illuminate\Http\Request;
 
 class GalleryController extends Controller
 {
@@ -24,7 +23,7 @@ class GalleryController extends Controller
                     'id' => $asana->id,
                     'title' => $asana->asana_name,
                     'description' => $asana->asana_description,
-                    'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
+                    'image_url' => $primaryImage ? '/'.ltrim($primaryImage->image_path, '/') : '/lotus-images/blank_image.png',
                     'category' => optional($asana->category)->category_name ?? 'Uncategorized',
                     'difficulty' => optional($asana->difficultyLevel)->level_name ?? 'All Levels',
                     'tags' => $asana->tags->pluck('tag_name')->all(),
@@ -35,7 +34,7 @@ class GalleryController extends Controller
         // Filter by category if requested
         $category = $request->get('category');
         if ($category) {
-            $images = array_filter($images, function($image) use ($category) {
+            $images = array_filter($images, function ($image) use ($category) {
                 return $image['category'] === $category;
             });
         }
@@ -43,7 +42,7 @@ class GalleryController extends Controller
         // Filter by difficulty if requested
         $difficulty = $request->get('difficulty');
         if ($difficulty) {
-            $images = array_filter($images, function($image) use ($difficulty) {
+            $images = array_filter($images, function ($image) use ($difficulty) {
                 return $image['difficulty'] === $difficulty;
             });
         }
@@ -51,7 +50,7 @@ class GalleryController extends Controller
         // Search by title or description
         $search = $request->get('search');
         if ($search) {
-            $images = array_filter($images, function($image) use ($search) {
+            $images = array_filter($images, function ($image) use ($search) {
                 return stripos($image['title'], $search) !== false ||
                        stripos($image['description'] ?? '', $search) !== false;
             });
@@ -64,7 +63,7 @@ class GalleryController extends Controller
         return view('gallery', compact('images', 'categories', 'difficulties', 'category', 'difficulty', 'search'));
     }
 
-    //getAsanaWithDetails
+    // getAsanaWithDetails
     public function getAsanaWithDetails(int $id)
     {
         $asana = Asana::with([
@@ -88,7 +87,7 @@ class GalleryController extends Controller
             'id' => $asana->id,
             'title' => $asana->asana_name,
             'description' => $asana->asana_description,
-            'image_url' => $primaryImage ? '/' . ltrim($primaryImage->image_path, '/') : null,
+            'image_url' => $primaryImage ? '/'.ltrim($primaryImage->image_path, '/') : null,
             'category' => optional($asana->category)->category_name,
             'difficulty' => optional($asana->difficultyLevel)->level_name,
             'time_of_the_day' => optional($asana->timeOfTheDay)->time_name,
@@ -103,11 +102,10 @@ class GalleryController extends Controller
         return view('gallery-detail', compact('pose', 'steps'));
     }
 
-
-    //addAsanas
+    // addAsanas
     public function addAsanas(Request $request)
     {
-        //Take all the asanas Data
+        // Take all the asanas Data
         $asanaName = $request->asana_name;
         $asanaDescription = $request->asana_description;
         $sourceId = $request->source_id;
@@ -126,16 +124,14 @@ class GalleryController extends Controller
             'reference_id' => $referenceId,
         ]);
 
-
-
         return response()->json(['result' => $asana], 200)
-        ->header('Content-Type', 'application/json' );
+            ->header('Content-Type', 'application/json');
     }
 
-    //addAsanaSteps
+    // addAsanaSteps
     public function addAsanaSteps(Request $request)
     {
-        //Take the asanas_id and the full ordered list of steps for that asana
+        // Take the asanas_id and the full ordered list of steps for that asana
         $asanasId = $request->asanas_id;
         $steps = $request->steps;
 
@@ -150,6 +146,6 @@ class GalleryController extends Controller
         }
 
         return response()->json(['result' => $createdSteps], 200)
-        ->header('Content-Type', 'application/json' );
+            ->header('Content-Type', 'application/json');
     }
 }

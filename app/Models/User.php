@@ -24,9 +24,10 @@ class User extends Authenticatable
     // ];
 
     // In App\Models\User.php
-protected $fillable = [
-    'name', 'email', 'email_verified_at', 'password', 'remember_token'
-];
+    protected $fillable = [
+        'name', 'email', 'email_verified_at', 'password', 'remember_token',
+    ];
+
     /**
      * The attributes that should be hidden for serialization.
      *
