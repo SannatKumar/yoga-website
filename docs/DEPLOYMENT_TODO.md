@@ -231,7 +231,9 @@ longer an open item.
     page. Controllers, views, and language keys are untouched — re-enabling later is just
     uncommenting both blocks in `routes/web.php`. Verified via `php artisan route:list` that none
     of the four routes are registered.
-12. **New (2026-09-19), found while building the conventions linter, not fixed yet**:
+12. **Done (2026-10-10)** — `philosophy.blade.php`'s Bootstrap grid replaced with plain CSS;
+    `info.blade.php`'s hits were only inside a Blade comment (linter now ignores comments).
+    Original note: found while building the conventions linter:
     `philosophy.blade.php` and `info.blade.php` use Bootstrap-style grid classes (`row`, `col-12`,
     `col-md-6`, `d-flex`, `g-4`, `align-items-stretch`) — but this project has no Bootstrap CSS
     anywhere (not in `package.json`, no CDN link in any layout file, and neither page defines
@@ -298,6 +300,11 @@ partial content, look at it on real infrastructure, and keep filling in images/t
 3 asanas while it sits behind the IP allowlist.
 
 ## Deployment steps (once ready to actually deploy, public or private)
+
+**Superseded 2026-10-10 by [DEPLOYMENT_PLAN.md](DEPLOYMENT_PLAN.md)** — the full, beginner-level
+step-by-step (Ubuntu 24.04 / PHP 8.3, DB copied via dump rather than rebuilt by migrations).
+The summary below is kept for reference.
+
 
 From `README_DEVELOPER.md`, layered on top of `digitalocean_laravel_mysql_deployment.pdf`:
 

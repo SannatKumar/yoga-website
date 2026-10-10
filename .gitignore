@@ -22,3 +22,6 @@
 Homestead.json
 Homestead.yaml
 Thumbs.db
+
+# Private deployment log (contains passwords/IPs) — never commit, repo is public
+/docs/DEPLOYMENT_NOTES.md
