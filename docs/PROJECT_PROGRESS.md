@@ -26,7 +26,7 @@ deploy at all — see `DEPLOYMENT_TODO.md`'s "Testing privately before launch" s
 | **Content average** (the 5 rows above) | | **~48%** |
 | Frontend page wiring | Every practice type (Asana, Sukshma Vyayama, Sthula Vyayama, Tibetan Rites, Surya Namaskara) has a real, DB-driven page; Yoga Nidra has an honest "coming soon" page rather than a dead link. All routes verified working. | **100%** |
 | Security | 5 unauthenticated write routes still open, `.env` still has local dev values, one duplicate write method to resolve. **Nothing started yet.** | **0%** |
-| Deployment / infra | Not deployed anywhere yet — not even privately behind an IP allowlist. | **0%** |
+| Deployment / infra | **2026-10-10:** deployment plan written (`DEPLOYMENT_PLAN.md`), production env template, `production` release branch + script, images compressed (~45 → ~12 MB), lint clean. DigitalOcean account created; server not provisioned yet. | **~35%** |
 | Code cleanup / quality | Dead `show()` method deleted, `Gallery`→`Asana` model rename done, utility-tools decision made and implemented, several real bugs found and fixed along the way (hardcoded `id=1` links, broken route name, `stripos(null)` deprecation, misleading image fallback). One duplicate method (`addAsanas` in two controllers) still open. | **~90%** |
 | Documentation | Extensive — schema docs, content-extraction status, deployment checklist, this progress doc, and (new today) six convention docs. | **~90%** |
 

@@ -40,6 +40,25 @@ describe how this codebase is actually written, for keeping new code consistent.
   "Asana" rows. If you're reading this and wondering why `GalleryController::index()` doesn't
   filter by type: that's intentional, don't reintroduce the filter.
 
+## Deployment readiness (2026-10-10)
+
+Done — ready for a private test deploy:
+
+- Step-by-step plan: [DEPLOYMENT_PLAN.md](DEPLOYMENT_PLAN.md). Supersedes the PDF in the repo root
+  (wrong Ubuntu/PHP version for Laravel 12).
+- `.env.production.example` (committed template; `APP_ENV=production`, `APP_DEBUG=false`,
+  `LOG_LEVEL=error`, placeholders for IP and DB password) — fixes item 2 below once copied to the
+  server's `.env`.
+- `production` branch, generated from `master` by `scripts/release-production.sh` using
+  `.production-exclude` — the server never sees docs, tests, tooling or unused images.
+- Images compressed (used images ~45 MB → ~12 MB); `scripts/compress-images.py` for new photos.
+  The 4 asana PNG photos became JPEGs via data-only migration
+  `2026_10_10_120000_seed_compressed_image_paths_and_sizes.php`.
+- `composer lint` passes (0 errors); production asset build (`npm run build`) and
+  `php artisan route:cache` verified.
+
+Still open: item 1 (write routes) blocks going **public**, not the private deploy.
+
 ## What's already done (the old docs don't know about this)
 
 Since the 2026-07-20 audit, this session did the following — don't redo it:

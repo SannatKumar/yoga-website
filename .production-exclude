@@ -1,0 +1,51 @@
+# Paths removed from the `production` branch by scripts/release-production.sh.
+# One path per line (file or folder), relative to the repo root. `#` starts a comment.
+# Everything NOT listed here ships to the server. See docs/DEPLOYMENT_PLAN.md, "Branches".
+
+# --- Development docs, notes and planning ---
+docs
+CLAUDE.md
+README.md
+CHANGELOG.md
+BestPractices.md
+Homepage.md
+Issues_Documentation.md
+PatanjaliYogaSutras.md
+SERVE_PROJECT.md
+ToDoList.md
+create_table.sql
+create_table_using_laravel.md
+digitalocean_laravel_mysql_deployment.pdf
+wireframe.mmd
+
+# --- Development tooling, editor and AI-assistant config ---
+.claude
+.cursor
+.github
+.editorconfig
+.styleci.yml
+.env.example
+scripts
+tests
+phpunit.xml
+pint.json
+.production-exclude
+
+# --- Stray local database file (old SQLite copy, not used by the app) ---
+yoga_project
+
+# --- Images not referenced anywhere in code or the database (checked 2026-10-10) ---
+# The release script refuses to run if code starts referencing one of these again.
+public/images/main_page_first_image_haukkaniemi.jpg
+public/images/natural_scene/tree_stem_and_blue_sky.jpeg
+public/images/natural_scene/northern_lights_second.jpeg
+public/images/raj_profile_photo.jpg
+public/lotus-images/chakra_image.png
+public/lotus-images/practice_image.png
+public/lotus-images/complete_chakra_image.png
+public/app-logo/app-logo-design.png
+public/app-logo/app_logo.png
+public/app-logo/app_logo_small.png
+public/app-logo/first-ready-logo.png
+public/app-logo/first-version.png
+public/app-logo/ready_everest_logo_crop.png

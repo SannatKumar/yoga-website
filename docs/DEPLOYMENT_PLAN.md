@@ -16,7 +16,7 @@ never reaches the public GitHub repo.
 ```
  Your Windows PC                                   DigitalOcean Droplet (Ubuntu 24.04 Linux server)
  ───────────────                                   ────────────────────────────────────────────────
- code ── git push ──▶ GitHub ── git clone ───────▶ /var/www/yoga-app   (the Laravel app)
+ code (master) ── release script ──▶ production branch ── git push ──▶ GitHub ── git clone ──▶ /var/www/yoga-app
  local MySQL ── mysqldump file ── scp upload ────▶ MySQL 8            (database: yoga_production)
  browser ──────────── http://DROPLET_IP ─────────▶ Nginx ─▶ PHP 8.3-FPM ─▶ Laravel
                                                    ▲
@@ -35,6 +35,39 @@ Words you'll see:
 | **`.env`** | Per-machine settings file (DB password, debug on/off, URL). Different on your PC vs the server, never committed. |
 | **Cloud Firewall** | A DigitalOcean setting deciding which IP addresses may reach the Droplet at all. |
 | **`sudo`** | "Run this command as administrator" on Linux. |
+
+### Branches: `master` vs `production`
+
+| Branch | What's on it | Who changes it |
+|---|---|---|
+| `master` | Everything: app code **plus** docs, tests, linters, AI-assistant config, notes, unused images. | You (and Claude) — all development happens here. |
+| `production` | Only what the server needs: `master` minus every path listed in `.production-exclude` (docs, tests, tooling, 13 unused images…). ~half the files. | **Only** `scripts/release-production.sh`. Never commit to it by hand. |
+
+The server only ever clones/pulls `production`. To release:
+
+```powershell
+# on your PC, in Git Bash or PowerShell, on master with everything committed
+bash scripts/release-production.sh   # merges master into production, strips excluded paths
+git push origin master production
+```
+
+The script refuses to run with uncommitted changes, and refuses if code starts using an image
+that `.production-exclude` strips — so a release can't silently break a page. To ship a file
+that's currently excluded, delete its line from `.production-exclude` (on master) and release.
+
+### Images
+
+All images the site uses were compressed on 2026-10-10 (phone photos 3024×4032 / ~1.2 MB →
+max 1600 px / ~300 KB; total ~45 MB → ~12 MB). **Every new photo must go through the same step
+before it's committed:**
+
+```powershell
+python scripts/compress-images.py public/images/yogasana_pictures/new_pose_front_side.jpeg
+```
+
+(Requires Python + Pillow: `pip install pillow`.) It resizes to ≤ 1600 px, applies the phone's
+rotation, re-saves as JPEG quality 82. Save photos as `.jpg`/`.jpeg`, not `.png`, unless they need a
+transparent background (logos).
 
 ### Why the database is copied, not rebuilt
 
@@ -70,14 +103,16 @@ server, and never put real passwords into the `.example` files.
 All commands in this phase run in **PowerShell** on your Windows PC (Start menu → "Terminal" or
 "PowerShell"), unless the block says otherwise.
 
-### 0.1 Push the latest code to GitHub
+### 0.1 Release and push the latest code to GitHub
 
-The server downloads the code from GitHub, so it must have your latest commits.
+The server downloads the `production` branch from GitHub, so it must contain your latest commits.
+Use **Git Bash** for the release script (Start menu → "Git Bash"):
 
-```powershell
-cd C:\Projects\yoga01\yoga-app
-git status          # should say "nothing to commit" (or only DEPLOYMENT_NOTES.md, which is ignored)
-git push origin master
+```bash
+cd /c/Projects/yoga01/yoga-app
+git status                            # should say "nothing to commit"
+bash scripts/release-production.sh    # updates the production branch from master
+git push origin master production
 ```
 
 > The GitHub repo `SannatKumar/yoga-website` is **public**. Anything you commit is visible to
@@ -340,10 +375,15 @@ EXIT;
 ```bash
 sudo mkdir -p /var/www/yoga-app
 sudo chown deploy:www-data /var/www/yoga-app
-git clone https://github.com/SannatKumar/yoga-website.git /var/www/yoga-app
+git clone --branch production --depth 1 https://github.com/SannatKumar/yoga-website.git /var/www/yoga-app
 cd /var/www/yoga-app
-git log --oneline -1          # should match your latest local commit
+git branch --show-current     # must say: production
+git log --oneline -1          # should match `git log --oneline -1 production` on your PC
+ls docs tests 2>/dev/null || echo "good: no dev files on the server"
 ```
+
+`--depth 1` downloads only the latest snapshot, not the full history (which still contains the
+large original photos).
 
 ### 5.2 Install PHP and JS dependencies, build CSS/JS
 
@@ -544,12 +584,19 @@ Then: Networking → Firewalls → `yoga-private` → change the **HTTP** and **
 
 ## Updating the site later (every future deploy)
 
-On your PC: commit + `git push origin master`. Then on the server:
+On your PC (Git Bash), with everything committed on master:
+
+```bash
+bash scripts/release-production.sh
+git push origin master production
+```
+
+Then on the server:
 
 ```bash
 cd /var/www/yoga-app
 php artisan down                         # shows a maintenance page during the update
-git pull origin master
+git pull origin production
 composer install --no-dev --optimize-autoloader
 npm ci && npm run build
 php artisan migrate --force              # runs only new migrations
