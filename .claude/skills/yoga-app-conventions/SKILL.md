@@ -20,6 +20,8 @@ work in a new session.
 ## Database
 
 - Migration filenames: `YYYY_MM_DD_HHMMSS_snake_case_description.php` (standard Laravel).
+  Schema migrations: `create_x_table` / `add_x_to_y_table` / `remove_x_from_y_table`.
+  Data-only migrations: `seed_<what>`.
 - **A migration either changes schema OR seeds data — never both.** Data-only migrations (no
   `Schema::` calls) must say so in their docblock: `"Data-only migration (no schema change): ..."`.
 - **Never edit an already-run migration.** Write a new migration instead, even for a one-line fix
@@ -29,7 +31,10 @@ work in a new session.
 - Test the largest/riskiest string values first in a multi-insert migration — a failed statement
   does not roll back earlier inserts already committed in that same `up()` call on this MySQL setup.
 - Table names: plural snake_case. Pivot tables: `{owner}_{owned}` singular (`asana_tag`).
-- Columns: snake_case. Foreign keys: `{singular}_id` — **except** every asana-child table uses
+  (`time_of_the_day` is a historical irregular — don't copy it, don't rename it.)
+- Columns: snake_case. Booleans: `is_` prefix (`is_primary`). New orderable child table: use
+  `sort_order` (integer, ascending). Freeform content columns: `text()`, not a capped `string()`.
+- Foreign keys: `{singular}_id` (`difficulty_id` is an established short form) — **except** every asana-child table uses
   `asanas_id` (plural stem), an established exception from the very first migration. Match it on
   any new asana-child table; don't "fix" it to `asana_id` on just the new one.
 - New content type that's structurally "name + steps + benefits + contraindications"? Add it to
@@ -43,7 +48,10 @@ work in a new session.
 ## Controllers & functions
 
 - New listing page → `index()`. New single-item detail page → `show($id)` (or the closest
-  existing analog, `getAsanaWithDetails`, if extending that specific detail flow).
+  existing analog, `getAsanaWithDetails`, if extending that specific detail flow). A single
+  rendered page that isn't a plain resource `show` → `get{Noun}()` (`getGuide`, `getTeacher`).
+  Don't copy the older thing-named style (`SukhsmaVyayamaController::sukhsmaVyayama()`) and don't
+  rename it either.
 - New API/write endpoint meant for direct URL/Postman use (not a rendered page) →
   `{verb}{Noun}()`: `getAsanas`, `addAsanas`, `updateAsanas`, `deleteAsanas`-style, matching
   `TestController`. Don't mix this with plain Laravel resource verbs on the same controller.
@@ -54,13 +62,25 @@ work in a new session.
   relationship, not just asana ones.
 - Put ordering (`->orderBy(...)`) on the relationship definition itself, not in the
   controller/view.
-- PHP variables: camelCase. Array keys that mirror a DB row or feed a view: snake_case, matching
+- PHP methods/variables: camelCase. Pull request input into a camelCase local at the top of the
+  method (`$asanaName = $request->asana_name;`) rather than reading `$request->...` inline.
+  (`$timeOftheDayId` in the `addAsanas()` methods is a known typo — don't copy it into new code.)
+- Array keys that mirror a DB row or feed a view: snake_case, matching
   the column name unless it's a deliberately generic UI term (`title` instead of `asana_name`).
-  Never camelCase an array key that exists to mirror a raw DB row.
+  Never camelCase an array key that exists to mirror a raw DB row. Follow the `$pose` array in
+  `GalleryController::getAsanaWithDetails()` as the reference shape.
+- Model `$fillable`/properties: literal snake_case column names. No `$appends` or
+  `get*Attribute()` renaming. Friendlier names belong in the controller's view array.
+- Blade variables: exactly what the controller passed, no renaming in the view. Keep
+  singular/plural deliberate (`$categories` = list, `$category` = selected value).
 
 ## Routes
 
-- Paths: kebab-case. Route `name()` should match the kebab-case path with `{params}` dropped
+- Paths: kebab-case, no camelCase or underscores. Params: `{id}` (numeric PK); no slugs yet.
+  One URL, one name; don't add alias names.
+- Controller references: `[ControllerClass::class, 'method']`, never `'Controller@method'`. Add a
+  new controller's `use` line near its route block, don't re-sort the import list.
+- Route `name()` should match the kebab-case path with `{params}` dropped
   (`/tibetan-rites` → `'tibetan-rites'`). A few older routes (`teacher-profile`,
   `mantra-shloka-bhajan`, `mantra-shloka-bhajan-content`) are intentional exceptions predating this
   rule — don't "fix" those, but do follow the rule for anything new.
@@ -91,8 +111,20 @@ Two coexisting page styles — pick one per page, don't mix on the same page:
   the bottom of the same file, kebab-case class names, the green/red/blue semantic palette
   (`#25c55d`/`#e74c3c`/`#3498db`) for benefits/warnings/metadata blocks, `border-radius: 12px`
   content blocks / `20px` pills, `object-fit: cover` for any photo in a fixed box.
+- Every page: `@extends('layouts.app')` + `@section('content') ... @endsection`; don't create a
+  second layout.
+- Pages built on the `part-N-div` scaffold (`show-asana`, `gallery-detail`): fill the existing empty
+  `part-N-div` that fits instead of adding divs outside the sequence.
+- Tailwind pages: plain utilities only. No `@apply`, no custom component layer, no `dark:`
+  variants (light theme only), default `sm:/md:/lg:` breakpoints.
+- `<style>`-block pages: the block goes after `@endsection` in the same file (no per-page .css file).
+  Use specific class names (`.asana-thumb`, not `.thumb`) since nothing scopes them. Use colored
+  `1px solid` borders, not box-shadows. Use light tints `#e6f7ed`/`#fff3f3`/`#eff6ff` with the
+  palette. `@media` breakpoints are `575.98px`/`767.98px`/`991.98px`/`1199.98px`. CSS class names
+  never double as PHP variable names.
 - Every top-level page opens with `<x-page-header>`. Reusable prop-driven fragments use `@props`
-  + `<x-component-name>`, with sane defaults for every prop.
+  + `<x-component-name>`, with sane defaults for every prop (new props on existing components
+  too). Use `@include('components.x')` only to stay consistent with an existing caller.
 - Every asana photo falls back to **`/lotus-images/blank_image.png`** when missing — never to a
   specific real pose's photo file. (This exact bug shipped twice already — an asana with no image
   of its own silently showing a different, real asana's photo. Don't reintroduce it.)
@@ -101,7 +133,8 @@ Two coexisting page styles — pick one per page, don't mix on the same page:
   tried and reverted (it read as a duplicated image) — that block stays commented out in
   `gallery-detail.blade.php`; don't re-enable it without a different image or a real design reason.
 - All user-facing copy through `__('messages.key')` with a literal fallback: `{{
-  __('messages.key') ?? 'Fallback' }}`.
+  __('messages.key') ?? 'Fallback' }}`. Keys are kebab-case (`'tibetan-rites-desc'`), defined in
+  `resources/lang/en/messages.php` and its per-locale siblings.
 
 ## Before calling anything "done"
 
